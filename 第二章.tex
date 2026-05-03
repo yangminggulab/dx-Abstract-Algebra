@@ -1,0 +1,342 @@
+\chapter{环论}
+
+\section{环的定义}
+
+\begin{definition}[环（定义 2.1）]
+集合 $R$ 配备加法 $+$ 和乘法 $\cdot$ 构成\textbf{环}，若满足：
+\begin{enumerate}
+  \item $(R, +)$ 是交换群（加法有交换律、结合律、零元 $0$、负元 $-a$）；
+  \item $(R, \cdot)$ 是幺半群（乘法有结合律、单位元 $1$）；
+  \item 乘法对加法有左右分配律：$a(b+c) = ab + ac$，$(b+c)a = ba + ca$。
+\end{enumerate}
+简记：加法有交换群的所有性质，乘法有幺半群的所有性质，乘法对加法有分配律。
+\end{definition}
+
+\begin{note}
+环中乘法不需要交换律，也不需要逆元（有逆元的元叫单位，除了零元都有逆元就叫除环）。
+\end{note}
+
+\begin{proposition}[命题 2.1：零元与负元的运算]
+在环 $R$ 中：
+\begin{enumerate}
+  \item $a \cdot 0 = 0 \cdot a = 0$（任何元乘以零元等于零元）；
+  \item $(-a) \cdot b = -(ab) = a \cdot (-b)$（负数乘法规律）；
+  \item $(-a)(-b) = ab$。
+\end{enumerate}
+这些性质可由分配律证明，不需要交换律。
+\end{proposition}
+
+\begin{proposition}[命题 2.2：零环]
+若环 $R$ 中加法单位元 $0$ 与乘法单位元 $1$ 相等，即 $0 = 1$，则 $R = \{0\}$（零环）。
+\end{proposition}
+
+\begin{definition}[交换环（定义 2.2）]
+乘法满足交换律 $ab = ba$ 的环称为\textbf{交换环}。$n$ 阶实矩阵环是非交换环的典型例子。
+\end{definition}
+
+\begin{definition}[单位与除环（定义 2.3, 2.4）]
+环 $R$ 中有乘法逆元（即存在 $b$ 使 $ab = ba = 1$）的元素称为\textbf{单位}（可逆元）。
+\begin{itemize}
+  \item 若 $R$ 中所有非零元都是单位，则称 $R$ 是\textbf{除环}（斜域）。
+  \item 除环的等价描述：加法是交换群，乘法构成群（非零元在乘法下构成群），乘法对加法有分配律。
+\end{itemize}
+\end{definition}
+
+\begin{definition}[域（定义 2.5）]
+\textbf{域}是交换的除环，即满足乘法交换律的除环。域的特点：加法是阿贝尔群，乘法（非零元）是阿贝尔群，分配律成立。证明是域 $\Leftrightarrow$ 证明除环的任意元素乘法可以交换。
+\end{definition}
+
+\begin{note}
+域 $\subsetneq$ 除环 $\subsetneq$ 含单位元的环。常见的域：有理数域 $\mathbb{Q}$、实数域 $\mathbb{R}$、复数域 $\mathbb{C}$、有限域 $\mathbb{F}_p$。
+\end{note}
+
+\begin{proposition}[命题 2.5：环的直积]
+设 $R_1, R_2$ 是环，\textbf{直积} $R_1 \times R_2$ 在分量运算下仍是环（验证分配律即可）。
+\end{proposition}
+
+\section{子环与环同态}
+
+\begin{definition}[子环（定义 2.6）]
+环 $R$ 的非空子集 $S$，若在 $R$ 的加法和乘法下也构成环，则称 $S$ 是 $R$ 的\textbf{子环}，记作 $S \le R$。子环需有加法单位元（零元）和乘法单位元（$1$，若 $R$ 有 $1$）；加法群是父群的子群，乘法幺半群是父幺半群的子幺半群。
+\end{definition}
+
+\begin{lemma}[引理 2.1：子环等价条件]
+非空子集 $S \subseteq R$ 是子环当且仅当：对任意 $a, b \in S$，有 $a - b \in S$ 且 $ab \in S$（注意 $a-b$ 蕴含了逆元的存在）。
+\end{lemma}
+
+\begin{definition}[环同态（定义 2.9）]
+映射 $f\colon R \to R'$ 是\textbf{环同态}，若：
+\begin{enumerate}
+  \item $f(a + b) = f(a) + f(b)$（保加法）；
+  \item $f(ab) = f(a)f(b)$（保乘法）；
+  \item $f(1_R) = 1_{R'}$（保乘法单位元）。
+\end{enumerate}
+加法和乘法都能拆括号（合括号）。
+\end{definition}
+
+\begin{proposition}[命题 2.8：核与像的结构]
+设 $f\colon R \to R'$ 是环同态：
+\begin{enumerate}
+  \item $\ker f = \{a \in R \mid f(a) = 0'\}$ 是 $R$ 的\textbf{理想}；
+  \item $\mathrm{Im}\, f = f(R)$ 是 $R'$ 的\textbf{子环}。
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem}[定理 2：环同态传递零元与负元]
+设 $f\colon R \to R'$ 是环同态，则 $f$ 传递零元（$f(0) = 0'$）和负元（$f(-a) = -f(a)$）；若 $R$ 是交换环，$f$ 还传递乘法单位元。
+\end{theorem}
+
+\begin{theorem}[定理 3：同构传递整环/除环/域的性质]
+若 $R \cong R'$（环同构），则 $R$ 是整环（除环、域）当且仅当 $R'$ 是整环（除环、域）。
+\end{theorem}
+
+\section{理想与商环}
+
+\begin{definition}[理想（定义 2.10）]
+环 $R$ 的非空子集 $I$ 是\textbf{左理想}，若：
+\begin{enumerate}
+  \item $(I, +)$ 是 $(R, +)$ 的子群；
+  \item 对任意 $r \in R$，$a \in I$，有 $ra \in I$（左乘环中任意元素仍在理想里）。
+\end{enumerate}
+类似定义\textbf{右理想}。若既是左理想又是右理想，则称\textbf{（双边）理想}，记作 $I \trianglelefteq R$（符号也是三角指向理想方向）。
+\end{definition}
+
+\begin{note}
+理想在乘法下"吸收"了整个环：理想中的元素与环中任意元素相乘结果仍在理想中。理想都是子环（加法子群 + 封闭乘法），但子环不一定是理想。
+\end{note}
+
+\begin{proposition}[命题 2.6：交换环中的理想]
+在交换环中，左理想就是右理想（也是双边理想）。
+\end{proposition}
+
+\begin{proposition}[命题 2.7：整数倍构成理想]
+整数环 $\mathbb{Z}$ 中，$n\mathbb{Z} = \{nk \mid k \in \mathbb{Z}\}$ 是 $\mathbb{Z}$ 的理想（$n$ 的倍数组成的集合再乘任意整数还是 $n$ 的倍数）。
+\end{proposition}
+
+\begin{definition}[商环（定义 2.11）]
+设 $I \trianglelefteq R$，$R$ 中元素 $a$ 对 $I$ 形成的\textbf{加法陪集}为 $a + I$。所有这些陪集在运算
+\[
+  (a + I) + (b + I) = (a+b) + I, \quad (a+I)(b+I) = ab + I
+\]
+下构成环，称为 $R$ 关于 $I$ 的\textbf{商环}，记作 $R/I$（quotient ring）。商环和商群一样，都是加法陪集的集合。
+\end{definition}
+
+\begin{proposition}[命题 2.9：商环成环的条件]
+陪集集合 $R/I$ 在上述运算下是环当且仅当 $I$ 是 $R$ 的理想。
+\end{proposition}
+
+\begin{theorem}[定理 1：理想与正规子群类比]
+理想与正规子群非常类似：模理想的剩余类（商环）仍是环，且 $R$ 与 $R/I$ 存在自然的同态满射（核就是理想 $I$）。
+\end{theorem}
+
+\begin{theorem}[定理 2：$R$ 与商环同态]
+存在同态满射 $\pi\colon R \to R/I$，$\pi(a) = a + I$，其核 $\ker \pi = I$。
+\end{theorem}
+
+\begin{definition}[生成理想（定义 2.13）]
+包含子集 $S$ 的所有理想的交集称为 $S$ \textbf{生成的理想}，记作 $(S)$。当 $S = \{a\}$ 时记作 $(a)$，称为 $a$ 生成的\textbf{主理想}。
+\end{definition}
+
+\begin{definition}[主理想（定义 2.14）]
+由单个元素 $a$ 生成的理想 $(a)$ 称为\textbf{主理想}。主理想要求就是由一个元生成的理想。在交换有单位元的环中，$(a) = Ra = \{ra \mid r \in R\}$。
+\end{definition}
+
+\begin{note}
+证明是主理想就是证明一个元素能生成整个理想。不是每个理想都是主理想——理想的诞生是理想中元素与环中元素作用不断补充，而生成整个理想是理想中一个元素（不与环作用）生成的。
+\end{note}
+
+\begin{theorem}[定理 1：除环只有两个理想]
+除环只有两个理想：零理想 $\{0\}$ 和单位理想 $R$。交换的除环是域，所以域也只有这两个理想。
+\end{theorem}
+
+\begin{lemma}[引理 2.2：理想与子环的关系]
+$I$ 是 $R$ 的理想，$I$ 是 $R$ 的子环当且仅当 $I = R$（理想包含单位元就等于整个环）。
+\end{lemma}
+
+\section{整环、除环与域}
+
+\begin{definition}[零因子]
+环 $R$ 中，若 $a \ne 0$ 且存在 $b \ne 0$ 使得 $ab = 0$（或 $ba = 0$），则称 $a$ 为\textbf{左零因子}（右零因子）。交换环中左零因子就是右零因子。
+\end{definition}
+
+\begin{definition}[整环（定义 2.18）]
+\textbf{整环}是没有零因子的含单位元交换环（零元不计）。等价地：$ab = 0 \Rightarrow a = 0$ 或 $b = 0$。
+\end{definition}
+
+\begin{note}
+零因子就是本身不是零但和另一个非零元相乘可以是零的元素。特别是在剩余类加群中，凡与阶不互素的元都是零因子。
+\end{note}
+
+\begin{theorem}[定理 1：无零因子环的特征]
+无零因子环（有单位元）中，所有非零元对加法的阶都相同。这个公共的阶称为环的\textbf{特征}。
+\end{theorem}
+
+\begin{definition}[环的特征]
+无零因子环的\textbf{特征} $\mathrm{char}(R)$ 是加法中所有非零元的公共阶（若阶有限），否则特征为 $0$。
+\end{definition}
+
+\begin{theorem}[定理 2：整环/除环/域的特征]
+整环、除环、域的特征只能是素数或 $0$（无穷）。
+\end{theorem}
+
+\begin{proof}
+若特征 $n = ab$（$1 < a, b < n$），则 $na = 0$ 意味着 $(aa')(bb') = 0$ 之类的分解产生零因子，矛盾。
+\end{proof}
+
+\begin{definition}[4元群与域的特征]
+有限域的特征是素数。若有限域的阶为 $p^k$（$p$ 素数），则其特征为 $p$。4元域：特征为 $2$，阶为 $4 = 2^2$（阶只能是 2 的幂）。
+\end{definition}
+
+\begin{note}[特征的等价定义]
+\textbf{特征}是对加法中所有非零元素共同的阶（最小正整数 $n$ 使得 $n \cdot a = 0$ 对所有 $a \ne 0$ 成立）。凡是不和阶互素的元都是零因子（在剩余类环中）。因此：
+\begin{itemize}
+  \item $\mathbb{Z}_6$：$\gcd(2, 6) = 2 \ne 1$，$2$ 是零因子（$2 \times 3 = 6 = 0$），故 $\mathbb{Z}_6$ 不是整环；
+  \item $\mathbb{Z}_p$（$p$ 素数）：所有非零元与 $p$ 互素，无零因子，是域，特征 $p$。
+\end{itemize}
+\end{note}
+
+\begin{example}[剩余类环同态（教材第 8 节，第 39 页）]
+典型环同态例子：$f \colon \mathbb{Z} \to \mathbb{Z}_n$，$f(k) = k + n\mathbb{Z}$。
+\begin{itemize}
+  \item 加法：$f(a+b) = (a+b) + n\mathbb{Z} = (a + n\mathbb{Z}) + (b + n\mathbb{Z}) = f(a) + f(b)$；
+  \item 乘法：类似；
+  \item $\ker f = n\mathbb{Z}$（映射到 $0 + n\mathbb{Z}$ 的原像集）；
+  \item $\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_n$（第一同构定理）。
+\end{itemize}
+加法的群同态已经证明过了，要证明的就是乘法幺半群同态（$f(1) = 1 + n\mathbb{Z} = 1_{\mathbb{Z}_n}$，$f$ 保持单位元）；有乘法单位元，每一个环同态核都是理想，像都是子环。
+\end{example}
+
+\section{极大理想与素理想}
+
+\begin{definition}[极大理想]
+环 $R$ 的理想 $I$（$I \ne R$）是\textbf{极大理想}，若不存在理想 $J$ 使得 $I \subsetneq J \subsetneq R$（即包含 $I$ 的理想只有 $R$）。
+\end{definition}
+
+\begin{lemma}[极大理想与商环（引理 1）]
+设 $R$ 是含单位元的交换环，$I$ 是 $R$ 的理想。则 $I$ 是极大理想当且仅当商环 $R/I$ 只有零理想和单位理想（即 $R/I$ 是域）。
+\end{lemma}
+
+\begin{theorem}[极大理想与域]
+含单位元的交换环 $R$ 中，$I$ 是极大理想当且仅当 $R/I$ 是域。
+\end{theorem}
+
+\begin{proposition}[整数环中的极大理想]
+整数环 $\mathbb{Z}$ 中，素数 $p$ 生成的主理想 $(p)$ 是极大理想。
+\end{proposition}
+
+\begin{proof}
+设包含 $(p)$ 的理想为 $J$，则 $J = (d)$ 对某个 $d \mid p$，故 $d = 1$ 或 $d = p$，即 $J = \mathbb{Z}$ 或 $J = (p)$。
+\end{proof}
+
+\begin{lemma}[引理 2.7, 2.8：素理想与素数]
+整环中，\textbf{素理想}是非零理想 $P$（$P \ne R$）使得 $ab \in P \Rightarrow a \in P$ 或 $b \in P$。
+\end{lemma}
+
+\section{商域}
+
+\begin{definition}[商域]
+整环 $R$ 的\textbf{商域}（分式域）$Q(R)$ 是包含 $R$ 作为子环的最小域。其元素形如 $\frac{a}{b}$（$a \in R$，$b \in R \setminus \{0\}$）的等价类，运算仿照分数。
+\end{definition}
+
+\begin{theorem}[定理 1：整环嵌入商域]
+没有零因子的交换环 $R$（整环）都是某个域 $Q$ 的子环，且 $Q$ 可选为 $R$ 的商域。
+\end{theorem}
+
+\begin{theorem}[定理 2：商域的元素刻画]
+商域 $Q(R)$ 恰好由所有形如 $ab^{-1}$（$a, b \in R$，$b \ne 0$）的元素组成。
+\end{theorem}
+
+\begin{theorem}[定理 3：商域的最小性]
+若 $F$ 是包含 $R$ 的域，则 $F$ 包含 $R$ 的商域 $Q(R)$ 作为子域。
+\end{theorem}
+
+\begin{theorem}[定理 4：同构环的商域同构]
+同构的整环的商域也同构；一个整环最多只有一个商域（在同构意义下）。
+\end{theorem}
+
+\begin{proposition}[域都是欧式环]
+域内的非零元都有逆元，故对任意 $a, b \ne 0$，令 $q = ab^{-1}$，有 $a = qb + 0$，带余除法余数恒为 $0$，满足欧式环条件。把域中所有元素都映射到 $1$（即 $\phi$ 恒取 $1$）可构造欧式函数。
+\end{proposition}
+
+\section{环同态定理}
+
+\begin{theorem}[第一同构定理（环版）]
+设 $f \colon R \to R'$ 是环满同态，则
+\[
+  R / \ker f \cong R'.
+\]
+更一般地，$R / \ker f \cong \mathrm{Im}\, f$。
+\end{theorem}
+
+\begin{theorem}[定理 3：商环的同态满射性质（教材第 85 页）]
+设 $f \colon R \to R'$ 是环满同态，$\ker f = I$，则：
+\begin{enumerate}
+  \item $R$ 的包含 $I$ 的理想与 $R'$ 的理想之间存在一一对应；
+  \item 若 $J \supseteq I$ 是 $R$ 的理想，则 $R/J \cong R'/f(J)$（商环的传递性）。
+\end{enumerate}
+\end{theorem}
+
+\begin{note}
+理想和正规子群非常类似：找到正规子群这样好的结构是为了让核一定是子环；找到理想是为了让核一定是子环，商环和商群才能有良好的结构。
+\end{note}
+
+\begin{proposition}[命题 2.10]
+% TODO: 原笔记图片内容，待转换
+\end{proposition}
+
+\begin{proposition}[命题 2.11：交换环的主理想可以写成 $Ra$]
+在交换有单位元的环 $R$ 中，由 $a$ 生成的主理想 $(a) = Ra = \{ra \mid r \in R\}$。
+\end{proposition}
+
+\begin{theorem}[无零因子作用]
+在无零因子环（整环）中：
+\begin{enumerate}
+  \item 消去律成立：$ab = ac$，$a \ne 0 \Rightarrow b = c$；
+  \item 整环中的非零元阶相同（共同的特征）；
+  \item 整环可以嵌入到其商域中。
+\end{enumerate}
+无零因子的作用就是保证代数运算"不会退化"，使得整除理论有意义。
+\end{theorem}
+
+\begin{lemma}[引理 2.3：从环同态定义理想（教材第 41 页）]
+设 $f \colon R \to R'$ 是环同态，$\ker f = \{a \in R \mid f(a) = 0'\}$。则：
+\begin{enumerate}
+  \item $\ker f$ 是 $R$ 的理想（这是理想也可以从环同态中定义的依据）；
+  \item 例如 $f \colon \mathbb{Z} \to \mathbb{Z}_n$，$f(1) = 1 + n\mathbb{Z}$，则 $\ker f = n\mathbb{Z}$，这正是 $\mathbb{Z}$ 的理想。
+\end{enumerate}
+有乘法单位元，每一个环同态的核都是理想，像都是子环。
+\end{lemma}
+
+\begin{theorem}[引理 2：交换环只有零理想和单位理想则是域]
+有单位元的交换环 $R$ 是域当且仅当 $R$ 只有两个理想：$\{0\}$ 和 $R$。
+\end{theorem}
+
+\begin{theorem}[定理 2：$R$ 与商环同态（满射核即理想）]
+设 $I \trianglelefteq R$，自然映射 $\pi \colon R \to R/I$，$\pi(a) = a + I$ 是满同态，且 $\ker \pi = I$。这给出：同态满射核就是理想（反之，每个理想都是某个同态满射的核）。
+\end{theorem}
+
+\section{子环与子除环}
+
+\begin{definition}[子除环]
+除环 $D$ 的子集 $E$，若在 $D$ 的运算下也构成除环，则称 $E$ 是 $D$ 的\textbf{子除环}。域的子除环称为\textbf{子域}。
+\end{definition}
+
+\begin{lemma}[子环的等价条件（引理 2.1）]
+非空子集 $S \subseteq R$ 是子环当且仅当：
+\begin{enumerate}
+  \item $a, b \in S \Rightarrow a - b \in S$（$a-b$ 蕴含逆元的存在）；
+  \item $a, b \in S \Rightarrow ab \in S$。
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}[子集生成的环（定义 2.7）]
+环 $R$ 中子集 $A$ 生成的子环 $\langle A \rangle$ 是包含 $A$ 的所有子环的交集（最小子环）。
+\end{definition}
+
+\begin{theorem}[定理 2：环的直积还是环（命题 2.5）]
+有限个环的直积仍是环，验证分配律即可。
+\end{theorem}
+
+\begin{proposition}[整环中素数阶]
+整环、除环、域的特征只能是素数或 $0$，因为它们都没有零因子；若特征是合数 $n = ab$（$1 < a, b < n$），则 $n \cdot 1 = 0$ 的分解给出非零零因子，矛盾。
+\end{proposition}

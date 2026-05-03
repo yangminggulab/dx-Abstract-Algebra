@@ -1,0 +1,203 @@
+\chapter{习题}
+
+\section{第一章习题（群论）}
+
+\begin{homework}
+设 $G$ 是群，$a \in G$，证明 $a$ 与 $a^{-1}$ 的阶相同。
+
+\begin{solution}
+设 $a$ 的阶为 $m$，则 $(a^{-1})^m = (a^m)^{-1} = e^{-1} = e$，故 $\mathrm{ord}(a^{-1}) \le m$。同理，设 $a^{-1}$ 的阶为 $n$，则 $(a^{-1})^n = e$ 即 $a^{-n} = e$，故 $a^n = e$，得 $m \le n$。由 $m \ge n$ 和 $n \ge m$ 得 $m = n$。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明 $n$ 次对称群 $S_n$ 的阶是 $n!$。
+
+\begin{solution}
+$S_n$ 的元素是集合 $\{1, 2, \ldots, n\}$ 的所有双射（置换）。第一个元素有 $n$ 种选法，第二个有 $n-1$ 种，……，故 $|S_n| = n!$。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明指数为 $2$ 的子群一定是正规子群。
+
+\begin{solution}
+设 $[G:H] = 2$，对任意 $g \in G$：
+\begin{itemize}
+  \item 若 $g \in H$：$gH = H = Hg$；
+  \item 若 $g \notin H$：$G$ 分为两个左陪集 $H$ 和 $gH$，也分为两个右陪集 $H$ 和 $Hg$，故 $gH = G \setminus H = Hg$。
+\end{itemize}
+两种情况下都有 $gH = Hg$，故 $H \trianglelefteq G$。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+设 $H$ 是有限群 $G$ 的子群，$x \in G$，证明 $x \in H$ 当且仅当 $xH = H$。
+
+\begin{solution}
+若 $x \in H$：对任意 $xh \in xH$（$h \in H$），因 $H$ 对乘法封闭，$xh \in H$，故 $xH \subseteq H$；又 $H = eH \subseteq xH$（取 $e = x \cdot x^{-1}$），故 $xH = H$。
+
+若 $xH = H$：则 $x = xe \in xH = H$，故 $x \in H$。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明子群 $H$ 的任意两个左陪集要么相等，要么无交集。
+
+\begin{solution}
+设 $aH \cap bH \ne \varnothing$，取 $c \in aH \cap bH$，则 $c = ah_1 = bh_2$（$h_1, h_2 \in H$）。故 $a^{-1}b = h_1^{-1}h_2 \in H$（$H$ 是子群，$h_1^{-1}, h_2 \in H$），由此对任意 $bh \in bH$：$bh = a(h_1^{-1}h_2 h) \in aH$，故 $bH \subseteq aH$；同理 $aH \subseteq bH$，故 $aH = bH$。
+\end{solution}
+\end{homework}
+
+\begin{homework}[命题 1.3.3 的例子]
+在 $\mathbb{Z}_6 = \{0,1,2,3,4,5\}$ 中，子群 $H = \{0, 3\}$（由 $3$ 生成的子群），列出所有左陪集。
+
+\begin{solution}
+\begin{itemize}
+  \item $0 + H = \{0, 3\}$
+  \item $1 + H = \{1, 4\}$
+  \item $2 + H = \{2, 5\}$
+\end{itemize}
+三个陪集两两不交，$|\mathbb{Z}_6| = 6 = 3 \times 2 = |H| \times [\mathbb{Z}_6 : H]$，符合拉格朗日定理。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+设 $f: G \to G'$ 是群同态，$e, e'$ 分别是 $G, G'$ 的单位元，证明 $f(e) = e'$，$f(a^{-1}) = f(a)^{-1}$。
+
+\begin{solution}
+由 $e \cdot e = e$ 可得 $f(e) \cdot f(e) = f(e)$，两边乘以 $f(e)^{-1}$（$f(e) \in G'$，在 $G'$ 中有逆元）得 $f(e) = e'$。
+
+对逆元：$f(a) \cdot f(a^{-1}) = f(a \cdot a^{-1}) = f(e) = e'$，故 $f(a^{-1})$ 是 $f(a)$ 在 $G'$ 中的逆元，即 $f(a^{-1}) = f(a)^{-1}$。
+\end{solution}
+\end{homework}
+
+\begin{homework}[循环群的子群]
+证明循环群的子群还是循环群。
+
+\begin{solution}
+设 $G = \langle a \rangle$，$H \le G$ 非平凡。取 $H$ 中幂次最小的正幂次 $k$，使得 $a^k \in H$（$k \ge 1$）。对任意 $a^m \in H$，带余除法 $m = kq + r$（$0 \le r < k$），则：
+\[ a^r = a^m \cdot (a^k)^{-q} \in H \]
+（$H$ 是子群，对运算封闭）。由 $k$ 的最小正幂次性和 $0 \le r < k$ 知 $r = 0$，故 $k \mid m$，$H \subseteq \langle a^k \rangle$。又 $a^k \in H$ 故 $\langle a^k \rangle \subseteq H$，得 $H = \langle a^k \rangle$，是循环群。
+\end{solution}
+\end{homework}
+
+\section{第二章习题（环论）}
+
+\begin{homework}
+证明在环 $R$ 中，$a \cdot 0 = 0$（任何元素乘以零元等于零元）。
+
+\begin{solution}
+$a \cdot 0 = a \cdot (0 + 0) = a \cdot 0 + a \cdot 0$（分配律）。两边减去 $a \cdot 0$ 得 $0 = a \cdot 0$。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明交换有单位元的环 $R$ 是域当且仅当 $R$ 只有两个理想 $\{0\}$ 和 $R$。
+
+\begin{solution}
+$(\Rightarrow)$：设 $R$ 是域，$I$ 是非零理想，取 $a \in I$（$a \ne 0$），则 $a^{-1} \in R$，故 $1 = a^{-1} \cdot a \in I$，对任意 $r \in R$，$r = r \cdot 1 \in I$，故 $I = R$。
+
+$(\Leftarrow)$：设 $R$ 只有两个理想，取非零 $a \in R$，则 $Ra = R$（$Ra$ 是理想且非零），故 $1 \in Ra$，存在 $b$ 使 $ba = 1$，即 $a$ 有左逆；类似有右逆，故 $a$ 可逆。$R$ 是域。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明 $\mathbb{Z}$ 是主理想整环。
+
+\begin{solution}
+设 $I$ 是 $\mathbb{Z}$ 的理想。若 $I = \{0\}$，则 $I = (0)$ 是主理想。否则取 $I$ 中最小正整数 $n$。对任意 $a \in I$，带余除法 $a = nq + r$（$0 \le r < n$），则 $r = a - nq \in I$，由 $n$ 的最小性知 $r = 0$，故 $n \mid a$，$I \subseteq n\mathbb{Z}$。又 $n \in I$，故 $n\mathbb{Z} \subseteq I$，得 $I = n\mathbb{Z} = (n)$。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+设 $f \colon R \to R'$ 是环同态，证明 $\ker f$ 是 $R$ 的理想。
+
+\begin{solution}
+设 $a, b \in \ker f$（即 $f(a) = f(b) = 0'$），则：
+\begin{itemize}
+  \item $f(a - b) = f(a) - f(b) = 0' - 0' = 0'$，故 $a - b \in \ker f$，$\ker f$ 是加法子群。
+  \item 对任意 $r \in R$，$f(ra) = f(r) f(a) = f(r) \cdot 0' = 0'$，故 $ra \in \ker f$（左理想）；同理 $ar \in \ker f$（右理想）。
+\end{itemize}
+故 $\ker f$ 是双边理想。
+\end{solution}
+\end{homework}
+
+\section{第三章习题（分解理论与多项式）}
+
+\begin{homework}
+证明域 $F$ 上的多项式环 $F[x]$ 是欧式环（用次数作为欧式函数）。
+
+\begin{solution}
+取 $\phi(f) = \deg f$（非零多项式的次数）。对任意 $a(x), b(x) \in F[x]$，$b \ne 0$，对 $a$ 除以 $b$ 做多项式带余除法：$a(x) = q(x)b(x) + r(x)$，其中 $r = 0$ 或 $\deg r < \deg b = \phi(b)$。这正是欧式环的带余除法条件。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明整环 $R$ 中素元一定是不可约元。
+
+\begin{solution}
+设 $p$ 是素元，$p = ab$，则 $p \mid ab$，由素元定义，$p \mid a$ 或 $p \mid b$。不妨设 $p \mid a$，写 $a = pc$，则 $p = ab = pcb$，由整环消去律（$p \ne 0$）得 $1 = cb$，即 $b$ 是单位。故 $p$ 只有平凡因子，是不可约元。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+设 $R$ 是 PID，$p \in R$ 是不可约元，证明 $(p)$ 是极大理想。
+
+\begin{solution}
+设 $(p) \subseteq J \subsetneq R$，因 $R$ 是 PID，$J = (q)$。由 $(p) \subseteq (q)$，有 $q \mid p$，故 $p = qr$。由 $p$ 不可约，$q$ 或 $r$ 是单位。若 $q$ 是单位，则 $J = R$（矛盾，$J \subsetneq R$）；故 $r$ 是单位，$p = qr$ 使 $q$ 与 $p$ 相伴，$(q) = (p)$，即 $J = (p)$。故 $(p)$ 是极大理想。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明凯莱定理：任何群都同构于某个置换群的子群。
+
+\begin{solution}
+设 $G$ 是群。对每个 $x \in G$，定义变换 $\tau_x \colon G \to G$，$\tau_x(g) = xg$（左乘）。
+
+\textbf{步骤一：}$\tau_x$ 是双射（因为 $\tau_{x^{-1}} \circ \tau_x = \tau_e = \mathrm{id}$，有逆即双射）。
+
+\textbf{步骤二：}构造 $\varphi \colon G \to \mathrm{Sym}(G)$，$\varphi(x) = \tau_x$。验证这是群同态：$\varphi(xy)(g) = \tau_{xy}(g) = (xy)g = x(yg) = \tau_x(\tau_y(g)) = (\tau_x \circ \tau_y)(g)$，故 $\varphi(xy) = \varphi(x)\varphi(y)$。
+
+\textbf{步骤三：}$\varphi$ 是单射：若 $\tau_x = \tau_y$，则 $xe = ye$（对 $e$ 用 $\tau$），即 $x = y$。
+
+故 $G \cong \varphi(G) \le \mathrm{Sym}(G)$，是置换群的子群。
+\end{solution}
+\end{homework}
+
+\begin{homework}
+证明循环群的生成元恰好是与阶互素的幂次元素（命题 1.30）。
+
+\begin{solution}
+设 $G = \langle a \rangle$ 是 $n$ 阶循环群。$a^k$ 是生成元当且仅当 $\langle a^k \rangle = G$，即 $a^k$ 的阶为 $n$。
+
+由命题 1.2.6，$a^k$ 的阶为 $\dfrac{n}{\gcd(k, n)}$（因为 $(a^k)^m = e \Leftrightarrow n \mid km \Leftrightarrow \frac{n}{\gcd(k,n)} \mid m$）。
+
+故 $\mathrm{ord}(a^k) = n$ 当且仅当 $\gcd(k, n) = 1$。因此生成元恰好是 $\{a^k \mid \gcd(k,n) = 1\}$，即幂指数与 $n$ 互素的元素（这也说明循环群的生成元不止一个）。
+\end{solution}
+\end{homework}
+
+\begin{homework}[交换群的等价条件]
+设 $G$ 是群，证明以下条件等价：
+\begin{enumerate}
+  \item $G$ 是交换群；
+  \item 对任意 $a, b \in G$，$(ab)^{-1} = a^{-1}b^{-1}$；
+  \item 对任意 $a, b \in G$，$(ab)^2 = a^2b^2$。
+\end{enumerate}
+
+\begin{solution}
+$(1) \Rightarrow (2)$：$(ab)^{-1} = b^{-1}a^{-1} = a^{-1}b^{-1}$（交换律）。
+
+$(2) \Rightarrow (3)$：$(ab)^2 = ab \cdot ab$，又 $(ab)^{-1} = a^{-1}b^{-1}$ 等价于 $ba = ab$（两边乘 $b$ 和 $a$），故 $a^2b^2 = a \cdot (ab) \cdot b = a \cdot (ba) \cdot b = (ab)(ab) = (ab)^2$。
+
+$(3) \Rightarrow (1)$：$a^2b^2 = (ab)^2 = abab$，左乘 $a^{-1}$，右乘 $b^{-1}$ 得 $ab = ba$。
+\end{solution}
+\end{homework}
+
+\begin{homework}[整数环 $\mathbb{Z}[i]$ 中的单位]
+确定高斯整数 $\mathbb{Z}[i] = \{a + bi \mid a, b \in \mathbb{Z}\}$ 中的单位。
+
+\begin{solution}
+$\mathbb{Z}[i]$ 的单位是有乘法逆元的元素。设 $\alpha = a + bi$ 是单位，则存在 $\beta = c + di$ 使 $\alpha\beta = 1$。取范数（$N(\alpha) = a^2 + b^2$）：$N(\alpha\beta) = N(1) = 1$，故 $N(\alpha) \cdot N(\beta) = 1$。因 $N(\alpha) \in \mathbb{Z}_{\ge 0}$，故 $N(\alpha) = 1$，即 $a^2 + b^2 = 1$。解得 $(a,b) \in \{(\pm 1, 0), (0, \pm 1)\}$，对应 $\alpha \in \{1, -1, i, -i\}$。
+\end{solution}
+\end{homework}

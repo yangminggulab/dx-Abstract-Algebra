@@ -1,0 +1,319 @@
+\chapter{整环的分解理论与多项式环}
+
+\section{整环中的整除理论}
+
+\begin{definition}[单位与相伴元]
+整环 $R$ 中：
+\begin{itemize}
+  \item 有乘法逆元的元素称为\textbf{单位}（注意：单位不是单位元）。单位乘其逆元是乘法单位元（$1$）。
+  \item 若 $b = \varepsilon a$（$\varepsilon$ 是单位），则称 $b$ 是 $a$ 的\textbf{相伴元}。
+\end{itemize}
+\end{definition}
+
+\begin{theorem}[定理 1：单位的运算封闭性]
+单位乘单位还是单位；单位的逆元也是单位。
+\end{theorem}
+
+\begin{definition}[整除与因子]
+整环 $R$ 中，若存在 $q \in R$ 使得 $b = qa$，则称 $a$ \textbf{整除} $b$，记作 $a \mid b$，称 $a$ 是 $b$ 的\textbf{因子}。
+\end{definition}
+
+\begin{definition}[平凡因子与真因子]
+设 $a \in R$ 非零非单位：
+\begin{itemize}
+  \item $a$ 的\textbf{平凡因子}：$a$ 的相伴元和单位（即 $\varepsilon$ 形式的因子，其中 $\varepsilon$ 是单位）；
+  \item $a$ 的\textbf{真因子}：除平凡因子外的因子。
+\end{itemize}
+\end{definition}
+
+\begin{definition}[不可约元]
+整环 $R$ 中，非零非单位的元素 $p$ 称为\textbf{不可约元}，若 $p$ 只有平凡因子（即若 $p = ab$，则 $a$ 或 $b$ 是单位）。
+\end{definition}
+
+\begin{note}
+证明一个元素是不可约元的步骤：
+\begin{enumerate}
+  \item 确认 $p \ne 0$ 且 $p$ 不是单位元（在 $\mathbb{Z}$ 中单位是 $\pm 1$）；
+  \item 对任意因子分解 $p = ab$，证明其中一个必是单位（可用反证法或借助范数等工具）。
+\end{enumerate}
+\end{note}
+
+\begin{theorem}[定理 2：单位乘不可约元还是不可约元]
+设 $\varepsilon$ 是单位，$p$ 是不可约元，则 $\varepsilon p$ 也是不可约元。
+\end{theorem}
+
+\begin{definition}[公因子与最大公因子]
+元素 $d$ 是 $a, b$ 的\textbf{公因子}，若 $d \mid a$ 且 $d \mid b$。$d$ 是\textbf{最大公因子}，若 $d$ 是公因子且被每个公因子整除。
+\end{definition}
+
+\begin{theorem}[定理 3：最大公因子与单位因子]
+整域中，最大公因子若存在，则在相伴意义下唯一（即两个最大公因子互为相伴元）。
+\end{theorem}
+
+\begin{definition}[互素]
+整环 $R$ 中，$a, b$ \textbf{互素}（coprime），若它们的公因子只有单位，即 $\gcd(a,b)$ 是单位（$\gcd(a,b) \sim 1$）。
+\end{definition}
+
+\begin{proposition}[推论：互素的等价条件（在 PID 中）]
+在主理想整环中，$a, b$ 互素当且仅当存在 $s, t \in R$ 使得 $sa + tb = 1$（贝祖等式）。
+\end{proposition}
+
+\begin{note}
+$\gcd$ 不一定唯一，但在相伴意义下唯一。在整数环中 $\gcd(6, 4) = 2$（取正数代表元）；在多项式环中 $\gcd$ 取首一多项式代表元。
+\end{note}
+
+\section{唯一分解环}
+
+\begin{definition}[唯一分解环（UFD）]
+整环 $R$ 是\textbf{唯一分解环}（UFD），若：
+\begin{enumerate}
+  \item 每个非零非单位元都能写成有限个不可约元之积；
+  \item 这种分解在相伴意义下唯一（即若 $p_1 \cdots p_r = q_1 \cdots q_s$，则 $r = s$ 且经重排后 $p_i$ 与 $q_i$ 相伴）。
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[定理 1：UFD 的性质]
+在唯一分解环中，每个不可约元都是素元（即 $p \mid ab \Rightarrow p \mid a$ 或 $p \mid b$）。
+\end{theorem}
+
+\begin{theorem}[定理 2：整环成为 UFD 的条件]
+整环 $R$ 是 UFD 当且仅当：
+\begin{enumerate}
+  \item $R$ 中每个不可约元都是素元；
+  \item $R$ 中每个非零非单位元都有不可约分解（有限分解存在性）。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[定理 3：整环中有真因子的元素]
+唯一分解环中，非零非单位元 $a$ 有真因子。
+\end{theorem}
+
+\section{主理想整环}
+
+\begin{definition}[主理想整环（PID）]
+若整环 $R$ 的每个理想都是主理想，则称 $R$ 是\textbf{主理想整环}（PID），记作 $R$ 是 PID。主理想整环中每一个理想都是主理想。
+\end{definition}
+
+\begin{theorem}[整数环是主理想整环（定理 2）]
+$\mathbb{Z}$ 是主理想整环：$\mathbb{Z}$ 的每个理想都形如 $n\mathbb{Z}$（$n \ge 0$）。
+\end{theorem}
+
+\begin{theorem}[主理想整环是唯一分解环（定理：PID $\Rightarrow$ UFD）]
+每个主理想整环都是唯一分解环。
+\end{theorem}
+
+\begin{lemma}[引理 2：主理想环的不可约元生成极大理想]
+在主理想整环 $R$ 中，不可约元 $p$ 生成的主理想 $(p)$ 是 $R$ 的极大理想。
+\end{lemma}
+
+\section{欧式环}
+
+\begin{definition}[欧式环]
+整环 $R$ 是\textbf{欧式环}，若存在映射 $\phi\colon R \setminus \{0\} \to \mathbb{Z}_{\ge 0}$（称为\textbf{欧式函数}），使得：对任意 $a \in R$ 和 $b \in R \setminus \{0\}$，存在 $q, r \in R$ 使得
+\[
+  a = qb + r, \quad r = 0 \text{ 或 } \phi(r) < \phi(b).
+\]
+这就是"带余除法"。
+\end{definition}
+
+\begin{note}
+欧式环 = 整环 + 非零元到非负整数的映射（欧式函数）+ 带余除法。一个整环里面首先构建一个非零元到非负整数的映射，不等于 $0$ 的元 $a$ 和任意元 $b$ 都能写成 $b = qa + r$（$r=0$ 或 $\phi(r) < \phi(a)$）。
+\end{note}
+
+\begin{theorem}[定理 1：欧式环是主理想整环，是唯一分解环]
+欧式环 $\Rightarrow$ PID $\Rightarrow$ UFD。
+\end{theorem}
+
+\begin{note}
+关系链：欧式环 $\subsetneq$ PID $\subsetneq$ UFD $\subsetneq$ 整环。
+\end{note}
+
+\begin{proof}[欧式环是 PID 的证明思路]
+设 $I$ 是欧式环 $R$ 的非零理想，取 $I$ 中 $\phi$ 值最小的非零元 $b$。对任意 $a \in I$，做带余除法 $a = qb + r$，则 $r = a - qb \in I$，由 $b$ 的最小性知 $r = 0$，故 $I = (b)$ 是主理想。
+\end{proof}
+
+\section{多项式环}
+
+\begin{definition}[一元多项式环]
+设 $R$ 是含单位元的环，$R$ 上的\textbf{一元多项式环} $R[x]$ 的元素为
+\[
+  f(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0, \quad a_i \in R,
+\]
+加法和乘法按通常多项式运算定义。$f(x) \ne 0$ 时称 $a_n \ne 0$ 为首项系数，$n$ 为次数（记 $\deg f$）。次数的基本性质：$\deg(fg) = \deg f + \deg g$（在整环系数下）。
+\end{definition}
+
+\begin{note}[一元多项式环基础知识]
+\begin{itemize}
+  \item $R[x]$ 是含单位元的环（单位元是常数多项式 $1$）；
+  \item 若 $R$ 是整环，则 $R[x]$ 也是整环（次数的可加性保证无零因子）；
+  \item 若 $R$ 是域，则 $R[x]$ 是欧式环（以次数为欧式函数），进而是 PID 和 UFD；
+  \item 若 $R$ 是 UFD，则 $R[x]$ 也是 UFD（高斯定理），但 $R[x]$ 不一定是 PID（如 $\mathbb{Z}[x]$ 是 UFD 但不是 PID）。
+\end{itemize}
+\end{note}
+
+\begin{example}[线性变换多项式]
+设 $V$ 是域 $F$ 上的线性空间，$T \colon V \to V$ 是线性变换，对多项式 $f(x) = a_n x^n + \cdots + a_0 \in F[x]$，定义 $f(T) = a_n T^n + \cdots + a_1 T + a_0 I$（$I$ 是恒等变换），称为 $T$ 的多项式，$f(T)$ 也是线性变换。这给出了 $F[x]$ 到线性变换环的同态。
+\end{example}
+
+\begin{theorem}[定理 3：一元多项式环是欧式环]
+若 $F$ 是域，则 $F[x]$ 是欧式环（用多项式的次数作为欧式函数）。
+\end{theorem}
+
+\begin{corollary}
+域上的一元多项式环 $F[x]$ 是 PID，也是 UFD。
+\end{corollary}
+
+\begin{lemma}[引理：多项式环都是主理想环]
+域 $F$ 上的多项式环 $F[x]$ 的每个理想都是主理想。
+\end{lemma}
+
+\section{整系数多项式}
+
+\begin{definition}[本原多项式]
+整系数多项式 $f(x) \in \mathbb{Z}[x]$ 称为\textbf{本原多项式}，若其系数的最大公因子为 $1$。
+\end{definition}
+
+\begin{lemma}[有限序列判定（引理 1）]
+唯一分解环中，判断一列元素是否有有限的不可约分解，可以使用以下方式：若每步真因子分解严格减小某个"度量"（如 $\phi$ 值），则链条有限，从而分解存在。
+\end{lemma}
+
+\begin{lemma}[高斯引理（引理 1）]
+本原多项式只能由本原多项式相乘得到：若 $f, g \in \mathbb{Z}[x]$ 都是本原的，则 $fg$ 也是本原的。
+\end{lemma}
+
+\begin{proof}[高斯引理证明思路]
+设 $fg$ 不是本原的，则存在素数 $p$ 整除 $fg$ 所有系数。考虑模 $p$ 的剩余类环 $\mathbb{Z}_p[x]$（$\mathbb{Z}_p$ 是域，$\mathbb{Z}_p[x]$ 是整环），$fg \equiv 0 \pmod{p}$，但 $f, g$ 分别有不被 $p$ 整除的系数，得 $\bar{f} \ne 0$，$\bar{g} \ne 0$，$\bar{f}\bar{g} \ne 0$（整环无零因子），矛盾。
+\end{proof}
+
+\begin{lemma}[引理 2：改变多项式的形式]
+对任意非零 $f(x) \in \mathbb{Z}[x]$，可以写成 $f(x) = c(f) \cdot f_0(x)$，其中 $c(f)$ 是 $f$ 的系数的最大公因子（\textbf{容量}），$f_0$ 是本原多项式。
+\end{lemma}
+
+\begin{lemma}[引理 3：$\mathbb{Z}[x]$ 与 $\mathbb{Q}[x]$ 的可约性关系]
+$f(x) \in \mathbb{Z}[x]$（次数 $\ge 1$）可约（在 $\mathbb{Z}[x]$ 中）当且仅当 $f(x)$ 在 $\mathbb{Q}[x]$ 中可约。
+\end{lemma}
+
+\begin{note}
+引理 3 告诉我们：判断整系数多项式在 $\mathbb{Z}[x]$ 中是否可约，只需看它在 $\mathbb{Q}[x]$（有理系数多项式环）中是否可约。而 $\mathbb{Q}[x]$ 是 UFD（域上的多项式环），处理更方便。
+\end{note}
+
+\begin{lemma}[引理 4：本原多项式的唯一分解]
+次数大于 $0$ 的本原多项式在 $\mathbb{Z}[x]$ 中有唯一分解（分解成不可约本原多项式之积）。
+\end{lemma}
+
+\begin{theorem}[定理 1：$R$ 是 UFD $\Rightarrow$ $R[x]$ 也是 UFD]
+若 $R$ 是唯一分解环，则 $R$ 上的一元多项式环 $R[x]$ 也是唯一分解环。
+\end{theorem}
+
+\begin{corollary}
+$\mathbb{Z}[x]$ 是唯一分解环（因为 $\mathbb{Z}$ 是 PID，故是 UFD，从而 $\mathbb{Z}[x]$ 也是 UFD）。
+\end{corollary}
+
+\begin{theorem}[定理 2：$R$ 是 UFD 且 $R[x]$ 的不可约元]
+设 $R$ 是 UFD，$F = Q(R)$ 是 $R$ 的商域。$f(x) \in R[x]$ 是不可约元当且仅当：
+\begin{itemize}
+  \item $f$ 是 $R$ 中的不可约元（常数情形），或
+  \item $f$ 是本原多项式且 $f$ 在 $F[x]$ 中不可约。
+\end{itemize}
+\end{theorem}
+
+\section{杂知识总结}
+
+\begin{note}[关键关系总结]
+\begin{itemize}
+  \item 非空子集构成子群的充要条件：$a, b \in H \Rightarrow ab^{-1} \in H$；
+  \item 群的四个条件：封闭性、结合律、单位元、逆元；
+  \item $\langle S \rangle$ 是 $S$ 生成的子群，是包含 $S$ 的所有子群的交（最小包含 $S$ 的子群）；
+  \item $aH = \{a + x \mid x \in H\}$，$1H = 4H$（$1$ 和 $4$ 只是不同代表元）；
+  \item 整环中 $I$ 的有逆元的元叫\textbf{单位}；$b = \varepsilon a$（$\varepsilon$ 为单位）时 $b$ 是 $a$ 的相伴元；
+  \item 单位及相伴元叫 $a$ 的\textbf{平凡因子}，其余因子叫\textbf{真因子}；
+  \item 不可约元只有平凡因子；
+  \item PID 的每个理想都是主理想；PID 一定是 UFD；不可约元可以生成极大理想。
+\end{itemize}
+\end{note}
+
+\section{素元与不可约元的关系}
+
+\begin{definition}[素元]
+整环 $R$ 中，非零非单位元 $p$ 称为\textbf{素元}，若 $p \mid ab \Rightarrow p \mid a$ 或 $p \mid b$。
+\end{definition}
+
+\begin{proposition}[素元一定是不可约元]
+在整环中，素元一定是不可约元。
+\end{proposition}
+
+\begin{proof}
+设 $p$ 是素元，若 $p = ab$，则 $p \mid ab$，故 $p \mid a$ 或 $p \mid b$。不妨设 $p \mid a$，则 $a = pc$，故 $p = ab = pcb$，得 $cb = 1$（整环可消去 $p$），即 $b$ 是单位。
+\end{proof}
+
+\begin{proposition}[UFD 中不可约元与素元等价]
+在唯一分解环中，不可约元当且仅当素元。
+\end{proposition}
+
+\begin{note}
+在一般整环中，素元 $\Rightarrow$ 不可约元，但反之不然。在 PID（从而 UFD）中两者等价。
+\end{note}
+
+\section{具体例子}
+
+\begin{example}[整数环 $\mathbb{Z}$ 的性质]
+$\mathbb{Z}$ 是欧式环（欧式函数取绝对值 $\phi(n) = |n|$），也是 PID（每个理想都形如 $n\mathbb{Z}$），也是 UFD（算术基本定理：每个正整数有唯一素因子分解）。$\mathbb{Z}$ 中的单位是 $\pm 1$，不可约元是 $\pm p$（$p$ 为素数）。
+\end{example}
+
+\begin{example}[高斯整数环 $\mathbb{Z}[i]$]
+$\mathbb{Z}[i] = \{a + bi \mid a, b \in \mathbb{Z}\}$ 是欧式环，欧式函数为模长的平方 $\phi(a+bi) = a^2 + b^2$（注意计算时别忘了带根号取完后再平方）。
+\begin{itemize}
+  \item $\mathbb{Z}[i]$ 的单位：$\pm 1, \pm i$（模长为 $1$ 的元素）；
+  \item 证明某元素是不可约元：先确认不是单位，再对任意分解 $p = ab$ 由范数乘积 $\phi(p) = \phi(a)\phi(b)$ 来排除非平凡分解。
+\end{itemize}
+\end{example}
+
+\begin{example}[多项式环中的主理想]
+在 $\mathbb{Z}[x]$ 中：
+\begin{itemize}
+  \item $(4)$ 是 $\mathbb{Z}[x]$ 中的主理想，包含所有系数整体被 $4$ 整除的多项式；
+  \item 由 $4$ 生成的环就是通过主环偶数环生成的，所以 $4\mathbb{Z}[x] = (4)$；
+  \item $(x)$ 生成的理想是 $\{xp(x) \mid p \in \mathbb{Z}[x]\}$，即常数项为 $0$ 的多项式；
+  \item $(2, x)$ 不是主理想（不存在单个元素同时生成 $2$ 和 $x$），说明 $\mathbb{Z}[x]$ 不是 PID。
+\end{itemize}
+
+设理想 $I \ni x$，且 $I \ni 2$，要证 $2 \in (x)$ 或 $x \in (2)$：令 $x = ah(x)$，$2 = ap(x)$，则 $p(x) = \frac{2}{a}$ 须是整数，即 $a = \pm 1$ 或 $a = \pm 2$。若 $a = \pm 2$，则 $x = \pm 2h(x)$ 无整数系数解。故需两个生成元。
+\end{example}
+
+\begin{example}[例 3.5 作业：逆元与交换性]
+设 $R$ 是环，$a \cdot b = 1$（$b$ 是 $a$ 的右逆元）。证明：
+\begin{enumerate}
+  \item $(-a) \cdot x = -(ax)$：由 $(a + (-a))x = ax + (-a)x = 0$，故 $(-a)x = -(ax)$。类似地 $-ax = -xa$（在有逆元时）。
+  \item 若 $ab = ba = 1$（$a, b$ 互逆），则对 $x$ 乘以 $b$：$baxb = bxab$，得 $bx = xb$（交换 $ax$ 可以让 $a$ 与 $b$ 挨着消掉）。
+  \item 设域 $F[i] = \{a + bi \mid a, b \in F\}$ 是 $F$ 上由 $i$ 生成的扩域；若还有一个域包含 $F$ 且包含 $i$，则从生成元考虑，任意 $a + bi$ 都能组合出来，两个域相等。
+\end{enumerate}
+\end{example}
+
+\begin{example}[4 元群的特征与阶]
+4 元域的特征（对加法所有非零元素共同的阶）：
+\begin{itemize}
+  \item 域一定有特征；特征只能是素数（由定理 2）；
+  \item 有限域的阶是 $4 = 2^2$，特征只能是 $2$（因为 $2$ 是 $4$ 的因子且是素数）；
+  \item 由拉格朗日定理：阶数 $4$ 的因数是 $1, 2, 4$，素因数只有 $2$，故特征是 $2$。
+  \item $\mathbb{Z}_4$：特征为 $4$（不是域，因为有零因子：$2 \times 2 = 0$）。真正的 $4$ 元域 $\mathbb{F}_4$ 特征为 $2$，其元素 $\{0, 1, \alpha, \alpha+1\}$ 满足 $\alpha^2 = \alpha + 1$。
+\end{itemize}
+\end{example}
+
+\begin{note}[笔记补充：图片待转换]
+以下内容在原笔记中以图片形式记录，待后续转为 \LaTeX 公式：
+\begin{itemize}
+  \item 1.1 幺半群（具体定义图示）；
+  \item 1.2 群（细节）；
+  \item 1.3 有限群（相关图表）；
+  \item 1.4 正规子群（图示）；
+  \item 2.6 主理想整环与唯一分解整环（详细内容，教材第 59 页）；
+  \item 3.2 整环（详细内容）；
+  \item 3.3、3.4（详细内容）；
+  \item 4 元群的阶的计算（图示）；
+  \item 7 理想（详细图示）；
+  \item 8 剩余类环同态与理想（图示）；
+  \item 9 极大理想（图示）；
+  \item 商域 93（教材第 93 页，未讲）；
+  \item 各章节的具体例题图片（共 310 张 PNG 图片待处理）。
+\end{itemize}
+\end{note}
