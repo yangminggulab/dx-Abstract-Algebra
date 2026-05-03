@@ -1,0 +1,56 @@
+\documentclass[lang=cn,10pt,nofont]{elegantbook}
+
+\title{近世代数图片转写待审核稿}
+\subtitle{第一章第一批重做样稿}
+
+\author{课堂笔记整理}
+\date{\today}
+
+\setcounter{tocdepth}{2}
+
+\setCJKmainfont[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/,
+  BoldFont=FandolHei-Regular.otf,
+  ItalicFont=FandolKai-Regular.otf
+]{FandolSong-Regular.otf}
+\setCJKsansfont[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/
+]{FandolHei-Regular.otf}
+\setCJKmonofont[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/
+]{FandolFang-Regular.otf}
+
+\setCJKfamilyfont{zhsong}[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/
+]{FandolSong-Regular.otf}
+\setCJKfamilyfont{zhhei}[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/
+]{FandolHei-Regular.otf}
+\setCJKfamilyfont{zhkai}[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/
+]{FandolKai-Regular.otf}
+\setCJKfamilyfont{zhfs}[
+  Path=/usr/local/texlive/2025/texmf-dist/fonts/opentype/public/fandol/
+]{FandolFang-Regular.otf}
+
+\newcommand*{\songti}{\CJKfamily{zhsong}}
+\newcommand*{\heiti}{\CJKfamily{zhhei}}
+\newcommand*{\kaishu}{\CJKfamily{zhkai}}
+\newcommand*{\fangsong}{\CJKfamily{zhfs}}
+
+\renewcommand{\cbfseries}{\heiti}
+\renewcommand{\citshape}{\kaishu}
+\renewcommand{\cnormal}{\kaishu}
+\renewcommand{\cfs}{\fangsong}
+
+\begin{document}
+
+\maketitle
+\frontmatter
+
+\tableofcontents
+
+\mainmatter
+\input{第一章_重做待审核}
+
+\end{document}

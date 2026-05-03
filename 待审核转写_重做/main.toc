@@ -1,0 +1,5 @@
+\contentsline {chapter}{\numberline {1}群论}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}关系、等价关系与分类}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}映射与逆映射}{2}{section.1.2}%
+\contentsline {section}{\numberline {1.3}同余关系与剩余类}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}代数运算与单位元}{4}{section.1.4}%

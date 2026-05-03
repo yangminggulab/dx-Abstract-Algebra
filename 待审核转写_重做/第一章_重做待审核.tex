@@ -1,0 +1,248 @@
+\chapter{群论}
+
+\begin{note}
+本稿是根据原始图片与导出笔记重新整理的第一批待审核内容，只保留知识点本身，不保留旧 OCR 草稿里的路径、链接编码与占位文本。
+\end{note}
+
+\section{关系、等价关系与分类}
+
+\begin{definition}[二元关系]\label{def:binary-relation}
+设 $A,B$ 为集合。$A$ 到 $B$ 的一个\textbf{关系}是笛卡尔积 $A \times B$ 的一个子集 $R$。若 $(a,b) \in R$，就记作 $aRb$。
+
+当 $A=B$ 时，称 $R$ 是集合 $A$ 上的一个\textbf{二元关系}。
+\end{definition}
+
+\begin{note}
+符号 $aRb$ 只是把有序对 $(a,b)$ 属于集合 $R$ 这件事写得更紧凑一些。常见的 $=$、$<$、$\le$、整除关系等，都可以看成关系的例子。
+\end{note}
+
+\begin{definition}[等价关系]
+设 $R$ 是集合 $A$ 上的一个二元关系。若对任意 $a,b,c \in A$ 都有
+\begin{enumerate}
+  \item $aRa$；
+  \item 由 $aRb$ 可推出 $bRa$；
+  \item 由 $aRb$ 且 $bRc$ 可推出 $aRc$，
+\end{enumerate}
+则称 $R$ 是 $A$ 上的一个\textbf{等价关系}。
+\end{definition}
+
+\begin{example}
+实数集上的相等关系是等价关系；但“大于”关系不是等价关系，因为它既不满足自反性，也不满足对称性。
+\end{example}
+
+\begin{definition}[分类]
+集合 $A$ 的一个\textbf{分类}（或划分）是 $A$ 的一个非空子集族 $\{A_i\}_{i \in I}$，满足
+\begin{enumerate}
+  \item $A=\bigcup_{i \in I} A_i$；
+  \item 对每个 $i \in I$，都有 $A_i \ne \varnothing$；
+  \item 若 $i \ne j$，则 $A_i \cap A_j=\varnothing$。
+\end{enumerate}
+
+每个 $A_i$ 称为一个\textbf{类}。类中任取一个元素，都可以作为这个类的\textbf{代表元}。
+\end{definition}
+
+\begin{example}
+按奇偶性可以把整数集 $\mathbb{Z}$ 分成两个类：
+\[
+  2\mathbb{Z}
+  \quad\text{与}\quad
+  2\mathbb{Z}+1.
+\]
+按模 $3$ 的余数又可以把 $\mathbb{Z}$ 分成三个类：
+\[
+  3\mathbb{Z},\qquad 3\mathbb{Z}+1,\qquad 3\mathbb{Z}+2.
+\]
+\end{example}
+
+\begin{proposition}\label{pro:partition-to-equivalence}
+集合 $A$ 的每一个分类都自然决定了 $A$ 上的一个等价关系。
+\end{proposition}
+
+\begin{proof}
+设 $\{A_i\}_{i \in I}$ 是 $A$ 的一个分类。定义关系 $R$ 如下：对任意 $x,y \in A$，
+\[
+  xRy \iff x,y \text{ 属于同一个类 } A_i.
+\]
+
+由于每个元素都属于某个类，所以 $x$ 与自己总在同一个类中，从而 $xRx$，故 $R$ 满足自反性。若 $xRy$，则 $x,y$ 属于同一个类，交换次序后仍然成立，所以 $yRx$，故 $R$ 满足对称性。若 $xRy$ 且 $yRz$，则 $x,y,z$ 都属于同一个类，于是 $xRz$，故 $R$ 满足传递性。
+
+因此 $R$ 是一个等价关系。
+\end{proof}
+
+\begin{proposition}
+集合 $A$ 上的任一个等价关系都能确定 $A$ 的一个分类。
+\end{proposition}
+
+\begin{proof}
+设 $R$ 是集合 $A$ 上的一个等价关系。对任意 $a \in A$，定义它的\textbf{等价类}
+\[
+  [a]=\{x \in A \mid xRa\}.
+\]
+考虑所有等价类组成的集合族
+\[
+  \mathcal{P}=\{[a]\mid a \in A\}.
+\]
+
+先证并集是整个 $A$。任取 $a \in A$，由自反性知 $aRa$，所以 $a \in [a]$，从而 $a$ 至少属于一个类，因此
+\[
+  A=\bigcup_{a \in A}[a].
+\]
+
+每个等价类都非空，因为 $a \in [a]$。
+
+再证两个不同的类要么相同，要么没有交。若 $[a] \cap [b] \ne \varnothing$，取 $x \in [a] \cap [b]$。则 $xRa$ 且 $xRb$。由对称性得 $aRx$，再由传递性得 $aRb$。
+
+现任取 $y \in [a]$，则 $yRa$。由 $aRb$ 可得 $yRb$，故 $y \in [b]$，从而 $[a] \subseteq [b]$。同理可得 $[b] \subseteq [a]$，所以 $[a]=[b]$。
+
+因此，$\mathcal{P}$ 满足分类的三个条件，故它构成 $A$ 的一个分类。
+\end{proof}
+
+\begin{note}
+上面两个命题说明：分类与等价关系本质上是一一对应的。分类强调“分成哪些类”，等价关系强调“哪些元素彼此等价”。
+\end{note}
+
+\section{映射与逆映射}
+
+\begin{definition}[映射]\label{def:mapping}
+设 $A,B$ 为集合。若对每个 $a \in A$，都唯一对应一个元素 $b \in B$，则称这个对应为从 $A$ 到 $B$ 的一个\textbf{映射}，记作
+\[
+  f\colon A \to B,\qquad a \mapsto f(a).
+\]
+其中 $f(a)$ 称为 $a$ 的\textbf{像}，$a$ 称为这个像的\textbf{原像}。
+\end{definition}
+
+\begin{definition}[单射、满射与双射]
+设 $f\colon A \to B$ 是一个映射。
+\begin{enumerate}
+  \item 若 $a_1 \ne a_2$ 总能推出 $f(a_1) \ne f(a_2)$，则称 $f$ 是\textbf{单射}；
+  \item 若对任意 $b \in B$，都存在 $a \in A$ 使 $f(a)=b$，则称 $f$ 是\textbf{满射}；
+  \item 若 $f$ 同时是单射和满射，则称 $f$ 是\textbf{双射}。
+\end{enumerate}
+\end{definition}
+
+\begin{note}
+任意映射都满足“原像相等则像相等”；反过来“像相等则原像相等”一般并不成立，但对单射它成立。
+\end{note}
+
+\begin{definition}[变换]
+从集合 $A$ 到其自身的映射称为 $A$ 的一个\textbf{变换}。
+\end{definition}
+
+\begin{definition}[逆映射]
+若 $\varphi\colon X \to Y$ 是一个双射，那么把 $\varphi$ 中每个有序对 $(x,y)$ 的次序交换，可得到 $Y \times X$ 的一个子集，它对应一个从 $Y$ 到 $X$ 的映射，称为 $\varphi$ 的\textbf{逆映射}，记作 $\varphi^{-1}$。
+
+换言之，若
+\[
+  \varphi(x)=y,
+\]
+则
+\[
+  \varphi^{-1}(y)=x.
+\]
+\end{definition}
+
+\begin{proposition}
+若 $\varphi\colon X \to Y$ 是双射，则
+\[
+  \varphi^{-1} \circ \varphi = \mathrm{id}_X,
+  \qquad
+  \varphi \circ \varphi^{-1} = \mathrm{id}_Y.
+\]
+\end{proposition}
+
+\begin{proof}
+任取 $x \in X$，设 $\varphi(x)=y$，则由逆映射的定义知 $\varphi^{-1}(y)=x$，于是
+\[
+  (\varphi^{-1}\circ\varphi)(x)=\varphi^{-1}(\varphi(x))=x.
+\]
+故 $\varphi^{-1}\circ\varphi=\mathrm{id}_X$。同理可证 $\varphi\circ\varphi^{-1}=\mathrm{id}_Y$。
+\end{proof}
+
+\section{同余关系与剩余类}
+
+\begin{definition}[模 $n$ 同余]
+设 $n$ 为正整数。若整数 $a,b$ 满足
+\[
+  n \mid (a-b),
+\]
+则称 $a$ 与 $b$ \textbf{模 $n$ 同余}，记作
+\[
+  a \equiv b \pmod{n}.
+\]
+
+这等价于 $a$ 与 $b$ 被 $n$ 除时有相同的余数。
+\end{definition}
+
+\begin{proposition}
+模 $n$ 同余是整数集 $\mathbb{Z}$ 上的一个等价关系。
+\end{proposition}
+
+\begin{proof}
+对任意整数 $a$，有 $a-a=0$，且 $n \mid 0$，故 $a \equiv a \pmod{n}$，所以满足自反性。
+
+若 $a \equiv b \pmod{n}$，则 $n \mid (a-b)$。由于 $b-a=-(a-b)$，可得 $n \mid (b-a)$，故 $b \equiv a \pmod{n}$，所以满足对称性。
+
+若 $a \equiv b \pmod{n}$ 且 $b \equiv c \pmod{n}$，则 $n \mid (a-b)$ 且 $n \mid (b-c)$。两式相加得到 $n \mid (a-c)$，于是 $a \equiv c \pmod{n}$，故满足传递性。
+\end{proof}
+
+\begin{definition}[模 $n$ 的剩余类]
+整数 $a$ 在模 $n$ 同余关系下对应的等价类称为 $a$ 的\textbf{模 $n$ 剩余类}，记作
+\[
+  [a]_n=\{x \in \mathbb{Z}\mid x \equiv a \pmod{n}\}.
+\]
+\end{definition}
+
+\begin{example}
+在模 $2$ 的情形下，$\mathbb{Z}$ 被分成两个剩余类：偶数类与奇数类。模 $3$ 时，则分成余数为 $0,1,2$ 的三个剩余类。
+\end{example}
+
+\section{代数运算与单位元}
+
+\begin{definition}[代数运算]
+设 $A,B,D$ 为集合。从 $A \times B$ 到 $D$ 的一个映射称为一个\textbf{代数运算}。当 $A=B=D$ 时，它也称为集合 $A$ 上的一个\textbf{二元运算}。
+\end{definition}
+
+\begin{note}
+$A \times B$ 的元素是有序对 $(a,b)$。写成运算记号时，常把这个映射记为
+\[
+  *\colon A \times B \to D,\qquad (a,b)\mapsto a*b.
+\]
+这里的 $(a,b)$ 不是分数，也不是把两个元素“粘在一起”，而是笛卡尔积中的一个有序对。
+\end{note}
+
+\begin{example}
+实数集上的加法与乘法，都是熟悉的二元运算；函数集合上的复合运算也是典型例子。
+\end{example}
+
+\begin{definition}[单位元]
+设 $S$ 是一个带有二元运算 $*$ 的集合。若存在元素 $e \in S$，使得对任意 $a \in S$ 都有
+\[
+  a*e=e*a=a,
+\]
+则称 $e$ 是运算 $*$ 的\textbf{单位元}。
+\end{definition}
+
+\begin{theorem}[单位元唯一性]
+一个带二元运算的集合至多只有一个单位元。
+\end{theorem}
+
+\begin{proof}
+设 $e$ 和 $e'$ 都是单位元。由于 $e$ 是单位元，有 $e*e'=e'$；由于 $e'$ 也是单位元，有 $e*e'=e$。因此 $e=e'$。
+\end{proof}
+
+\begin{example}[函数运算中的单位元]
+设 $F$ 为所有从实数集到实数集的函数所成的集合。
+\begin{enumerate}
+  \item 对复合运算 $\circ$，恒等函数 $\iota(x)=x$ 是单位元，因为对任意 $f \in F$ 都有
+  \[
+    f\circ\iota=f,\qquad \iota\circ f=f.
+  \]
+  \item 对函数乘法，常值函数 $m(x)=1$ 是单位元；
+  \item 对函数加法，常值函数 $a(x)=0$ 是单位元；
+  \item 对函数减法，不存在单位元。
+\end{enumerate}
+\end{example}
+
+\begin{note}
+图片笔记里反复强调了一个常用技巧：证明“唯一”时，通常先假设有两个满足条件的对象，再证明这两个对象必然相等。
+\end{note}
