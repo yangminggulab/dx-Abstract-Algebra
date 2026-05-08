@@ -116,19 +116,23 @@ $\circ:(a,b)\to\dfrac{a}{b}=a\circ b$
 \end{example}
 
 \begin{definition}[封闭性]
-封闭：二元运算。
+若集合 $S$ 上的二元运算 $*$ 满足：对任意 $a,b\in S$，都有 $a*b\in S$，则称 $S$ 对运算 $*$ 是封闭的。
 \end{definition}
 
 \begin{definition}[单位元]
-单位元（幺元）。
+设 $S$ 是一个具有二元运算 $*$ 的集合。如果对集合 $S$ 中的所有 $a$，$a*e=e*a=a$，那么 $e$ 被称为是二元运算 $*$ 的单位元（幺元）。
+
+\textbf{定理（单位元唯一性）：} 具有二元运算 $*$ 的集合最多有一个单位元。
 \end{definition}
 
 \begin{note}[单位元唯一性证明]
 单位元唯一性证明方法：把单位元拆解，然后用结合律引出新的东西，唯一性证明。
+
+若 $e_1,e_2$ 都是单位元，则 $e_1=e_1*e_2=e_2$。
 \end{note}
 
 \begin{definition}[逆元]
-逆元。
+如果 $*$ 是 $S$ 上的一个运算，且有单位元 $e$，那么对任意 $x\in S$，$x$ 的逆元是 $x'$，使得 $x*x'=x'*x=e$。
 \end{definition}
 
 % ===================== 第五节 =====================
@@ -285,7 +289,7 @@ $aa^{-1}=eaa^{-1}=(a'a^{-1})aa^{-1}=a'(a^{-1}a)a^{-1}=a'ea^{-1}=a'a^{-1}=e$
 \end{theorem}
 
 \begin{definition}[加群]
-加群定义。
+一个交换群叫做一个加群，是指我们把这个群的代数运算叫做加法，并且用符号 $+$ 来表示。
 \end{definition}
 
 % ===================== 第七节 =====================
@@ -543,8 +547,10 @@ $N$ 刚好包含群 $G$ 的所有有以下性质的元 $n$：$na=an$，不管 $a
 % ===================== 第十二节 =====================
 \section{同态与同构}
 
-\begin{definition}[同态]
-同态定义。
+\begin{definition}[同态与同构]
+$\phi$ 是 $A$ 与 $\bar{A}$ 间的一一映射，$\circ$ 和 $\bar{\circ}$ 分别是 $A$ 和 $\bar{A}$ 的代数运算，如果 $\forall a,b\in A$，只要 $a\to\bar{a}$，$b\to\bar{b}$，就有 $a\circ b\to\bar{a}\bar{\circ}\bar{b}$，则说 $\phi$ 是 $A$ 与 $\bar{A}$ 间的同构映射，并说 $A$ 与 $\bar{A}$ 同构，记为 $A\cong\bar{A}$。
+
+同构只关心运算规律，不关心元素长什么样，可以把复杂的群换成结构相同但更容易处理的群。两个集合中的代数运算可以不一样，但是否能够构造群同态或同构，取决于它们的代数结构如何关联。
 \end{definition}
 
 \begin{example}[同态例子]
@@ -597,15 +603,34 @@ $\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态。
 若 $f:(G,\cdot)\to(G,*)$ 是一个群同构，则 $f^{-1}$ 也是群同构。
 \end{proposition}
 
-\begin{note}[构造同态同构]
-构造同态同构。
+\begin{note}[构造同态同构的关键点]
+\textbf{同态（Homomorphism）：} 只需要映射保持运算结构：$\phi(a\cdot b)=\phi(a)*\phi(b)$。例如，$(\mathbb{R},+)$ 和 $(\mathbb{R}^+,\times)$ 的运算不同，但可以用指数映射 $\phi(x)=e^x$ 连接它们，使其成为同构。
+
+\textbf{同构（Isomorphism）：} 除了运算关系必须保持，映射还必须是双射。同构要求双射，且必须使运算方式保持一致，即使运算符号不同，也可以通过映射来建立联系。
+
+证明同构：证明任意 $\phi(a\circ b)=\phi(c)$，同时 $\phi(a)\circ\phi(b)=d$；证明单射反证就是一对多；特殊点就是切入口。
 \end{note}
 
 % ===================== 第十三节 =====================
 \section{群同构定理}
 
-\begin{theorem}[群同构第一定理]
-群同构第一定理。
+\begin{theorem}[群同构第一定理（定理 1.2）]
+令 $f:G\to G'$ 是一个群同态，则 $\ker(f)\triangleleft G$，且 $G$ 在 $\ker(f)$ 上的商群同构于 $\operatorname{im}(f)$，即
+\[
+G/\ker(f)\simeq\operatorname{im}(f)
+\]
+特别地，若 $f$ 是满同态，则
+\[
+G/\ker(f)\simeq G'
+\]
+若 $f$ 是单同态，则
+\[
+G/\{e\}\simeq G\simeq\operatorname{im}(f)
+\]
+若 $G$ 是有限群，则
+\[
+\frac{|G|}{|\ker(f)|}=|\operatorname{im}(f)|
+\]
 \end{theorem}
 
 \begin{theorem}[群同构第二定理（定理 1.3）]
@@ -702,34 +727,71 @@ g\longrightarrow gx=g^{\tau_x}
 \section{循环群}
 
 \begin{definition}[定义 1.22：$x$ 的幂]
-$x$ 的幂。
+令 $(G,\cdot)$ 是一个群，且 $x\in G$。若 $n\in\mathbb{N}_1$，我们定义 $x^{-n}=(x^{-1})^n$，另外 $x^0=e$。
+
+命题 1.22：令 $(G,\cdot)$ 是一个群，任取 $x\in G$，则 $f:(\mathbb{Z},+)\to(G,\cdot)$，定义为 $f(n)=x^n$，是一个群同态。
+
+$x$ 的幂是群同态，$f$ 是同态映射。
 \end{definition}
 
 \begin{definition}[由 $x$ 生成子群（定义 1.23）]
-由 $x$ 生成子群。
+令 $(G,\cdot)$ 是一个群，且 $x\in G$，则 $\langle x\rangle$，被称为由 $x$ 生成的群，定义为
+\[
+\langle x\rangle=\{x^n:n\in\mathbb{Z}\}
+\]
+利用同态的性质，我们有的直接推论就是，刚才提到的同态的像，也就是 $\{x^n:n\in\mathbb{Z}\}$ 是一个子群，被称为由 $x$ 生成的群。
+
+阶只是 $n$ 次方可以等于 $e$，没有说 $n$ 次方的过程，这 $n$ 个元素就是群中所有的元素。
 \end{definition}
 
-\begin{note}[子集生成群证明（定义 1.2.4）]
-子集生成群证明。
-\end{note}
+\begin{definition}[循环群（定义 1.25）]
+令 $(G,\cdot)$ 是一个群。若存在 $x\in G$，使得 $G=\langle x\rangle$，则 $G$ 被称为一个循环群，而 $x$ 被称为 $G$ 的一个生成元。
 
-\begin{note}[无限阶的群和任意循环群同态]
-无限阶的群和任意循环群同态。
-\end{note}
+循环群的关键是找到固定元，由固定元可以生成所有的元素。若群 $G$ 中每个元都能表示成某个固定元 $a$ 的乘方，就称群 $G$ 为循环群，也称群 $G$ 为由元 $a$ 生成的群，记为 $G=(a)$，称 $a$ 是 $G$ 的一个生成元。
+
+\textbf{例1：} 整数加群 $Z$ 是无限阶循环群。$\because 1\in Z$，$m=\underbrace{1+1+\cdots+1}_{m\text{个}}=1^m$，$-m=\underbrace{(-1)+(-1)+\cdots+(-1)}_{m\text{个}}=(-1)^m=1^{-m}$，$0=1^0$，$\therefore Z=(1)$。
+
+\textbf{例2：} 模 $n$ 的剩余类加群 $Z_n=([1])$ 是 $n$ 阶循环群。
+\end{definition}
+
+\begin{proposition}[命题 1.26：有限循环群的结构]
+令 $G=\langle x\rangle$ 是有限循环群，假设 $|x|=n$，则 $G=\{e,x,x^2,\cdots,x^{n-1}\}$，其中乘法法中的这些元素是两两不同的。
+\end{proposition}
+
+\begin{proposition}[命题 1.30：循环群的生成元]
+令 $G=\langle x\rangle$ 是一个 $n$ 阶循环群。假设 $1\le m\le n$，则 $x^m$ 的阶为
+\[
+|x^m|=\frac{n}{\gcd(n,m)}
+\]
+\textbf{命题 1.31：} 令 $G=\langle x\rangle$ 是一个 $n$ 阶循环群，则 $x^m$（$1\le m\le n$）是个生成元，当且仅当 $\gcd(m,n)=1$。根据欧拉 $\phi$ 函数的定义，这些生成元的个数正是 $\phi(n)$。所以循环群的生成元不止一个。
+\end{proposition}
 
 \begin{proposition}[$n$ 阶循环群互相同构，无限循环群彼此同构（命题 1.2.9）]
-$n$ 阶循环群互相同构，无限循环群彼此同构。
+令 $G=\langle x\rangle$ 是有限循环群，$|x|=n$，则 $G\cong\mathbb{Z}/n\mathbb{Z}$。无限循环群 $G=\langle x\rangle$（$|x|=\infty$）则 $G\cong\mathbb{Z}$。故所有 $n$ 阶循环群互相同构，所有无限循环群彼此同构。
 \end{proposition}
 
 % ===================== 第十七节 =====================
 \section{直积}
 
-\begin{definition}[两个群直积还是群（定义 1.18）]
-两个群直积还是群。
+\begin{definition}[两个群直积（定义 1.18）]
+令 $(G,\cdot_1)$，$(G',\cdot_2)$ 是两个群，我们构造它们的直积，不妨记 $(G\times G',*)$。对于 $(x,y),(x',y')\in G\times G'$，我们定义逐坐标的乘积，为
+\[
+(x,y)*(x',y')=(x\cdot_1 x',\;y\cdot_2 y')
+\]
+
+\textbf{命题 1.18：} 若 $(G,\cdot_1)$，$(G',\cdot_2)$ 是两个群，则它们的直积 $(G\times G',*)$ 还是一个群。
+
+\textbf{证明：} 封闭性：因为 $G$ 在 $\cdot_1$ 下封闭，$G'$ 在 $\cdot_2$ 下封闭，而 $G\times G'$ 的元素乘积是逐坐标定义的，则 $G\times G'$ 在 $*=(\cdot_1,\cdot_2)$ 下也是封闭的。结合律：同样，逐坐标有结合律，故整体也有结合律。单位元：$(e,e')$ 是直积的单位元。逆元：对于任意 $(x,y)\in G\times G'$，$(x^{-1},y^{-1})$ 是 $(x,y)$ 的逆元。
 \end{definition}
 
 \begin{definition}[一族群的直积（定义 1.19）]
-一族群的直积，定义 1.20 还需再看。
+令 $(G_i,\cdot_i)$ 是一族群，其中 $I$ 是一个指标集，我们定义它们的直积为 $(\prod_{i\in I}G_i,*)$，同样通过逐点的乘积，对于 $(x_i)_{i\in I},(y_i)_{i\in I}\in\prod_{i\in I}G_i$，我们定义
+\[
+(x_i)_{i\in I}*(y_i)_{i\in I}=(x_i\cdot_i y_i)_{i\in I}
+\]
+\textbf{命题 1.19：} 若 $(G_i,\cdot_i)$ 是一族群，则它们的直积 $(\prod_{i\in I}G_i,*)$ 还是一个群。
+
+既然有了两个群的直积，我们就可以类似地定义有限多个群的直积，同样通过逐坐标的乘法。甚至进一步，我们可以对于任意一族群，定义它们的直积。
 \end{definition}
 
 \begin{definition}[$n$ 阶一般线性群（定义 1.11）]
