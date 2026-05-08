@@ -1,248 +1,749 @@
 \chapter{群论}
 
-\begin{note}
-本稿是根据原始图片与导出笔记重新整理的第一批待审核内容，只保留知识点本身，不保留旧 OCR 草稿里的路径、链接编码与占位文本。
-\end{note}
-
+% ===================== 第一节 =====================
 \section{关系、等价关系与分类}
 
-\begin{definition}[二元关系]\label{def:binary-relation}
-设 $A,B$ 为集合。$A$ 到 $B$ 的一个\textbf{关系}是笛卡尔积 $A \times B$ 的一个子集 $R$。若 $(a,b) \in R$，就记作 $aRb$。
+\begin{definition}[二元关系]
+设 $A$ 为集合，$D=\{\text{对},\text{错}\}$，那么 $A\times A$ 到 $D$ 的每个映射 $R$ 就叫做 $A$ 的一个关系（也称为二元关系）。
 
-当 $A=B$ 时，称 $R$ 是集合 $A$ 上的一个\textbf{二元关系}。
+若 $R:(a,b)\to\text{对}$，就称 $a$ 与 $b$ 符合关系，记为 $aRb$；
+
+若 $R:(a,b)\to\text{错}$，就称 $a$ 与 $b$ 不符合关系，记为 $a\overline{R}b$。
+
+由上述定义知，$A$ 中任一对元 $a,b$，都可以判定是否符合这个关系。
 \end{definition}
 
-\begin{note}
-符号 $aRb$ 只是把有序对 $(a,b)$ 属于集合 $R$ 这件事写得更紧凑一些。常见的 $=$、$<$、$\le$、整除关系等，都可以看成关系的例子。
-\end{note}
+\begin{example}
+集合 $A=\{1,2,3\}$ 上的"$\le$"关系：
+
+$R=\{(a,b)\in A\times A\mid a\le b\}=\{(1,1),(1,2),(1,3),(2,2),(2,3),(3,3)\}$
+
+$R$ 明确地被定义为 $A\times A$ 的一个子集。我们通常写 $aRb$ 来表示"$a$ 与 $b$ 满足关系 $R$"。
+\end{example}
 
 \begin{definition}[等价关系]
-设 $R$ 是集合 $A$ 上的一个二元关系。若对任意 $a,b,c \in A$ 都有
+设 $\sim$ 是集合 $A$ 上的二元关系，如果 $\sim$ 具有以下三种性质：
 \begin{enumerate}
-  \item $aRa$；
-  \item 由 $aRb$ 可推出 $bRa$；
-  \item 由 $aRb$ 且 $bRc$ 可推出 $aRc$，
+  \item 反射律（反身性）：$\forall a\in A,\,a\sim a$；
+  \item 对称律（对称性）：$\forall a,b\in A$，当 $a\sim b$ 时必有 $b\sim a$；
+  \item 推移律（传递性）：$\forall a,b,c\in A$，当 $a\sim b$ 且 $b\sim c$ 时必有 $a\sim c$，
 \end{enumerate}
-则称 $R$ 是 $A$ 上的一个\textbf{等价关系}。
+则称 $\sim$ 叫做 $A$ 上的等价关系。并且当 $a\sim b$ 时，习惯称 $a$ 与 $b$ 等价。
 \end{definition}
-
-\begin{example}
-实数集上的相等关系是等价关系；但“大于”关系不是等价关系，因为它既不满足自反性，也不满足对称性。
-\end{example}
 
 \begin{definition}[分类]
-集合 $A$ 的一个\textbf{分类}（或划分）是 $A$ 的一个非空子集族 $\{A_i\}_{i \in I}$，满足
-\begin{enumerate}
-  \item $A=\bigcup_{i \in I} A_i$；
-  \item 对每个 $i \in I$，都有 $A_i \ne \varnothing$；
-  \item 若 $i \ne j$，则 $A_i \cap A_j=\varnothing$。
-\end{enumerate}
+若把一个集合 $A$ 分成若干个叫做类的子集，使得 $A$ 的每一个元素属于而且只属于一个类，那么这些类的全体叫做集合 $A$ 的一个分类。
 
-每个 $A_i$ 称为一个\textbf{类}。类中任取一个元素，都可以作为这个类的\textbf{代表元}。
+假定我们有一个集合的一个分类，那么，一个类里的任何一个元叫做这个类的一个\textbf{代表}。刚好由每一类的一个代表作成的集合叫做一个\textbf{全体代表团}。
 \end{definition}
 
-\begin{example}
-按奇偶性可以把整数集 $\mathbb{Z}$ 分成两个类：
-\[
-  2\mathbb{Z}
-  \quad\text{与}\quad
-  2\mathbb{Z}+1.
-\]
-按模 $3$ 的余数又可以把 $\mathbb{Z}$ 分成三个类：
-\[
-  3\mathbb{Z},\qquad 3\mathbb{Z}+1,\qquad 3\mathbb{Z}+2.
-\]
-\end{example}
+\begin{theorem}[分类决定等价关系]
+集合 $A$ 的每个分类都决定了 $A$ 的一个等价关系。
 
-\begin{proposition}\label{pro:partition-to-equivalence}
-集合 $A$ 的每一个分类都自然决定了 $A$ 上的一个等价关系。
-\end{proposition}
+\textbf{证明：} 设 $\Omega=\{A_i,i\in I\}$ 是 $A$ 的一个一分类，用 $\Omega$ 我们可以规定 $A$ 上的一个二元关系 $\sim$：$a\sim b\Leftrightarrow a$ 和 $b$ 同在 $A_i$ 中。显然 $\sim$ 是 $A$ 的一个等价关系，须验证是等价关系：
 
-\begin{proof}
-设 $\{A_i\}_{i \in I}$ 是 $A$ 的一个分类。定义关系 $R$ 如下：对任意 $x,y \in A$，
-\[
-  xRy \iff x,y \text{ 属于同一个类 } A_i.
-\]
+（1）反射性：$\forall a\in A$，则 $a$ 在某个 $A_i$ 中，故 $a\sim a$；
 
-由于每个元素都属于某个类，所以 $x$ 与自己总在同一个类中，从而 $xRx$，故 $R$ 满足自反性。若 $xRy$，则 $x,y$ 属于同一个类，交换次序后仍然成立，所以 $yRx$，故 $R$ 满足对称性。若 $xRy$ 且 $yRz$，则 $x,y,z$ 都属于同一个类，于是 $xRz$，故 $R$ 满足传递性。
+（2）对称性：$\forall a,b\in A$，若 $a\sim b$，则 $a$ 和 $b$ 同在某个 $A_i$ 中，当然 $b\sim a$；
 
-因此 $R$ 是一个等价关系。
-\end{proof}
+（3）传递性：$\forall a,b,c\in A$，若 $a\sim b$，$b\sim c$，放在 $A_i$ 中，则 $a,b,c$ 都同在 $A_i$ 中，所以 $a\sim c$。
+\end{theorem}
 
-\begin{proposition}
-集合 $A$ 上的任一个等价关系都能确定 $A$ 的一个分类。
-\end{proposition}
+\begin{theorem}[等价关系决定分类]
+集合 $A$ 上的任一个等价关系都可确定 $A$ 的一个分类。
 
-\begin{proof}
-设 $R$ 是集合 $A$ 上的一个等价关系。对任意 $a \in A$，定义它的\textbf{等价类}
-\[
-  [a]=\{x \in A \mid xRa\}.
-\]
-考虑所有等价类组成的集合族
-\[
-  \mathcal{P}=\{[a]\mid a \in A\}.
-\]
+\textbf{证明：} $\forall a\in A$，令 $[a]=\{x\in A\mid x\sim a\}$，如此确定的这些子集具有：
 
-先证并集是整个 $A$。任取 $a \in A$，由自反性知 $aRa$，所以 $a \in [a]$，从而 $a$ 至少属于一个类，因此
-\[
-  A=\bigcup_{a \in A}[a].
-\]
+（1）$[a]\ne\varnothing$：由 $a\sim a\Rightarrow a\in[a]$；
 
-每个等价类都非空，因为 $a \in [a]$。
+（2）$[a]\cap[b]=\varnothing$，当 $a$ 与 $b$ 不等价时；若 $x\in[a]\cap[b]\Rightarrow x\sim a$，$x\sim b$，由 $\sim$ 的对称性和传递性知 $a\sim b$，推出矛盾，所以 $[a]\cap[b]=\varnothing$；
 
-再证两个不同的类要么相同，要么没有交。若 $[a] \cap [b] \ne \varnothing$，取 $x \in [a] \cap [b]$。则 $xRa$ 且 $xRb$。由对称性得 $aRx$，再由传递性得 $aRb$。
+（3）$A=\bigcup_{a\in A}[a]$：$\because\forall a\in A\Rightarrow a\in[a]\subseteq\bigcup_{a\in A}[a]$。
 
-现任取 $y \in [a]$，则 $yRa$。由 $aRb$ 可得 $yRb$，故 $y \in [b]$，从而 $[a] \subseteq [b]$。同理可得 $[b] \subseteq [a]$，所以 $[a]=[b]$。
+$\therefore\Omega=\{[a]\mid\forall a\in A\}$ 是 $A$ 的一个分类。
+\end{theorem}
 
-因此，$\mathcal{P}$ 满足分类的三个条件，故它构成 $A$ 的一个分类。
-\end{proof}
+% ===================== 第二节 =====================
+\section{映射}
 
-\begin{note}
-上面两个命题说明：分类与等价关系本质上是一一对应的。分类强调“分成哪些类”，等价关系强调“哪些元素彼此等价”。
-\end{note}
-
-\section{映射与逆映射}
-
-\begin{definition}[映射]\label{def:mapping}
-设 $A,B$ 为集合。若对每个 $a \in A$，都唯一对应一个元素 $b \in B$，则称这个对应为从 $A$ 到 $B$ 的一个\textbf{映射}，记作
-\[
-  f\colon A \to B,\qquad a \mapsto f(a).
-\]
-其中 $f(a)$ 称为 $a$ 的\textbf{像}，$a$ 称为这个像的\textbf{原像}。
+\begin{definition}[映射]
+映射定义要注意以下几点：
+\begin{enumerate}
+  \item 集合 $A_1,A_2,\cdots,A_n,D$ 可以相同；
+  \item $A_1,A_2,\cdots,A_n$ 的次序不能掉换；
+  \item 映射一定要替每一个元规定一个象；
+  \item 一个元只能有唯一的象；
+  \item 所有的象都必须是 $D$ 的元。
+\end{enumerate}
 \end{definition}
 
 \begin{definition}[单射、满射与双射]
-设 $f\colon A \to B$ 是一个映射。
-\begin{enumerate}
-  \item 若 $a_1 \ne a_2$ 总能推出 $f(a_1) \ne f(a_2)$，则称 $f$ 是\textbf{单射}；
-  \item 若对任意 $b \in B$，都存在 $a \in A$ 使 $f(a)=b$，则称 $f$ 是\textbf{满射}；
-  \item 若 $f$ 同时是单射和满射，则称 $f$ 是\textbf{双射}。
-\end{enumerate}
+（3）双射（一一对应）：若 $f$ 既是单射又是满射，则 $f$ 是双射。
+
+定义：一个 $A$ 到 $A$ 的映射叫做 $A$ 的一个变换。一个 $A$ 到 $A$ 的满射、单射或 $A$ 与 $A$ 间的一一映射叫做 $A$ 的一个满射变换、单射变换或一一变换。
 \end{definition}
 
-\begin{note}
-任意映射都满足“原像相等则像相等”；反过来“像相等则原像相等”一般并不成立，但对单射它成立。
-\end{note}
-
-\begin{definition}[变换]
-从集合 $A$ 到其自身的映射称为 $A$ 的一个\textbf{变换}。
-\end{definition}
-
-\begin{definition}[逆映射]
-若 $\varphi\colon X \to Y$ 是一个双射，那么把 $\varphi$ 中每个有序对 $(x,y)$ 的次序交换，可得到 $Y \times X$ 的一个子集，它对应一个从 $Y$ 到 $X$ 的映射，称为 $\varphi$ 的\textbf{逆映射}，记作 $\varphi^{-1}$。
-
-换言之，若
-\[
-  \varphi(x)=y,
-\]
-则
-\[
-  \varphi^{-1}(y)=x.
-\]
-\end{definition}
-
-\begin{proposition}
-若 $\varphi\colon X \to Y$ 是双射，则
-\[
-  \varphi^{-1} \circ \varphi = \mathrm{id}_X,
-  \qquad
-  \varphi \circ \varphi^{-1} = \mathrm{id}_Y.
-\]
-\end{proposition}
-
-\begin{proof}
-任取 $x \in X$，设 $\varphi(x)=y$，则由逆映射的定义知 $\varphi^{-1}(y)=x$，于是
-\[
-  (\varphi^{-1}\circ\varphi)(x)=\varphi^{-1}(\varphi(x))=x.
-\]
-故 $\varphi^{-1}\circ\varphi=\mathrm{id}_X$。同理可证 $\varphi\circ\varphi^{-1}=\mathrm{id}_Y$。
-\end{proof}
-
+% ===================== 第三节 =====================
 \section{同余关系与剩余类}
 
-\begin{definition}[模 $n$ 同余]
-设 $n$ 为正整数。若整数 $a,b$ 满足
+\begin{definition}[模 $n$ 的同余关系与剩余类]
+任取 $0<n\in\mathbb{Z}$，可以在 $\mathbb{Z}$ 中确定一种等价关系
 \[
-  n \mid (a-b),
+R:\forall a,b\in\mathbb{Z},\;aRb\Leftrightarrow n\mid a-b
 \]
-则称 $a$ 与 $b$ \textbf{模 $n$ 同余}，记作
-\[
-  a \equiv b \pmod{n}.
-\]
+则称 $R$ 为模 $n$ 的同余关系，并将 $aRb$ 记为 $a\equiv b\pmod{n}$（$a$ 同余 $b$ 模 $n$）。
 
-这等价于 $a$ 与 $b$ 被 $n$ 除时有相同的余数。
+称由同余关系确定的分类中的类为模 $n$ 的剩余类。
 \end{definition}
 
-\begin{proposition}
-模 $n$ 同余是整数集 $\mathbb{Z}$ 上的一个等价关系。
-\end{proposition}
-
-\begin{proof}
-对任意整数 $a$，有 $a-a=0$，且 $n \mid 0$，故 $a \equiv a \pmod{n}$，所以满足自反性。
-
-若 $a \equiv b \pmod{n}$，则 $n \mid (a-b)$。由于 $b-a=-(a-b)$，可得 $n \mid (b-a)$，故 $b \equiv a \pmod{n}$，所以满足对称性。
-
-若 $a \equiv b \pmod{n}$ 且 $b \equiv c \pmod{n}$，则 $n \mid (a-b)$ 且 $n \mid (b-c)$。两式相加得到 $n \mid (a-c)$，于是 $a \equiv c \pmod{n}$，故满足传递性。
-\end{proof}
-
-\begin{definition}[模 $n$ 的剩余类]
-整数 $a$ 在模 $n$ 同余关系下对应的等价类称为 $a$ 的\textbf{模 $n$ 剩余类}，记作
-\[
-  [a]_n=\{x \in \mathbb{Z}\mid x \equiv a \pmod{n}\}.
-\]
-\end{definition}
-
-\begin{example}
-在模 $2$ 的情形下，$\mathbb{Z}$ 被分成两个剩余类：偶数类与奇数类。模 $3$ 时，则分成余数为 $0,1,2$ 的三个剩余类。
-\end{example}
-
+% ===================== 第四节 =====================
 \section{代数运算与单位元}
 
 \begin{definition}[代数运算]
-设 $A,B,D$ 为集合。从 $A \times B$ 到 $D$ 的一个映射称为一个\textbf{代数运算}。当 $A=B=D$ 时，它也称为集合 $A$ 上的一个\textbf{二元运算}。
-\end{definition}
-
-\begin{note}
-$A \times B$ 的元素是有序对 $(a,b)$。写成运算记号时，常把这个映射记为
+一个 $A\times B$ 到 $D$ 的映射叫做一个 $A\times B$ 到 $D$ 的代数运算。
 \[
-  *\colon A \times B \to D,\qquad (a,b)\mapsto a*b.
+\circ:(a,b)\to d=\circ(a,b)
 \]
-这里的 $(a,b)$ 不是分数，也不是把两个元素“粘在一起”，而是笛卡尔积中的一个有序对。
-\end{note}
+$\circ(a,b)$ 可写成 $a\circ b$，$\therefore\;\circ:(a,b)\to d=a\circ b$。
+\end{definition}
 
 \begin{example}
-实数集上的加法与乘法，都是熟悉的二元运算；函数集合上的复合运算也是典型例子。
+$A=\{\text{所有整数}\}$，$B=\{\text{所有不等于零的整数}\}$，$D=\{\text{所有有理数}\}$
+
+$\circ:(a,b)\to\dfrac{a}{b}=a\circ b$
+
+是一个 $A\times B$ 到 $D$ 的代数运算，也就是一个普通的除法。
 \end{example}
 
-\begin{definition}[单位元]
-设 $S$ 是一个带有二元运算 $*$ 的集合。若存在元素 $e \in S$，使得对任意 $a \in S$ 都有
-\[
-  a*e=e*a=a,
-\]
-则称 $e$ 是运算 $*$ 的\textbf{单位元}。
+\begin{definition}[封闭性]
+封闭：二元运算。
 \end{definition}
 
-\begin{theorem}[单位元唯一性]
-一个带二元运算的集合至多只有一个单位元。
-\end{theorem}
+\begin{definition}[单位元]
+单位元（幺元）。
+\end{definition}
 
-\begin{proof}
-设 $e$ 和 $e'$ 都是单位元。由于 $e$ 是单位元，有 $e*e'=e'$；由于 $e'$ 也是单位元，有 $e*e'=e$。因此 $e=e'$。
-\end{proof}
+\begin{note}[单位元唯一性证明]
+单位元唯一性证明方法：把单位元拆解，然后用结合律引出新的东西，唯一性证明。
+\end{note}
 
-\begin{example}[函数运算中的单位元]
-设 $F$ 为所有从实数集到实数集的函数所成的集合。
-\begin{enumerate}
-  \item 对复合运算 $\circ$，恒等函数 $\iota(x)=x$ 是单位元，因为对任意 $f \in F$ 都有
-  \[
-    f\circ\iota=f,\qquad \iota\circ f=f.
-  \]
-  \item 对函数乘法，常值函数 $m(x)=1$ 是单位元；
-  \item 对函数加法，常值函数 $a(x)=0$ 是单位元；
-  \item 对函数减法，不存在单位元。
-\end{enumerate}
-\end{example}
+\begin{definition}[逆元]
+逆元。
+\end{definition}
+
+% ===================== 第五节 =====================
+\section{幺半群}
+
+\begin{definition}[幺半群（定义 1.1）]
+我们说 $(S,*)$ 是一个幺半群，当该二元运算满足结合律，且具有单位元。此即，
+\[
+\forall x,y,z\in S,\;x*(y*z)=(x*y)*z
+\]
+\[
+\exists e\in S,\forall x\in S,\;e*x=x*e=x
+\]
+\end{definition}
+
+\begin{definition}[交换幺半群（定义 1.2）]
+我们说 $(S,*)$ 是一个交换幺半群，当其是一个幺半群，且运算满足交换律，即
+\[
+\forall x,y\in S,\;x*y=y*x
+\]
+\end{definition}
+
+\begin{definition}[幂（定义 1.3）]
+令 $x_1,\cdots,x_n\in S$，我们递归地定义
+\[
+x_1\cdot x_2\cdots x_n=(x_1\cdot x_2\cdots x_{n-1})\cdot x_n
+\]
+令 $x\in S$，$n\in\mathbb{N}$。若 $n>0$，我们定义 $x^n=x\cdots x$，而 $x^0=e$。
+\end{definition}
+
+\begin{proposition}[广义结合律（命题 1.2）]
+令 $x_1,\cdots,x_n,y_1,\cdots,y_m\in S$，则
+\[
+x_1\cdot x_2\cdots x_n\cdot y_1\cdot y_2\cdots y_m=(x_1\cdot x_2\cdots x_n)\cdot(y_1\cdot y_2\cdots y_m)
+\]
+\end{proposition}
+
+\begin{proposition}[命题 1.3]
+令 $x\in S$，$m,n\in\mathbb{N}$，则 $x^{m+n}=x^m\cdot x^n$。
+\end{proposition}
+
+\begin{definition}[子幺半群（定义 1.4）]
+令 $(S,\cdot)$ 是一个幺半群，若 $T\subset S$，我们说 $(T,\cdot)$ 是 $(S,\cdot)$ 的一个子幺半群，若 $e\in T$，且 $T$ 在乘法下封闭，即
+\[
+e\in T,\qquad\forall x,y\in T,\;x*y\in T
+\]
+\end{definition}
+
+\begin{definition}[幺半群同态（定义 1.5）]
+假设 $(S,\cdot)$，$(T,*)$ 是两个幺半群，且 $f:S\to T$ 是一个映射，我们称 $f$ 是一个幺半群同态，当 $f$ 保持了乘法运算，且把单位元映到了单位元。
+\[
+\forall x,y\in S,\;f(x\cdot y)=f(x)*f(y),\qquad f(e)=e'
+\]
+其中，$e$ 和 $e'$ 分别是 $(S,\cdot)$ 和 $(T,*)$ 的单位元。
+\end{definition}
+
+\begin{definition}[由子集生成的子幺半群（定义 1.6）]
+假设 $(S,\cdot)$ 是一个幺半群，而 $A\subset S$ 是一个子集。我们定义由 $A$ 生成的子幺半群，记作 $\langle A\rangle$，是指 $S$ 中所有包含了 $A$ 的子幺半群的交集。
+\[
+\langle A\rangle=\bigcap\{T\subset S:T\supset A,\,T\text{ 是子幺半群}\}
+\]
+\end{definition}
+
+\begin{definition}[幺半群同构（定义 1.7）]
+假设 $(S,\cdot)$，$(T,*)$ 是两个幺半群，且 $f:S\to T$ 是一个映射，我们称 $f$ 是一个幺半群同构，当 $f$ 是双射，且是一个同态。
+\[
+f\text{ 是双射},\qquad\forall x,y\in S,\;f(x\cdot y)=f(x)*f(y),\qquad f(e)=e'
+\]
+\end{definition}
+
+\begin{proposition}[命题 1.6]
+若 $f:(S,\cdot)\to(T,*)$ 是一个幺半群同构，则 $f^{-1}:T\to S$ 是一个幺半群同构。
+\end{proposition}
+
+\begin{definition}[逆元（定义 1.8）]
+令 $(S,\cdot)$ 是一个幺半群，$x\in S$。我们称 $x$ 是可逆的，当且仅当
+\[
+\exists y\in S,\;x\cdot y=y\cdot x=e
+\]
+其中 $y$ 被称为 $x$ 的逆元，记作 $x^{-1}$。
+\end{definition}
+
+\begin{lemma}[引理 1.1：幺半群的逆元构成群]
+令 $(S,\cdot)$ 是一个幺半群，则 $G$ 是由所有可逆元构成的子集，则 $(G,\cdot)$ 是个群。
+\end{lemma}
+
+\begin{proposition}[命题 1.7：逆元唯一]
+令 $(S,\cdot)$ 是一个幺半群。假设 $x\in S$ 是可逆的，则其逆元唯一。也就是说，如果 $y,y'\in S$ 都是它的逆元，则 $y=y'$。
+
+\textbf{证明：} 假设 $y,y'$ 都是 $x$ 的逆元。则 $y\cdot x=e$，$x\cdot y'=e$。利用一个巧妙的连续"代数变形"来证明 $y=y'$。
+\[
+y=y\cdot e=y\cdot x\cdot y'=e\cdot y'=y'
+\]
+其中我们利用了 $e$ 是单位元，以及（广义）结合律。
+\end{proposition}
+
+% ===================== 第六节 =====================
+\section{群}
+
+\begin{definition}[群（定义 1.9）]
+令 $(G,\cdot)$ 是一个幺半群，则我们说它是一个群，若 $G$ 中所有元素都是可逆的，换言之，若是 $G$ 上的一个二元运算，则我们称 $(G,\cdot)$ 是个群，若
+\[
+\forall x,y,z\in G,\;x\cdot(y\cdot z)=(x\cdot y)\cdot z
+\]
+\[
+\exists e\in G,\forall x\in G,\;e\cdot x=x\cdot e=x
+\]
+\[
+\forall x\in G,\;\exists y\in G,\;x\cdot y=y\cdot x=e
+\]
+
+注意：对于群，我们常用字母 $G$，以及接着的 $H,K$ 等，因为群的英文是 group。另外，我们把 $x$ 的逆记作 $x^{-1}$。命题 1.8：$(x^{-1})^{-1}=x$。命题 1.9：$(x\cdot y)^{-1}=y^{-1}\cdot x^{-1}$。
+\end{definition}
 
 \begin{note}
-图片笔记里反复强调了一个常用技巧：证明“唯一”时，通常先假设有两个满足条件的对象，再证明这两个对象必然相等。
+群的另一种等价定义：设 $G$ 是一个具有叫做乘法代数运算的非空集合，并且满足：
+\begin{enumerate}
+  \item[I.] $G$ 对于乘法来说是闭的；
+  \item[II.] 结合律：$\forall a,b,c\in G$，有 $(a\circ b)\circ c=a\circ(b\circ c)$；
+  \item[III.] $G$ 中有左单位元 $e$：$\forall a\in G$，$e\circ a=a$；
+  \item[IV.] 对 $G$ 中每一个元素 $a$，有左逆元 $a^{-1}\in G$，使得 $a^{-1}\circ a=e$。
+\end{enumerate}
+则称 $G$ 关于代数运算 $\circ$ 作成一个群。
 \end{note}
+
+\begin{note}[群的性质]
+$\forall a\in G,\exists a^{-1}\in G,\;a^{-1}a=e\Rightarrow\exists a'\in G,\;a'a^{-1}=e$
+
+定理1：左逆元也是右逆元
+
+$a$ 逆是 $a$ 的左逆元，$a'$ 是 $a$ 逆的左逆元，再证明 $a'$ 和 $a$ 一样
+
+$aa^{-1}=eaa^{-1}=(a'a^{-1})aa^{-1}=a'(a^{-1}a)a^{-1}=a'ea^{-1}=a'a^{-1}=e$
+
+左单位元也是右单位元；群的乘法适合消去律。
+\end{note}
+
+\begin{note}[群的等价判别]
+设 $G$ 是一个具有叫做乘法代数运算的非空集合，并且满足：
+\begin{enumerate}
+  \item[I.] $G$ 对于乘法来说是闭的；
+  \item[II.] 结合律：$\forall a,b,c\in G$，有 $(a\circ b)\circ c=a\circ(b\circ c)$；
+  \item[III.] $G$ 中任意两个元 $a,b$，方程 $ax=b$，$ya=b$ 都在 $G$ 中有解。
+\end{enumerate}
+则称 $G$ 关于代数运算 $\circ$ 作成一个群。
+\end{note}
+
+\begin{theorem}[消去律与有限群判定]
+设 $G$ 是一个乘法运算封闭的非空有限集合，如果 $G$ 满足结合律，且两个消去律成立，则 $G$ 是一个群。
+
+\textbf{证：} 设 $G=\{a_1,a_2,\cdots,a_n\}$，对任意的 $a,b\in G$，考察 $aa_i$ 与 $aa_j$，如果 $aa_i=aa_j$，则由左消去律得，$a_i=a_j$，于是 $i=j$。这说明，$aa_1,aa_2,\cdots,aa_n$ 是 $G$ 中 $n$ 个不同的元素。
+
+封闭有限集，有限有限不需要找单位元和逆元。消去律是未来解方程，群可以用消去律。
+\end{theorem}
+
+\begin{definition}[加群]
+加群定义。
+\end{definition}
+
+% ===================== 第七节 =====================
+\section{有限群与元素的阶}
+
+\begin{definition}[有限群（定义 1.20）]
+令 $(G,\cdot)$ 是一个群，我们称 $G$ 是一个有限群，当该群是有限的，则 $G$ 是有限的。
+
+第一个概念是元素的阶，这与循环群密切相关，我们会慢慢引到循环群的概念。
+
+令 $x\in G$，则 $x$（在 $G$ 中）的阶，记作 $|x|$，定义为那个最小的正整数 $n\in\mathbb{N}_1$，使得 $x^n=e$。若这样的 $n$ 不存在，则记 $|x|=\infty$。
+\end{definition}
+
+\begin{proposition}[命题 1.21]
+$(G,\cdot)$ 是有限群，且 $x\in G$，则 $|x|<\infty$。换言之，有限群的每一个元素都可以通过自乘有限多次，都可以得到单位元。
+\end{proposition}
+
+\begin{proposition}[$a$ 和 $a^{-1}$ 阶数一样]
+\[
+|a|=|a^{-1}|
+\]
+若 $|a|=m$，那么 $a^m=e$，另外 $(a^{-1})^m=(a^m)^{-1}=e^{-1}=e$，知 $|a^{-1}|\le m$；
+
+若 $|a^{-1}|=n\Rightarrow(a^{-1})^n=e\Rightarrow(a^n)^{-1}=e\Rightarrow a^n=e^{-1}=e$，$\therefore|a|\le n$，于是有 $n\le m$，
+
+且 $m\le n\Rightarrow m=n$，即 $|a|=|a^{-1}|$。
+\end{proposition}
+
+\begin{example}[阶的例题]
+阶的例题。
+\end{example}
+
+\begin{note}[阶数与奇偶]
+只要不相连就可以快速求阶数而且有交换律。$ab=ba$，$(123)(45)$，$3\times2=6$。
+\end{note}
+
+% ===================== 第八节 =====================
+\section{交换群（阿贝尔群）}
+
+\begin{definition}[交换群]
+若群 $G$ 的代数运算满足交换律，则称 $G$ 为交换群（Abel群）。
+\end{definition}
+
+\begin{example}
+整数集 $Z$：
+
+（1）对于数的普通加法：加法有结合律、交换律，左单位元 $0$，左逆元 $-a$，因此做成交换群，称为\textbf{整数加群}；
+
+（2）对于数的普通乘法：左单位元 $1$，$a\ne\pm1$ 无逆元，不能做成群；
+
+（3）对于运算 $a\circ b=a+b+4$：
+
+$(a\circ b)\circ c=(a+b+4)\circ c=(a+b+4)+c+4=a+b+c+8$
+
+$a\circ(b\circ c)=a\circ(b+c+4)=a+(b+c+4)+4=a+b+c+8$
+
+有结合律，且有交换律。左单位元 $-4$：$-4\circ b=-4+b+4=b$；左逆元：$(-8-a)\circ a=-8-a+a+4=-4$。做成交换群。
+\end{example}
+
+\begin{definition}[定义 1.10：阿贝尔群]
+若 $(G,\cdot)$ 是一个群，我们称它是阿贝尔群，或交换群，当该运算满足交换律，即
+\[
+\forall x,y\in G,\;x\cdot y=y\cdot x
+\]
+\end{definition}
+
+% ===================== 第九节 =====================
+\section{子群}
+
+\begin{definition}[子群]
+一个群 $G$ 的一个子集 $H$ 叫做 $G$ 的一个子群，是指 $H$ 对于 $G$ 的乘法来说作成一个群。
+
+设 $G$ 是群，$H$ 是 $G$ 的一个非空子集。如果按 $G$ 中元素的二元运算也构成群，则称 $H$ 是 $G$ 的一个子群，记为 $H\le G$。
+\end{definition}
+
+\begin{note}[定义子群的目的（定义 1.13）]
+定义子群根本目的是证明它是一个群。
+\end{note}
+
+\begin{theorem}[定理 1：子群充要条件]
+一个群 $G$ 的一个非空子集 $H$ 作成 $G$ 的一个子群的充要条件是：
+\begin{enumerate}[(i)]
+  \item $a,b\in H\Rightarrow ab\in H$；
+  \item $a\in H\Rightarrow a^{-1}\in H$。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[定理 2：子群充要条件]
+一个群 $G$ 的一个非空子集 $H$ 作成 $G$ 的一个子群的充要条件是：
+\begin{enumerate}[(iii)]
+  \item $a,b\in H\Rightarrow ab^{-1}\in H$。
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}[定理 3：非空有限子群]
+一个群 $G$ 的一个非空有限子集 $H$ 作成 $G$ 的一个子群的充要条件是
+\[
+a,b\in H\Rightarrow ab\in H.
+\]
+\end{theorem}
+
+\begin{note}[学子群的意义]
+学子群的意义。
+\end{note}
+
+\begin{proposition}[命题 1.11]
+有时为了方便起见，我们把子群的后两个条件合并，缩成两个条件，即
+\[
+e\in H,\qquad\forall x,y\in H,\;x\cdot y^{-1}\in H
+\]
+这条命题说的便是，这是子群的等价条件。
+\end{proposition}
+
+% ===================== 第十节 =====================
+\section{陪集与拉格朗日定理}
+
+\begin{definition}[左陪集（定义 1.27）]
+令 $G$ 是一个群，$H<G$ 是一个子群，$a\in G$。则 $aH$ 是 $H$ 的一个左陪集（由 $a$ 引出），定义为
+\[
+aH=\{ax:x\in H\}
+\]
+也就是说，由 $a$ 引出的 $H$ 的左陪集，就是用 $a$ 左乘了 $H$ 中的每一个元素所得到的。特别地，$eH=H$ 也是一个左陪集。
+\end{definition}
+
+\begin{definition}[右陪集]
+一个群 $G$ 和 $G$ 的一个子群 $H$。我们规定一个 $G$ 的元中间的关系 $\sim$：$a\sim b$，当而且只当 $ab^{-1}\in H$ 的时候。
+\begin{enumerate}
+  \item $aa^{-1}=e\in H$，所以 $a\sim a$；
+  \item $ab^{-1}\in H\Rightarrow(ab^{-1})^{-1}=ba^{-1}\in H$，所以 $a\sim b\Rightarrow b\sim a$；
+  \item $ab^{-1}\in H$，$bc^{-1}\in H\Rightarrow(ab^{-1})(bc^{-1})=ac^{-1}\in H$，所以 $a\sim b$，$b\sim c\Rightarrow a\sim c$。
+\end{enumerate}
+由上面的等价关系 $\sim$ 所决定的类叫做子群 $H$ 的\textbf{右陪集}。包含元 $a$ 的右陪集用符号 $Ha$ 来表示。
+\[
+H\le G,\;a\in G\text{ 则 }Ha=\{ha\mid h\in H\}
+\]
+\end{definition}
+
+\begin{lemma}[引理 1.2]
+令 $G$ 是一个有限群，$H<G$ 是一个子群，$a\in G$。我们通过左乘 $a$ 来定义 $f:H\to aH$，$f(x)=ax$，则 $f$ 是一个双射。特别地，$|H|=|aH|$。
+\end{lemma}
+
+\begin{proposition}[命题 1.33：陪集要不然相等要不然无交]
+令 $G$ 是一个有限群，$H<G$ 是一个子群，$a,b\in G$。则左陪集 $aH$ 和 $bH$ 要么相等，要么无交。也就是说，我们有 $aH=bH$，或 $aH\cap bH=\varnothing$。
+\end{proposition}
+
+\begin{example}
+例子：群 $\mathbb{Z}_4$ 与子群 $H=\{0,2\}$
+
+考虑加法模 4 的群 $\mathbb{Z}_4=\{0,1,2,3\}$，其运算为加法模 4。子群 $H=\{0,2\}$ 是 $\mathbb{Z}_4$ 的一个子群。
+
+$0+H=\{0+0,0+2\}=\{0,2\}$；$2+H=\{2+0,2+2\}=\{2,4\}\bmod 4=\{2,0\}=\{0,2\}$。
+
+可以看到，$0+H=2+H=\{0,2\}$，这说明两个不同的元素 0 和 2 所生成的左陪集是相等的。
+\end{example}
+
+\begin{note}[子群里面的元素当陪集的 $x$，则这个陪集还是原来子群 $xH=H$]
+子群里面的元素当陪集的 $x$，则这个陪集还是原来子群 $xH=H$。
+\end{note}
+
+\begin{proposition}[命题 1.34、1.35：嵌套子群的陪集]
+嵌套子群的陪集。
+\end{proposition}
+
+\begin{definition}[商集与指数（定义 1.28）]
+陪集个数为指数。
+\end{definition}
+
+\begin{theorem}[定理 1：左右陪集个数相等]
+一个子群 $H$ 的右陪集的个数和左陪集的个数相等：它们或者都是无限，或者都有限并且相等。
+\end{theorem}
+
+\begin{theorem}[拉格朗日定理（定理 1.1）]
+令 $G$ 是一个有限群，$H<G$ 是一个子群，则
+\[
+|G|=[G:H]|H|
+\]
+特别地，$|H|\,\big|\,|G|$。
+\end{theorem}
+
+% ===================== 第十一节 =====================
+\section{正规子群与商群}
+
+\begin{definition}[正规子群（不变子群）]
+正规子群定义。
+\end{definition}
+
+\begin{definition}[正规子群（定义 1.29）]
+$N\triangleleft G$。
+\end{definition}
+
+\begin{theorem}[定理 1：不变子群的判定]
+一个群 $G$ 的一个子群 $N$ 是一个不变子群的充分而且必要条件是：
+\[
+aNa^{-1}=N
+\]
+对于 $G$ 的任意一个元 $a$ 都对。
+\end{theorem}
+
+\begin{theorem}[定理 2：不变子群判定方式 2]
+一个群 $G$ 的一个子群 $N$ 是一个不变子群的充分而且必要条件是：
+\[
+a\in G,\;n\in N\Rightarrow ana^{-1}\in N
+\]
+\end{theorem}
+
+\begin{lemma}[引理 1.4]
+正规子群。
+\end{lemma}
+
+\begin{note}[正规子群的意义]
+正规子群的意义就是为了让看看陪集是不是群。
+\end{note}
+
+\begin{note}[指数是 2 的子群一定是不变的]
+指数是 2 的子群一定是不变的。
+\end{note}
+
+\begin{proposition}[命题 1.36：良定义]
+令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，$a,b\in G$，则
+\[
+(aN)\cdot(bN)=(ab)N
+\]
+是良定义的。
+\end{proposition}
+
+\begin{proposition}[命题 1.37：商群]
+令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，则 $(G/N,\cdot)$ 构成一个群，称为（$G$ 在 $N$ 上的）商群，其中单位元是 $eN=N$，每个陪集 $aN$ 的逆元是 $a^{-1}N$。
+\end{proposition}
+
+\begin{theorem}[定理 3：不变子群的陪集叫商群]
+一个不变子群的陪集对于上边规定的乘法来说作成一个群。
+
+定义：一个群 $G$ 的一个不变子群 $N$ 的陪集所作成的群叫做一个商群。这个群我们用符号 $G/N$ 来表示。
+\end{theorem}
+
+\begin{proposition}[命题 1.38：正规子群的交集还是正规子群]
+令 $\{N_i\}_{i\in I}$ 是一族 $G$ 的正规子群，则它们的交集仍然是 $G$ 的正规子群，即
+\[
+\bigcap_{i\in I}N_i\trianglelefteq G
+\]
+\end{proposition}
+
+\begin{proposition}[命题 1.39、1.40：$e$ 和自己都是自己的正规子群；交换群的子群都是正规子群]
+$e$ 和自己都是自己的正规子群；交换群的子群都是正规子群。
+\end{proposition}
+
+\begin{example}[不变子群的中心]
+$N$ 刚好包含群 $G$ 的所有有以下性质的元 $n$：$na=an$，不管 $a$ 是 $G$ 的哪一个元，那么 $N$ 是 $G$ 的一个不变子群。这个不变子群叫做 $G$ 的\textbf{中心}。
+\end{example}
+
+\begin{note}[商群性质]
+商群性质。
+\end{note}
+
+% ===================== 第十二节 =====================
+\section{同态与同构}
+
+\begin{definition}[同态]
+同态定义。
+\end{definition}
+
+\begin{example}[同态例子]
+例1. 设 $A=\{\text{所有实数 }x\}$，$A$ 的代数运算是实数的乘法。以下映射是否是同态？
+
+（1）若 $f:x\to|x|$。（1）$f$ 是同态。
+
+（2）若 $f:x\to2x$。（2）$f$ 不是同态。
+\end{example}
+
+\begin{theorem}[同态定理]
+两个代数系统 $G$ 与 $\bar{G}$ 同态，若 $G$ 是群，则 $\bar{G}$ 也是群。
+\end{theorem}
+
+\begin{note}[同态的意义]
+同构：同构只关心运算规律，不关心元素长什么样。它能把"复杂的群"换成"结构相同但更容易处理的群"。
+\end{note}
+
+\begin{note}[同态同构的意义]
+从这里，我们有两个延伸。第一个延伸是，什么是"引出"？我们可以从一个元素引出一个同态，实际上，也可以从任何一个元素引出一个原幺半群的子幺半群。另一方面，其实每一个子集都可以引出一个子幺半群。第二个延伸是"同构"。同构首先是一个双射，这意味着你可以在元素之间建立一一对应；在双射的基础上，同构的含义是，换了标签下，运算是不变的——也就是说，这两个结构（比如幺半群）的唯一区别就是"标签不同"。
+\end{note}
+
+\begin{definition}[群同态（定义 1.14）]
+令 $(G,\cdot)$，$(G',*)$ 是两个群，且 $f:G\to G'$ 是一个映射，我们称 $f$ 是一个群同态，当其保持了乘法运算，即
+\[
+\forall x,y\in G,\;f(x\cdot y)=f(x)*f(y)
+\]
+\end{definition}
+
+\begin{proposition}[命题 1.13：群同态单位元对单位元，逆元对逆元]
+若 $f:(G,\cdot)\to(G',*)$ 是一个群同态，则 $f(e)=e'$，$f(x^{-1})=f(x)^{-1}$。
+\end{proposition}
+
+\begin{proposition}[命题 1.14：$\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态]
+$\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态。
+\end{proposition}
+
+\begin{definition}[核与像（定义 1.15）]
+群同态下定义：核是映射到 $e'$ 的原像集，$\operatorname{im}f$ 是像集。
+\[
+\ker(f)=\{x\in G\mid f(x)=e'\},\qquad\operatorname{im}(f)=\{f(x)\mid x\in G\}
+\]
+\end{definition}
+
+\begin{proposition}[命题 1.16]
+令 $f:(G,\cdot)\to(G',*)$ 是一个群同态，则 $f$ 是一个单同态当且仅当 $\ker(f)=\{e\}$。也就是说，一个群同态是单的当且仅当核是平凡的。
+\end{proposition}
+
+\begin{proposition}[命题 1.17：同态就是拆括号的游戏]
+若 $f:(G,\cdot)\to(G,*)$ 是一个群同构，则 $f^{-1}$ 也是群同构。
+\end{proposition}
+
+\begin{note}[构造同态同构]
+构造同态同构。
+\end{note}
+
+% ===================== 第十三节 =====================
+\section{群同构定理}
+
+\begin{theorem}[群同构第一定理]
+群同构第一定理。
+\end{theorem}
+
+\begin{theorem}[群同构第二定理（定理 1.3）]
+令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，$H<G$。则 $H\cap N\trianglelefteq H$，$N\trianglelefteq HN$，且
+\[
+H/(H\cap N)\simeq HN/N
+\]
+这和之前两个子群乘积的阶的公式是类似的。
+\end{theorem}
+
+\begin{theorem}[群同构第三定理（定理 1.4）]
+令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，$M\trianglelefteq G$，$M<N$。则 $N/M\trianglelefteq G/M$，且
+\[
+(G/M)/(N/M)\simeq G/N
+\]
+\end{theorem}
+
+% ===================== 第十四节 =====================
+\section{变换群与置换群}
+
+\begin{definition}[变换群]
+变换群。
+\end{definition}
+
+\begin{note}[变换群证明]
+（1）非空、代数运算、结合律都满足，有单位元 $\varepsilon$。那么"逆元"问题能解决吗？事实上，$\tau_1$ 就没有逆元。因为如果 $\tau_1$ 有逆元 $\tau$，那么必有 $\tau_1\tau=\varepsilon$ 且 $\tau\tau_1=\varepsilon$。但是
+\[
+(1)^\varepsilon=(1)^{\tau_1\tau}=(1^{\tau_1})^\tau=(1)^\tau\Rightarrow(1)^\tau=1
+\]
+而
+\[
+(2)^\varepsilon=(2)^{\tau_1\tau}=(2^{\tau_1})^\tau=(1)^\tau\Rightarrow(1)^\tau=2
+\]
+导致矛盾，故 $\tau_1$ 没有逆元。因此 $T(M)$ 不能成为群。
+\end{note}
+
+\begin{note}[变化群的意义]
+变化群的意义。
+\end{note}
+
+\begin{definition}[置换与置换群]
+一个有限集的一个一一变换叫做一个置换。一个有限集的若干个置换作成的一个群叫做一个置换群。
+
+我们看一个有限集合 $A$，$A$ 有 $n$ 个元 $a_1,a_2,\cdots,a_n$。由 §5 定理 2，$A$ 的全体置换作成一个群 $G$。
+\end{definition}
+
+\begin{definition}[置换的书写方式]
+置换
+\[
+\pi:a_i\longrightarrow a_{k_i},\quad i=1,2,\cdots,n
+\]
+这样一个置换所发生的作用完全可以由 $(1,k_1),(2,k_2),\cdots,(n,k_n)$ 这 $n$ 对整数来决定。我们表示重量的第一个方法就是把这个置换写成
+\[
+\begin{pmatrix}1&2&\cdots&n\\k_1&k_2&\cdots&k_n\end{pmatrix}
+\]
+例1 $n=3$，$\pi:1\to2,\;2\to3,\;3\to1$，那么
+\[
+\pi=\begin{pmatrix}1&2&3\\2&3&1\end{pmatrix}
+\]
+\end{definition}
+
+\begin{note}[只要不相连就可以快速求阶数而且有交换律]
+$ab=ba$，$(123)(45)$，$3\times2=6$。
+\end{note}
+
+\begin{definition}[对称群]
+一个包含 $n$ 个元的集合的全体置换作成的群叫做 $n$ 次对称群，这个群我们用 $S_n$ 来表示。
+\end{definition}
+
+\begin{theorem}[$n$ 次对称群 $S_n$ 的阶是 $n!$]
+定理 1：$n$ 次对称群 $S_n$ 的阶是 $n!$。
+
+现在我们要看一看表示一个置换的符号。$n$ 个元的置换一共有 $n!$ 个。由初等代数我们知道，$n$ 个元的置换一共有 $n!$ 个，要作 $n$ 个元的一个置换，就是要替每一个元选定一个对象，我们替 $a_1$ 选定对象时，有 $n$ 个可能，选定了以后，再替 $a_2$ 选时，就只有 $n-1$ 个可能，这样下去，一共可以得到 $n(n-1)\cdots2\cdot1=n!$ 个不同的置换。
+\end{theorem}
+
+% ===================== 第十五节 =====================
+\section{凯莱定理}
+
+\begin{theorem}[凯莱定理：任何群都是同一个变换群的同构]
+定理（凯莱定理）任何群都同一个变换群同构。
+
+\textbf{证明：} 假定 $G$ 是一个群，$G$ 的元是 $a,b,c,\cdots$。我们在 $G$ 里任意取出一个元 $x$ 来，那么
+\[
+g\longrightarrow gx=g^{\tau_x}
+\]
+是集合 $G$ 的一个变换，因为给了 $G$ 的任意元 $g$，我们能够得到一个唯一的 $G$ 的元 $g^{\tau_x}$，这样当 $G$ 的每个元 $x$ 可以得到一个 $G$ 的变换放在一起，作成一个集合 $\tilde{G}=\{\tau_a,\tau_b,\tau_c,\cdots\}$。那么
+\[
+\phi:\quad x\longrightarrow\tau_x
+\]
+是 $G$ 到 $\tilde{G}$ 间的满射，且消去律告诉我们：$x\ne y\Rightarrow gx\ne gy$ 告诉我们，$\tau_x\ne\tau_y$。所以 $\phi$ 是 $G$ 与 $\tilde{G}$ 间的一一映射。
+\end{theorem}
+
+% ===================== 第十六节 =====================
+\section{循环群}
+
+\begin{definition}[定义 1.22：$x$ 的幂]
+$x$ 的幂。
+\end{definition}
+
+\begin{definition}[由 $x$ 生成子群（定义 1.23）]
+由 $x$ 生成子群。
+\end{definition}
+
+\begin{note}[子集生成群证明（定义 1.2.4）]
+子集生成群证明。
+\end{note}
+
+\begin{note}[无限阶的群和任意循环群同态]
+无限阶的群和任意循环群同态。
+\end{note}
+
+\begin{proposition}[$n$ 阶循环群互相同构，无限循环群彼此同构（命题 1.2.9）]
+$n$ 阶循环群互相同构，无限循环群彼此同构。
+\end{proposition}
+
+% ===================== 第十七节 =====================
+\section{直积}
+
+\begin{definition}[两个群直积还是群（定义 1.18）]
+两个群直积还是群。
+\end{definition}
+
+\begin{definition}[一族群的直积（定义 1.19）]
+一族群的直积，定义 1.20 还需再看。
+\end{definition}
+
+\begin{definition}[$n$ 阶一般线性群（定义 1.11）]
+$n$ 阶一般线性群。
+\end{definition}
+
+\begin{definition}[$n$ 阶特殊线性群行列式是 1（定义 1.12）]
+$n$ 阶特殊线性群行列式是 1。
+\end{definition}
+
+\begin{proposition}[命题 1.12：特殊线性群是群]
+特殊线性群是群。
+\end{proposition}
+
+\begin{example}[4 元群]
+4 元群。
+\end{example}
