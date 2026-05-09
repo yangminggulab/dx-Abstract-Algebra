@@ -1,12 +1,28 @@
 \documentclass[lang=cn,10pt]{elegantbook}
 
-\title{近世代数}
-\subtitle{群、环与域}
+\title{力扣学习}
+\subtitle{Elegant\LaTeX{} 经典之作}
 
-\author{课堂笔记}
-\date{\today}
+\author{Ethan Deng \& Liam Huang}
+\institute{Elegant\LaTeX{} Program}
+\date{April 9, 2022}
+\version{4.3}
+\bioinfo{自定义}{信息}
+
+\extrainfo{不要以为抹消过去，重新来过，即可发生什么改变。—— 比企谷八幡}
 
 \setcounter{tocdepth}{3}
+
+\logo{logo-blue.png}
+\cover{cover.jpg}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+% 修改标题页的橙色带
+% \definecolor{customcolor}{RGB}{32,178,170}
+% \colorlet{coverlinecolor}{customcolor}
 
 \begin{document}
 
@@ -18,10 +34,5 @@
 \mainmatter
 \input{第一章}
 \newpage
-\input{第二章}
-\newpage
-\input{第三章}
-\newpage
-\input{作业}
-
+\input{练习心的}
 \end{document}
