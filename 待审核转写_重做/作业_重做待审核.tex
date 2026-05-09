@@ -66,6 +66,30 @@ ab=ba
 以上是 $G$ 的所有子群。
 \end{example}
 
+\begin{example}[有理系数仿射变换群不是交换群]
+假定 $A$ 是所有实数作成的集合。证明，所有 $A$ 的变换 $x\mapsto ax+b$（$a,b$ 是有理数，$a\ne0$）形式的变换构成一个变换群 $G$，但 $G$ 不是一个交换群。
+
+\textbf{解：} 设 $G$ 是由所有这样的变换组成的集合。
+
+\textbf{封闭性}：设 $\tau_1:x\mapsto cx+d$，$\tau_2:x\mapsto ex+f$（$c,d,e,f\in\mathbb{Q}$，$c,e\ne0$），则
+\[
+\tau_1\tau_2: x\mapsto c(ex+f)+d=(ce)x+(cf+d),
+\]
+其中 $ce\in\mathbb{Q}$，$ce\ne0$，$cf+d\in\mathbb{Q}$，故 $\tau_1\tau_2\in G$。
+
+\textbf{单位元}：$\varepsilon:x\mapsto x$（即 $a=1$，$b=0$）属于 $G$。
+
+\textbf{逆元}：$\tau:x\mapsto ax+b$ 的逆变换为 $\tau^{-1}:x\mapsto\dfrac{1}{a}x-\dfrac{b}{a}$，系数均为有理数且 $\dfrac{1}{a}\ne0$，故 $\tau^{-1}\in G$。
+
+因此 $G$ 是一个变换群。
+
+\textbf{不是交换群}：令 $\tau_1:x\mapsto x+1$，$\tau_2:x\mapsto 2x$。则
+\[
+\tau_1\tau_2: x\mapsto 2x+1,\qquad \tau_2\tau_1: x\mapsto 2(x+1)=2x+2.
+\]
+$\tau_1\tau_2\ne\tau_2\tau_1$，故 $G$ 不是交换群。
+\end{example}
+
 % ===================== 第二节 =====================
 \section{第二章习题（环论）}
 
