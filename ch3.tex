@@ -1,0 +1,273 @@
+\chapter{整环的分解理论}
+
+% ===================== 第一节 =====================
+\section{整除、单位、相伴元与不可约元}
+
+\begin{definition}[单位与相伴元]
+整环 $I$ 的一个有逆元的元 $e$ 叫做 $I$ 的一个\textbf{单位}。
+
+如果元素 $b$ 是元 $a$ 和一个单位 $e$ 的乘积：
+\[
+b=ea,
+\]
+那么元 $b$ 叫做元 $a$ 的\textbf{相伴元}。
+
+我们要注意单位同单位元的区别。一个整环至少有两个单位，就是 $1$ 和 $-1$，在一般情形之下，在一个整环里常有两个以上的单位存在。
+\end{definition}
+
+\begin{definition}[整除与因子]
+我们说，整环 $I$ 的一个元 $a$ 可以被 $I$ 的元 $b$ \textbf{整除}，是指在 $I$ 里找得出元 $c$，使得
+\[
+a=bc.
+\]
+假如 $a$ 能被 $b$ 整除，我们就说 $b$ 是 $a$ 的一个\textbf{因子}，并且用符号
+\[
+b\mid a
+\]
+来表示。$b$ 不能整除 $a$，我们用符号 $b\nmid a$ 来表示。
+
+把素数这个概念加以推广却没有这样简单，需要先引入几个新的概念。
+\end{definition}
+
+\begin{definition}[平凡因子与真因子]
+单位以及 $a$ 的相伴元叫做 $a$ 的\textbf{平凡因子}。其余的 $a$ 的因子，假如还有的话，叫做 $a$ 的\textbf{真因子}。
+
+现在让我们看一看，一个普通素数 $p$ 有些什么性质。一个素数 $p$ 并不是绝对不能被任何整数整除，因为 $\pm1$ 和 $\pm p$ 都可以整除 $p$。但除了这四个数以外素数 $p$ 没有其他的因子。依照上面的规定，$\pm1$ 都是整数环的单位，$p=1p$，$-p=(-1)p$ 是 $p$ 的相伴元，因此 $\pm1$ 和 $\pm p$ 都是 $p$ 的平凡因子。素数 $p$ 还另有一个性质，就是 $p\ne0$ 且 $p$ 不是单位，$p$ 只有平凡因子。
+\end{definition}
+
+\begin{theorem}[真因子判别（定理 3）]
+整环中一个不等于零的元 $a$ 有真因子的充要条件是
+\[
+a=bc,
+\]
+$b$ 和 $c$ 都不是单位。
+\end{theorem}
+
+\begin{definition}[不可约元]
+整环 $I$ 的一个元 $p$ 叫做一个\textbf{不可约元}，是指 $p$ 既不是零元，也不是单位，并且 $p$ 只有平凡因子。
+\end{definition}
+
+% ===================== 第二节 =====================
+\section{唯一分解环与主理想整环}
+
+\begin{definition}[唯一分解环]
+一个整环 $I$ 叫做一个\textbf{唯一分解环}，是指 $I$ 的每一个既不等于零又不是单位的元都有唯一一分解。
+\end{definition}
+
+\begin{theorem}[定理 1：唯一分解环的性质]
+一个唯一分解环有以下性质：
+
+(iii) 如果一个不可约元 $p$ 能够整除 $ab$，那么 $p$ 能够整除 $a$ 或 $b$。
+\end{theorem}
+
+\begin{definition}[定义 2.25：主理想整环]
+令 $(R,+,\cdot)$ 是一个交换环，则我们称 $R$ 是个\textbf{主理想整环}，若 $R$ 是一个整环，而且每一个理想 $I\trianglelefteq R$ 都是主理想，即可以写成
+\[
+I=(a)=Ra
+\]
+的形式。
+
+主理想整环的性质非常好，但是当然没有域好。最常见的一个主理想整环就是整数环 $(\mathbb{Z},+,\cdot)$。
+\end{definition}
+
+\begin{theorem}[定理 2：整数环是主理想环]
+整数环是一个主理想环，因而是一个唯一分解环。
+
+另一种常见的欧式环就是一个域上的多项式环。
+\end{theorem}
+
+\begin{theorem}[定理 2：整环成为唯一分解环的条件]
+假定一个整环 $I$ 有以下性质：
+\begin{enumerate}[(i)]
+  \item $I$ 的每一个既不是零也不是单位的元 $a$ 都有一个分解
+  \[
+    a=p_1p_2\cdots p_r\qquad(p_i\text{ 是 }I\text{ 的不可约元})；
+  \]
+  \item[(iii)] $I$ 的不可约元都是素元。
+\end{enumerate}
+这时 $I$ 一定是一个唯一分解环。
+\end{theorem}
+
+\begin{lemma}[引理 1：有限序列判定]
+假定 $I$ 是一个主理想环。如果在序列
+\[
+a_1,\;a_2,\;a_3,\;\cdots\qquad(a_i\in I)
+\]
+里每一个元是前面一个的真因子，那么这个序列一定是一个有限序列。
+\end{lemma}
+
+\begin{definition}[公因子与最大公因子]
+元 $c$ 叫做元 $a_1,a_2,\ldots,a_n$ 的\textbf{公因子}，是指 $c$ 同时能够整除 $a_1,a_2,\ldots,a_n$。
+
+元 $a_1,a_2,\ldots,a_n$ 的一个公因子 $d$ 叫做 $a_1,a_2,\ldots,a_n$ 的\textbf{最大公因子}，是指 $d$ 能够被 $a_1,a_2,\ldots,a_n$ 的每一个公因子 $c$ 整除。
+\end{definition}
+
+\begin{theorem}[定理 3：最大公因子与单位因子]
+一个唯一分解环 $I$ 的两个元 $a$ 和 $b$ 在 $I$ 里一定有最大公因子。$a$ 和 $b$ 的两个最大公因子 $d$ 和 $d'$ 只能差一个单位因子：
+\[
+d'=\varepsilon d\qquad(\varepsilon\text{ 是单位}).
+\]
+\end{theorem}
+
+\begin{corollary}
+一个唯一分解环 $I$ 的 $n$ 个元 $a_1,a_2,\ldots,a_n$ 在 $I$ 里一定有最大公因子。$a_1,a_2,\ldots,a_n$ 的两个最大公因子只能差一个单位因子。这样，若这几个元的某一个最大公因子是一个单位，这几个元的任何一个最大公因子也都是一个单位。
+\end{corollary}
+
+\begin{definition}[互素]
+我们说，一个唯一分解环的元 $a_1,a_2,\ldots,a_n$ \textbf{互素}，是指它们的最大公因子是单位。
+\end{definition}
+
+\begin{lemma}[引理 2：主理想环的不可约元生成极大理想]
+主理想环的一个不可约元生成一个极大理想。
+\end{lemma}
+
+% ===================== 第三节 =====================
+\section{欧式环}
+
+\begin{definition}[欧式环]
+一个整环 $I$ 叫做一个\textbf{欧式环}，是指
+\begin{enumerate}[I.]
+  \item 有一个从 $I$ 的非零元所作成的集合到非负整数集的映射 $\varphi$ 存在；
+  \item 给定了 $I$ 的一个不等于零的元 $a$，$I$ 的任意元 $b$ 都可以写成
+  \[
+    b=qa+r\qquad(q,\,r\in I)
+  \]
+  的形式，这里 $r=0$ 或 $\varphi(r)<\varphi(a)$。
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}[定理 1：欧式环是主理想环]
+任何欧式环 $I$ 一定是一个主理想环，因而一定是一个唯一分解环。
+\end{theorem}
+
+\begin{note}[环域主理想之间的关系]
+各类结构的包含关系如下图所示：交换环 $\supset$ 整环 $\supset$ 主理想整环 $\supset$ 域。在主理想整环中有：极大理想$\to$素理想；非 $\{0\}$ 素理想$\to$极大理想。
+\end{note}
+
+% ===================== 第四节 =====================
+\section{多项式环初步}
+
+\begin{note}[一元多项式环基础知识]
+我们先讨论唯一分解环 $I$ 上的一元多项式环 $I[x]$。首先我们有以下简单事实：$I$ 的单位是 $I[x]$ 的单位。
+
+因为 $I$ 的单位显然是 $I[x]$ 的单位。另一方面，如果 $f(x)$ 是 $I[x]$ 的单位，$f(x)g(x)=1$（$g(x)\in I[x]$），那么由多项式的乘法定义，$f(x)$ 和 $g(x)$ 的次数都等于零。这是说 $f(x)$，$g(x)\in I$，$f(x)$ 是 $I$ 的单位。
+
+在以下的讨论里我们需要一个新的概念。假定
+\[
+f(x)=a_0+a_1x+\cdots+a_nx^n
+\]
+是 $I[x]$ 的一个多项式，那么由于 $I$ 是唯一分解环，$f(x)$ 的系数 $a_0,a_1,\ldots,a_n$ 在 $I$ 里有最大公因子。
+\end{note}
+
+\begin{lemma}[带余除法引理]
+假定 $I[x]$ 是整环 $I$ 上的一元多项式环，$I[x]$ 的元
+\[
+g(x)=a_nx^n+a_{n-1}x^{n-1}+\cdots+a_0
+\]
+的最高次项系数 $a_n$ 是 $I$ 的一个单位。那么 $I[x]$ 的任意多项式 $f(x)$ 都可以写成
+\[
+f(x)=q(x)g(x)+r(x)\qquad(q(x),\,r(x)\in I[x])
+\]
+的形式，这里 $r(x)=0$ 或 $r(x)$ 的次数小于 $g(x)$ 的次数 $n$。
+\end{lemma}
+
+\begin{lemma}[引理 2：有理系数多项式的标准化]
+$Q[x]$ 的每一个不等于零的多项式 $f(x)$ 都可以写成
+\[
+f(x)=\frac{b}{a}f_0(x)
+\]
+的形式，这里 $a,b\in I$，$f_0(x)$ 是 $I[x]$ 的本原多项式。如果 $g_0(x)$ 也有 $f_0(x)$ 的性质，那么
+\[
+g_0(x)=\varepsilon f_0(x)\qquad(\varepsilon\text{ 是 }I\text{ 的单位}).
+\]
+\end{lemma}
+
+\begin{theorem}[定理 2：UFD 的多项式环也是 UFD]
+如果 $I$ 是唯一分解环，那么 $I[x_1,x_2,\ldots,x_n]$ 也是，这里 $x_1,x_2,\ldots,x_n$ 是 $I$ 上的无关未定元。
+
+由定理 $1$，当 $I$ 是整数环时，$I[x]$ 是一个唯一分解环。但我们知道，这个多项式环不是一个主理想环（第三章§$7$ 例 $3$）。这样，我们有了一个唯一分解环不是主理想环的例子。
+\end{theorem}
+
+% ===================== 第五节 =====================
+\section{商域与结构关系}
+
+\begin{definition}[商域]
+一个域 $Q$ 叫做环 $R$ 的一个\textbf{商域}，是指 $Q$ 包含 $R$，并且 $Q$ 刚好是由所有元
+\[
+\frac{a}{b}\qquad(a,b\in R,\;b\ne 0)
+\]
+所作成的。
+
+由定理 $1$ 和 $2$，一个有两个以上的元的没有零因子的交换环至少有一个商域。一般来说，一个环很可能有两个以上的商域。
+\end{definition}
+
+\begin{theorem}[定理 2：商域的元素结构]
+$Q$ 刚好是由所有元
+\[
+\frac{a}{b}\qquad(a,b\in R,\;b\ne 0)
+\]
+所作成的，这里
+\[
+\frac{a}{b}=ab^{-1}=b^{-1}a.
+\]
+\end{theorem}
+
+\begin{theorem}[定理 4：同构的环商域也同构]
+同构的环的商域也同构。这样抽象地来看，一个环最多只有一个商域。
+\end{theorem}
+
+% ===================== 第六节 =====================
+\section{整系数多项式与高斯引理}
+
+\begin{definition}[本原多项式]
+$I[x]$ 的一个元 $f(x)$ 叫做一个\textbf{本原多项式}，是指 $f(x)$ 的系数的最大公因子是单位。
+
+按照这个定义，显然
+\begin{enumerate}[(ii)]
+  \item 一个本原多项式不会等于零；
+  \item[(iii)] 如果本原多项式 $f(x)$ 可约，那么
+  \[
+    f(x)=g(x)h(x),
+  \]
+  这里 $g(x)$ 和 $h(x)$ 的次数都大于零，因而都小于 $f(x)$ 的次数。
+\end{enumerate}
+\end{definition}
+
+\begin{lemma}[引理 1：本原多项式的乘积]
+假定 $f(x)=g(x)h(x)$。那么 $f(x)$ 是本原多项式，当且仅当 $g(x)$ 和 $h(x)$ 都是本原多项式时。
+\end{lemma}
+
+\begin{lemma}[引理 3：$I[x]$ 可约等价于 $Q[x]$ 可约]
+$I[x]$ 的一个本原多项式 $f_0(x)$ 在 $I[x]$ 里可约的充要条件是 $f_0(x)$ 在 $Q[x]$ 里可约。
+\end{lemma}
+
+\begin{lemma}[引理 4：本原多项式的唯一分解]
+$I[x]$ 的一个次数大于零的本原多项式 $f_0(x)$ 在 $I[x]$ 里有唯一分解。
+\end{lemma}
+
+% ===================== 第七节 =====================
+\section{素元与不可约元}
+
+\begin{theorem}[定理 2：单位乘不可约元还是不可约元]
+单位 $\varepsilon$ 同不可约元 $p$ 的乘积 $\varepsilon p$ 也是一个不可约元。
+
+\textbf{证明：} 由于 $\varepsilon\ne0$，$p\ne0$，而且整环没有零因子，所以 $\varepsilon p\ne0$。$\varepsilon p$ 也不会是单位，不然的话
+\[
+1=\varepsilon'(\varepsilon p)=(\varepsilon'\varepsilon)p.
+\]
+$p$ 是单位，与假定不合。
+
+现在假定 $b$ 是 $\varepsilon p$ 的因子，并且 $b$ 不是单位。那么
+\[
+\varepsilon p=bc,\quad p=b(\varepsilon^{-1}c),\quad b\mid p.
+\]
+但 $p$ 是不可约元，$b$ 不是单位，因此 $b$ 一定是 $p$ 的相伴元：
+\[
+b=\varepsilon''p=(\varepsilon''\varepsilon^{-1})(\varepsilon p)\qquad(\varepsilon''\text{ 是单位}).
+\]
+这就是说，$b$ 是 $\varepsilon p$ 的相伴元，因为由定理 $1$，$\varepsilon''\varepsilon^{-1}$ 是单位。这样 $\varepsilon p$ 只有平凡因子。证完。
+\end{theorem}
+
+\begin{lemma}[引理 2：主理想环的不可约元生成极大理想]
+主理想环的一个不可约元生成一个极大理想。
+\end{lemma}

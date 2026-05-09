@@ -1,0 +1,230 @@
+\chapter{习题选解}
+
+% ===================== 第一节 =====================
+\section{第一章习题（群论）}
+
+\begin{example}[若群 $G$ 的每个元都适合 $x^2=e$，则 $G$ 是交换群]
+若群 $G$ 的每一个元都适合方程 $x^2=e$，那么 $G$ 是交换群。
+
+\textbf{解：} 令 $a$ 和 $b$ 是 $G$ 的任意两个元。由题设
+\[
+(ab)(ab)=(ab)^2=e
+\]
+另一方面
+\[
+(ab)(ba)=ab^2a=aea=a^2=e
+\]
+于是有 $(ab)(ab)=(ab)(ba)$。利用消去律，得
+\[
+ab=ba
+\]
+所以 $G$ 是交换群。
+\end{example}
+
+\begin{example}[有限群里阶大于 $2$ 的元个数为偶数]
+在一个有限群里阶大于 $2$ 的元的个数一定是偶数。
+
+\textbf{解：} 设 $G$ 是有限群，$a\in G$ 的阶大于 $2$。则 $a^{-1}\ne a$（否则 $a^2=e$ 意味着 $|a|\le2$），故 $a^{-1}$ 也是阶大于 $2$ 的元。因此阶大于 $2$ 的元总是成对出现，个数为偶数。
+\end{example}
+
+\begin{example}[阶为偶数的有限群中阶等于 $2$ 的元个数为奇数]
+假定 $G$ 是一个阶为偶数的有限群。在 $G$ 里阶等于 $2$ 的元的个数一定是奇数。
+
+\textbf{解：} 由上题，阶大于 $2$ 的元成对出现，共有偶数个。$G$ 的元分为三类：单位元 $e$（$1$ 个），阶等于 $2$ 的元（设 $k$ 个），阶大于 $2$ 的元（偶数个）。由于 $|G|$ 是偶数，$1+k+\text{偶数}$ 为偶数，故 $k$ 是奇数。
+\end{example}
+
+\begin{example}[有限群的元的阶有限]
+一个有限群的每一个元的阶都有限。
+
+\textbf{解：} 设 $G$ 是有限群，$a\in G$。考察序列 $a,a^2,a^3,\ldots$，由于 $G$ 有限，必有 $i<j$ 使 $a^i=a^j$，即 $a^{j-i}=e$。故 $|a|\le j-i<\infty$。
+\end{example}
+
+\begin{example}[$|a|=|a^{-1}|$]
+设 $G$ 是群，$a\in G$，证明 $a$ 与 $a^{-1}$ 的阶相同。
+
+\textbf{解：} 设 $|a|=n$，则 $(a^{-1})^n=(a^n)^{-1}=e^{-1}=e$，故 $|a^{-1}|\le n$。设 $|a^{-1}|=m$，则 $a^m=((a^{-1})^m)^{-1}=e^{-1}=e$，故 $|a|\le m$。因此 $m=n$，即 $|a|=|a^{-1}|$。
+\end{example}
+
+\begin{example}[循环群的同态像也是循环群]
+假定 $G$ 是循环群，并且 $G$ 与 $\bar{G}$ 同态。证明 $\bar{G}$ 也是循环群。
+
+\textbf{解：} 由于 $G$ 与 $\bar{G}$ 同态，$\bar{G}$ 也是一个群。设 $G=(a)$，而在 $G$ 到 $\bar{G}$ 的同态满射 $\Phi$ 下，$a\longmapsto\bar{a}$。看 $\bar{G}$ 的任意元 $\bar{g}$。那么在 $\Phi$ 下，有 $a^m\in G$，使 $a^m\longmapsto\bar{g}$。但 $a^m\longmapsto\bar{a}^m$。所以 $\bar{g}=\bar{a}^m$。这样，$\bar{G}$ 的每一元都是 $\bar{a}$ 的一个乘方，而 $\bar{G}=(\bar{a})$。
+\end{example}
+
+\begin{example}[模 $12$ 的剩余类加群的所有子群]
+找出模 $12$ 的剩余类加群 $G=\mathbb{Z}_{12}$ 的所有子群。
+
+\textbf{解：} $G$ 是阶为 $12$ 的循环群，其子群都是循环群。容易看出：
+\begin{align*}
+([0])&=\{[0]\}\\
+([1])=([5])=([7])=([11])&=G\\
+([2])=([10])&=\{[2],[4],[6],[8],[10],[0]\}\\
+([3])=([9])&=\{[3],[6],[9],[0]\}\\
+([4])=([8])&=\{[4],[8],[0]\}\\
+([6])&=\{[6],[0]\}
+\end{align*}
+以上是 $G$ 的所有子群。
+\end{example}
+
+\begin{example}[有理系数仿射变换群不是交换群]
+假定 $A$ 是所有实数作成的集合。证明，所有 $A$ 的变换 $x\mapsto ax+b$（$a,b$ 是有理数，$a\ne0$）形式的变换构成一个变换群 $G$，但 $G$ 不是一个交换群。
+
+\textbf{解：} 设 $G$ 是由所有这样的变换组成的集合。
+
+\textbf{封闭性}：设 $\tau_1:x\mapsto cx+d$，$\tau_2:x\mapsto ex+f$（$c,d,e,f\in\mathbb{Q}$，$c,e\ne0$），则
+\[
+\tau_1\tau_2: x\mapsto c(ex+f)+d=(ce)x+(cf+d),
+\]
+其中 $ce\in\mathbb{Q}$，$ce\ne0$，$cf+d\in\mathbb{Q}$，故 $\tau_1\tau_2\in G$。
+
+\textbf{单位元}：$\varepsilon:x\mapsto x$（即 $a=1$，$b=0$）属于 $G$。
+
+\textbf{逆元}：$\tau:x\mapsto ax+b$ 的逆变换为 $\tau^{-1}:x\mapsto\dfrac{1}{a}x-\dfrac{b}{a}$，系数均为有理数且 $\dfrac{1}{a}\ne0$，故 $\tau^{-1}\in G$。
+
+因此 $G$ 是一个变换群。
+
+\textbf{不是交换群}：令 $\tau_1:x\mapsto x+1$，$\tau_2:x\mapsto 2x$。则
+\[
+\tau_1\tau_2: x\mapsto 2x+1,\qquad \tau_2\tau_1: x\mapsto 2(x+1)=2x+2.
+\]
+$\tau_1\tau_2\ne\tau_2\tau_1$，故 $G$ 不是交换群。
+\end{example}
+
+% ===================== 第二节 =====================
+\section{第二章习题（环论）}
+
+\begin{example}[环的中心是交换子环]
+证明：一个环的中心是一个交换子环。
+
+\textbf{解：} 设 $R$ 是环，$Z(R)=\{z\in R:zr=rz,\,\forall r\in R\}$ 是 $R$ 的中心。
+\begin{enumerate}[(i)]
+  \item $0\in Z(R)$；
+  \item 若 $z_1,z_2\in Z(R)$，则 $(z_1-z_2)r=z_1r-z_2r=rz_1-rz_2=r(z_1-z_2)$，故 $z_1-z_2\in Z(R)$；
+  \item 若 $z_1,z_2\in Z(R)$，则 $(z_1z_2)r=z_1(rz_2)=(rz_1)z_2=r(z_1z_2)$，故 $z_1z_2\in Z(R)$；
+  \item $Z(R)$ 中任意两元可交换（由定义直接得）。
+\end{enumerate}
+故 $Z(R)$ 是 $R$ 的一个交换子环。
+\end{example}
+
+\begin{example}[除环的中心是域]
+证明：一个除环的中心是一个域。
+
+\textbf{解：} 设 $D$ 是除环，$Z(D)$ 是 $D$ 的中心。由上题 $Z(D)$ 是交换子环。若 $z\in Z(D)$，$z\ne0$，则 $z$ 在 $D$ 中有逆元 $z^{-1}$。对任意 $r\in D$，由 $zr=rz$ 两边乘以 $z^{-1}$ 得 $rz^{-1}=z^{-1}r$，故 $z^{-1}\in Z(D)$。因此 $Z(D)$ 是域。
+\end{example}
+
+\begin{example}[$\mathbb{Q}$ 是 $\mathbb{Q}(i)$ 的唯一真子域]
+证明有理数域 $\mathbb{Q}$ 是所有复数 $a+bi$（$a,b$ 是有理数）作成的域 $\mathbb{Q}(i)$ 的唯一的真子域。
+
+\textbf{解：} 显然 $\mathbb{Q}$ 是 $\mathbb{Q}(i)$ 的一个真子域。设 $F$ 是 $\mathbb{Q}(i)$ 的任一子域，那么 $F$ 含有元 $a\ne0$，因而含有 $a^{-1}a=1$，由此 $F$ 含有一切整数和一切有理数，所以 $\mathbb{Q}\subset F\subset\mathbb{Q}(i)$。若 $F\ne\mathbb{Q}$，那么至少有一个数 $a+bi\in F$，$a,b\in\mathbb{Q}$，$b\ne0$。于是 $a+bi-a=bi\in F$，$b^{-1}\cdot bi=i\in F$。由此 $F$ 含有一切 $a+bi$ 而 $F=\mathbb{Q}(i)$。所以 $\mathbb{Q}$ 是 $\mathbb{Q}(i)$ 的唯一的真子域。
+\end{example}
+
+\begin{example}[偶数环中 $(4)$ 是极大理想但 $R/(4)$ 不是域]
+我们看所有偶数作成的环 $R$。证明：$(4)$ 是 $R$ 的极大理想，但 $R/(4)$ 不是一个域。
+
+\textbf{解：} $(4)$ 刚好含有一切 $4n$（$n\in\mathbb{Z}$）。设 $\mathfrak{U}$ 是 $R$ 的一个理想，且 $(4)\subsetneq\mathfrak{U}$，$(4)\ne\mathfrak{U}$。那么存在 $a\in\mathfrak{U}$，$a=4q+2$（$2m\ne4n$ 形式的偶数）。由此 $\mathfrak{U}\ni a-4q=2$，而偶数环中 $(2)=R$（因为 $2$ 生成的理想包含所有偶数），故 $\mathfrak{U}=R$。这就是说，$(4)$ 是 $R$ 的一个极大理想。
+
+在 $R/(4)$ 中，$[2]\ne[0]$ 而 $[2][2]=[4]=[0]$，故 $[2]$ 是零因子，因而 $R/(4)$ 不是一个域。
+\end{example}
+
+% ===================== 第三节 =====================
+\section{第三章习题（整环分解）}
+
+\begin{example}[求 $\mathbb{Z}[i]$ 中 $5$ 的因子]
+求 $\mathbb{Z}[i]$ 中 $5$ 的因子。
+
+\textbf{解：} 设 $a+bi\mid5$，则 $\exists\,c+di\in\mathbb{Z}[i]$ 使 $(a+bi)(c+di)=5$，故
+\[
+25=(a^2+b^2)(c^2+d^2),
+\]
+即 $a^2+b^2\in\{1,5,25\}$。
+
+$5$ 的\textbf{平凡因子}（单位及其相伴元）：$1,\,-1,\,i,\,-i,\;5,\,-5,\,5i,\,-5i$。
+
+$5$ 的\textbf{真因子}（对应 $a^2+b^2=5$）：$\pm2\pm i,\;\pm1\pm2i$。
+\end{example}
+
+\begin{example}[$\mathbb{Z}[i]/(1+i)$ 的元素个数]
+设 $R=\mathbb{Z}[i]$（高斯整数环），求 $R/(1+i)$ 有多少个元。
+
+\textbf{解：} 先看主理想 $(1+i)$ 含有哪些元。设 $a+bi\in(1+i)$，那么
+\[
+a+bi=(x+yi)(1+i)=(x-y)+(x+y)i
+\]
+因此若 $x,y$ 同奇同偶，则 $a,b$ 同为偶数；若 $x,y$ 一奇一偶，则 $a,b$ 同为奇数。总之，$a+bi\in(1+i)$ 当且仅当 $a,b$ 有相同的奇偶性。
+
+因此 $R/(1+i)$ 中代表元只需从 $a,b$ 奇偶性不同的高斯整数中取，共有两个陪集 $[0]$（$a,b$ 同奇偶）和 $[1]$（$a,b$ 异奇偶）。故 $R/(1+i)$ 共有 $\mathbf{2}$ 个元。
+\end{example}
+
+% ===================== 第四节 =====================
+\section{第三章习题（域与无零因子环）}
+
+\begin{example}[$F=\{a+bi\mid a,b\in\mathbb{Q}\}$ 是一个域]
+设 $F=\{$所有复数 $a+bi$（$a,b$ 是有理数）$\}$。证明：$F$ 对于普通加法和乘法来说是一个域。
+
+\textbf{解：} $F$ 包含在复数域 $\mathbb{C}$ 中，加法、乘法满足交换律、结合律、分配律来自 $\mathbb{C}$；加法单位元 $0\in F$，乘法单位元 $1\in F$；加法逆元 $-(a+bi)=-a-bi\in F$，所以 $F$ 是一个交换环。对任意 $a+bi\ne0$，其逆元为
+\[
+(a+bi)^{-1}=\frac{a-bi}{a^2+b^2}=\frac{a}{a^2+b^2}-\frac{b}{a^2+b^2}i\in F
+\]
+（因为 $a,b\in\mathbb{Q}$ 且 $a^2+b^2\ne0$），故 $F$ 是一个域。
+\end{example}
+
+\begin{example}[$F=\{a+b\sqrt{3}\mid a,b\in\mathbb{Q}\}$ 是一个域]
+设 $F=\{$所有实数 $a+b\sqrt{3}$（$a,b$ 是有理数）$\}$。证明：$F$ 对于普通加法和乘法来说是一个域。
+
+\textbf{解：} 类似上题，$F\subset\mathbb{R}$，运算律继承自 $\mathbb{R}$，$0,1\in F$，加法逆元 $-(a+b\sqrt{3})\in F$，故 $F$ 是交换环。对任意 $a+b\sqrt{3}\ne0$，注意 $a^2-3b^2\ne0$（否则 $\sqrt{3}=a/b$ 为有理数，矛盾），其逆元为
+\[
+(a+b\sqrt{3})^{-1}=\frac{a-b\sqrt{3}}{a^2-3b^2}=\frac{a}{a^2-3b^2}-\frac{b}{a^2-3b^2}\sqrt{3}\in F,
+\]
+故 $F$ 是一个域。
+\end{example}
+
+\begin{example}[有限无零因子环是除环]
+证明：一个至少有两个元而且没有零因子的有限环是一个除环。
+
+\textbf{解：} 设 $R$ 是满足条件的有限环，$a\in R$，$a\ne0$。考虑映射 $x\mapsto ax$（$x\in R$）。由于 $R$ 没有零因子，若 $ax=ay$ 则 $a(x-y)=0$ 从而 $x=y$，故映射是单射。$R$ 有限，故映射也是满射。特别地，存在 $b\in R$ 使 $ab=a$，从而 $a(b-1)=0$，因 $a\ne0$ 且无零因子，所以 $b=1$，即 $R$ 有乘法单位元。又存在 $c\in R$ 使 $ac=1$，类似地有左逆，故 $R$ 是除环。
+\end{example}
+
+\begin{example}[$\mathbb{Z}[\sqrt{2}]=\{a+b\sqrt{2}\mid a,b\in\mathbb{Z}\}$ 是整环]
+证明由所有实数 $a+b\sqrt{2}$（$a,b$ 是整数）作成的集合对于普通加法和乘法来说是一个整环。
+
+\textbf{解：} 令 $I=\{a+b\sqrt{2}:a,b\in\mathbb{Z}\}$。由于 $I\subset\mathbb{R}$，运算律来自 $\mathbb{R}$；加法逆元 $-(a+b\sqrt{2})\in I$，乘积 $(a+b\sqrt{2})(c+d\sqrt{2})=(ac+2bd)+(ad+bc)\sqrt{2}\in I$，故 $I$ 是一个交换环且有单位元 $1$。又 $\mathbb{R}$ 没有零因子，$I$ 作为 $\mathbb{R}$ 的子环也没有零因子。故 $I$ 是整环。
+\end{example}
+
+% ===================== 第五节 =====================
+\section{第四章习题（理想与主理想）}
+
+\begin{example}[偶数环的理想 $\mathfrak{U}$ 与 $(4)$ 的关系]
+假定 $R$ 是偶数环（即所有偶数在普通加法和乘法下形成的环）。证明：所有整数 $4r$（$r\in R$）是 $R$ 的一个理想 $\mathfrak{U}$。等式 $\mathfrak{U}=(4)$ 对不对？
+
+\textbf{解：} $\mathfrak{U}=\{4r:r\in R\}=\{4m:m\text{ 是偶数}\}=\{8k:k\in\mathbb{Z}\}$。
+
+验证 $\mathfrak{U}$ 是理想：若 $4r_1,4r_2\in\mathfrak{U}$，则 $4r_1-4r_2=4(r_1-r_2)\in\mathfrak{U}$；对任意 $s\in R$（$s$ 是偶数），$s\cdot(4r)=4(sr)\in\mathfrak{U}$，故 $\mathfrak{U}$ 是理想。
+
+等式 $\mathfrak{U}=(4)$ 不对：$(4)=\{4r:r\in R\}=4R$，在偶数环中 $4R=\{4\cdot2k:k\in\mathbb{Z}\}=\{8k\}$，而 $4$ 本身满足 $4\in(4)$（若 $1\in R$），但偶数环无单位元，故 $(4)$ 在此环中实为 $8\mathbb{Z}=\mathfrak{U}$，两者相等。
+\end{example}
+
+\begin{example}[整数环中 $(3,7)=(1)$]
+假定 $R$ 是整数环 $\mathbb{Z}$。证明：$(3,7)=(1)$。
+
+\textbf{解：} 由于 $\gcd(3,7)=1$，由贝祖等式，存在整数 $s,t$ 使 $3s+7t=1$。因此 $1\in(3,7)$，从而对任意 $n\in\mathbb{Z}$，$n=n\cdot1\in(3,7)$，故 $(3,7)=\mathbb{Z}=(1)$。
+\end{example}
+
+\begin{example}[有理数域上 $(2,x)$ 是主理想]
+假定 $R$ 是有理数域 $\mathbb{Q}$。证明这时 $\mathbb{Q}[x]$ 中的理想 $(2,x)$ 是一个主理想。
+
+\textbf{解：} 若 $R=\mathbb{Q}$，那么 $\mathbb{Q}[x]$ 含有有理数 $\dfrac{1}{2}$，因而它的理想 $(2,x)$ 含有 $\dfrac{1}{2}\cdot2=1$。因此 $(2,x)$ 等于主理想 $(1)$。
+\end{example}
+
+\begin{example}[$R/(1+i)$ 是域]
+假定 $R$ 是由所有复数 $a+bi$（$a,b$ 是整数）作成的环。证明：$R/(1+i)$ 是一个域。
+
+\textbf{解：} 由前面的计算，$R/(1+i)$ 恰有两个元素 $[0]$ 和 $[1]$，它的运算表为 $[1]+[1]=[0]$，$[1]\cdot[1]=[1]$，即 $R/(1+i)\cong\mathbb{Z}/2\mathbb{Z}$，而 $\mathbb{Z}/2\mathbb{Z}$ 是一个域（素数阶剩余类环是域）。故 $R/(1+i)$ 是域。
+\end{example}
+
+\begin{example}[同态满射是同构 $\iff$ 核是零理想]
+假定 $\varphi$ 是环 $R$ 到环 $\bar{R}$ 的一个同态满射。证明 $\varphi$ 是 $R$ 与 $\bar{R}$ 间的同构映射，当且仅当 $\varphi$ 的核是 $R$ 的零理想时。
+
+\textbf{解：} $(\Rightarrow)$ 若 $\varphi$ 是同构，则 $\varphi$ 是单射。若 $\varphi(a)=0'$，则 $\varphi(a)=\varphi(0)$，故 $a=0$，即 $\ker\varphi=\{0\}$。
+
+$(\Leftarrow)$ 若 $\ker\varphi=\{0\}$，设 $\varphi(a)=\varphi(b)$，则 $\varphi(a-b)=0'$，故 $a-b\in\ker\varphi=\{0\}$，即 $a=b$。故 $\varphi$ 是单射。又 $\varphi$ 是满射，故 $\varphi$ 是同构。
+\end{example}
