@@ -124,3 +124,32 @@ a+bi=(x+yi)(1+i)=(x-y)+(x+y)i
 
 因此 $R/(1+i)$ 中代表元只需从 $a,b$ 奇偶性不同的高斯整数中取，共有两个陪集 $[0]$（$a,b$ 同奇偶）和 $[1]$（$a,b$ 异奇偶）。故 $R/(1+i)$ 共有 $\mathbf{2}$ 个元。
 \end{example}
+
+% ===================== 第四节 =====================
+\section{第三章习题（域与无零因子环）}
+
+\begin{example}[$F=\{a+bi\mid a,b\in\mathbb{Q}\}$ 是一个域]
+设 $F=\{$所有复数 $a+bi$（$a,b$ 是有理数）$\}$。证明：$F$ 对于普通加法和乘法来说是一个域。
+
+\textbf{解：} $F$ 包含在复数域 $\mathbb{C}$ 中，加法、乘法满足交换律、结合律、分配律来自 $\mathbb{C}$；加法单位元 $0\in F$，乘法单位元 $1\in F$；加法逆元 $-(a+bi)=-a-bi\in F$，所以 $F$ 是一个交换环。对任意 $a+bi\ne0$，其逆元为
+\[
+(a+bi)^{-1}=\frac{a-bi}{a^2+b^2}=\frac{a}{a^2+b^2}-\frac{b}{a^2+b^2}i\in F
+\]
+（因为 $a,b\in\mathbb{Q}$ 且 $a^2+b^2\ne0$），故 $F$ 是一个域。
+\end{example}
+
+\begin{example}[$F=\{a+b\sqrt{3}\mid a,b\in\mathbb{Q}\}$ 是一个域]
+设 $F=\{$所有实数 $a+b\sqrt{3}$（$a,b$ 是有理数）$\}$。证明：$F$ 对于普通加法和乘法来说是一个域。
+
+\textbf{解：} 类似上题，$F\subset\mathbb{R}$，运算律继承自 $\mathbb{R}$，$0,1\in F$，加法逆元 $-(a+b\sqrt{3})\in F$，故 $F$ 是交换环。对任意 $a+b\sqrt{3}\ne0$，注意 $a^2-3b^2\ne0$（否则 $\sqrt{3}=a/b$ 为有理数，矛盾），其逆元为
+\[
+(a+b\sqrt{3})^{-1}=\frac{a-b\sqrt{3}}{a^2-3b^2}=\frac{a}{a^2-3b^2}-\frac{b}{a^2-3b^2}\sqrt{3}\in F,
+\]
+故 $F$ 是一个域。
+\end{example}
+
+\begin{example}[有限无零因子环是除环]
+证明：一个至少有两个元而且没有零因子的有限环是一个除环。
+
+\textbf{解：} 设 $R$ 是满足条件的有限环，$a\in R$，$a\ne0$。考虑映射 $x\mapsto ax$（$x\in R$）。由于 $R$ 没有零因子，若 $ax=ay$ 则 $a(x-y)=0$ 从而 $x=y$，故映射是单射。$R$ 有限，故映射也是满射。特别地，存在 $b\in R$ 使 $ab=a$，从而 $ab-a=0$，即 $a(b-1)=0$，因为 $a\ne0$ 且无零因子，所以 $b=1$，即 $R$ 有乘法单位元。又存在 $c\in R$ 使 $ac=1$，故每个非零元有右逆元，类似地有左逆元，因此 $R$ 是除环。
+\end{example}
