@@ -44,7 +44,7 @@ $0$ 是单位元，不写符号就是乘法。意思是：任何元素乘以加�
 \end{proposition}
 
 \begin{definition}[定义 2.2：交换环]
-令 $(R,+,\cdot)$ 是一个环，我们说 $R$ 是一个交换环，当 $R$ 对法有交换律，即
+令 $(R,+,\cdot)$ 是一个环，我们说 $R$ 是一个交换环，当 $R$ 对乘法有交换律，即
 \[
 \forall a,b\in R,\;ab=ba.
 \]
@@ -67,9 +67,18 @@ bab'=b(ab')=b1=b=(ba)b'=1b'=b'.
 \]
 \end{definition}
 
-\begin{definition}[域就是交换的除环]
-\textbf{定义 2.5 域：} 交换的除环——更好的环。域就是交换的除环。
+\begin{definition}[定义 2.5：域]
+令 $(R,+,\cdot)$ 是一个环，我们称 $(R,+,\cdot)$ 是一个\textbf{域}，若它是一个交换的除环。
 \end{definition}
+
+\begin{proposition}[命题 2.3：域的等价条件]
+$(R,+,\cdot)$ 是一个域，当且仅当
+\begin{align}
+&(R,+)\text{ 是一个阿贝尔群}\\
+&(R\setminus\{0\},\cdot)\text{ 是一个阿贝尔群}\\
+&\text{乘法对加法有分配律}
+\end{align}
+\end{proposition}
 
 \begin{proposition}[命题 2.5：环的直积还是环]
 令 $((R_i,+_i,\cdot_i))_{i\in I}$ 是一族环，则它们的直积 $(\prod_{i\in I}R_i,+,\cdot)$ 还是一个环。
@@ -135,7 +144,11 @@ f(m)=m+n\mathbb{Z}
 \end{theorem}
 
 \begin{proposition}[命题 2.8：$R$-$R'$ 环同态，核都是理想，像都是子环]
-每一个环同态核都是理想，像都是子环。核在环里面是映射到 $0$ 元。
+令 $f:(R,+,\cdot)\to(R',+,\cdot)$ 是一个环同态，则 $f$ 的核是 $R$ 的理想，$f$ 的像是 $R'$ 的子环。此即，
+\begin{align}
+\ker(f)&=\{a\in R:f(a)=0'\}\trianglelefteq R\\
+\mathrm{im}(f)&=\{b\in R':\exists a\in R,\,b=f(a)\}=\{f(a)\in R':a\in R\}<R'
+\end{align}
 \end{proposition}
 
 \begin{theorem}[定理 3：同构传递整环、除环、域的性质]
@@ -169,6 +182,26 @@ f(m)=m+n\mathbb{Z}
 
 为什么要证明"某些东西加起来等于 $1$"？这通常是为了说明某个理想是整个环 $R$，即 $(a,b)=R$，我们要证明 $\exists r,s\in R,\;ra+sb=1$。因为只要 $ra+sb=1$，那么任意 $x\in R$ 都可以写成 $x=x\cdot 1=x(ra+sb)=(xr)a+(xs)b\in(a,b)$，所以说明 $(a,b)=R$。
 \end{definition}
+
+\begin{theorem}[定理 1：除环只有两个理想]
+一个除环 $R$ 只有两个理想，就是零理想和单位理想。
+
+\textbf{证明：} 假定 $\mathfrak{U}$ 是 $R$ 的一个理想而 $\mathfrak{U}$ 不是零理想。那么 $\mathfrak{U}\ni a\ne 0$，由理想的定义，$a^{-1}a=1\in\mathfrak{U}$，因而 $R$ 的任意元 $b=b\cdot 1\in\mathfrak{U}$。这就是说，$\mathfrak{U}=R$。证完。
+
+因此，理想这个概念对于除环或域没有多大用处。
+\end{theorem}
+
+\begin{example}[$\mathbb{Z}_n$ 剩余类环]
+令 $R=\{\text{所有模 }n\text{ 的剩余类}\}$。我们替 $R$ 规定一种加法
+\[
+[a]+[b]=[a+b],
+\]
+并且知道 $R$ 对于这个加法来说成一个群。现在我们替 $R$ 规定一个乘法，我们规定
+\[
+[a][b]=[ab].
+\]
+模 $n$ 的剩余类是由整数间的等价关系 $a\equiv b\pmod{n}$ 当且仅当 $n\mid a-b$ 所决定的。如果 $[a]=[a']$，$[b]=[b']$，那么由等式 $ab-a'b'=a(b-b')+(a-a')b'$，容易证明 $[ab]=[a'b']$。
+\end{example}
 
 \begin{proposition}[命题 2.6：交换环的理想，左理想就是右理想]
 假设 $(R,+,\cdot)$ 是一个交换环，则 $I$ 是一个左理想当且仅当 $I$ 是一个右理想，又当且仅当 $I$ 是一个理想。
@@ -257,6 +290,21 @@ a\ne 0,\quad b\ne 0,\quad\text{但}\;ab=0,
 我们就说，$a$ 是这个环的一个\textbf{左零因子}，$b$ 是一个\textbf{右零因子}。左、右零因子都称作\textbf{零因子}。交换环左零因子就是右，非交换环不一定。
 \end{definition}
 
+\begin{proposition}[命题 2.10：由子集生成的理想仍是理想]
+令 $(R,+,\cdot)$ 是一个环，而 $A\subset R$，则 $(A)\trianglelefteq R$。
+\end{proposition}
+
+\begin{proposition}[命题 2.11：交换环中主理想的表达式]
+令 $(R,+,\cdot)$ 是一个交换环，而 $a\in R$，则
+\[
+(a)=Ra=\{ra:r\in R\}.
+\]
+一般地，若 $a_1,\cdots,a_n\in R$，则
+\[
+(a_1,\cdots,a_n)=Ra_1+\cdots+Ra_n=\{r_1a_1+\cdots r_na_n:r_1,\cdots,r_n\in R\}.
+\]
+\end{proposition}
+
 \begin{definition}[定义 2.18：整环没有零因子是交换环]
 令 $(R,+,\cdot)$ 是一个环，则我们称 $R$ 是个\textbf{整环}，若它是个非零交换环，且没有零因子，即
 \begin{align}
@@ -304,6 +352,13 @@ R&\ne\{0\}\\
 
 交换环+只有零理想和单位理想就是一个域。
 \end{lemma}
+
+\begin{theorem}[极大理想与域]
+假定 $R$ 是一个有单位元的交换环，$I$ 是 $R$ 的一个理想，则
+\[
+R/I\text{ 是一个域}\iff I\text{ 是极大理想}.
+\]
+\end{theorem}
 
 % ===================== 第五节 =====================
 \section{素理想与整数环中的例子}
