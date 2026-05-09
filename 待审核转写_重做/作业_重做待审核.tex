@@ -45,6 +45,12 @@ ab=ba
 \textbf{解：} 设 $|a|=n$，则 $(a^{-1})^n=(a^n)^{-1}=e^{-1}=e$，故 $|a^{-1}|\le n$。设 $|a^{-1}|=m$，则 $a^m=((a^{-1})^m)^{-1}=e^{-1}=e$，故 $|a|\le m$。因此 $m=n$，即 $|a|=|a^{-1}|$。
 \end{example}
 
+\begin{example}[循环群的同态像也是循环群]
+假定 $G$ 是循环群，并且 $G$ 与 $\bar{G}$ 同态。证明 $\bar{G}$ 也是循环群。
+
+\textbf{解：} 由于 $G$ 与 $\bar{G}$ 同态，$\bar{G}$ 也是一个群。设 $G=(a)$，而在 $G$ 到 $\bar{G}$ 的同态满射 $\Phi$ 下，$a\longmapsto\bar{a}$。看 $\bar{G}$ 的任意元 $\bar{g}$。那么在 $\Phi$ 下，有 $a^m\in G$，使 $a^m\longmapsto\bar{g}$。但 $a^m\longmapsto\bar{a}^m$。所以 $\bar{g}=\bar{a}^m$。这样，$\bar{G}$ 的每一元都是 $\bar{a}$ 的一个乘方，而 $\bar{G}=(\bar{a})$。
+\end{example}
+
 \begin{example}[模 $12$ 的剩余类加群的所有子群]
 找出模 $12$ 的剩余类加群 $G=\mathbb{Z}_{12}$ 的所有子群。
 
@@ -88,12 +94,12 @@ ab=ba
 \textbf{解：} 显然 $\mathbb{Q}$ 是 $\mathbb{Q}(i)$ 的一个真子域。设 $F$ 是 $\mathbb{Q}(i)$ 的任一子域，那么 $F$ 含有元 $a\ne0$，因而含有 $a^{-1}a=1$，由此 $F$ 含有一切整数和一切有理数，所以 $\mathbb{Q}\subset F\subset\mathbb{Q}(i)$。若 $F\ne\mathbb{Q}$，那么至少有一个数 $a+bi\in F$，$a,b\in\mathbb{Q}$，$b\ne0$。于是 $a+bi-a=bi\in F$，$b^{-1}\cdot bi=i\in F$。由此 $F$ 含有一切 $a+bi$ 而 $F=\mathbb{Q}(i)$。所以 $\mathbb{Q}$ 是 $\mathbb{Q}(i)$ 的唯一的真子域。
 \end{example}
 
-\begin{example}[$(4)$ 是 $\mathbb{Z}$ 的极大理想且 $\mathbb{Z}/(4)$ 有零因子]
-设 $R=\mathbb{Z}$，证明主理想 $(4)$ 是 $R$ 的极大理想，并说明 $R/(4)$ 有零因子从而不是一个域。
+\begin{example}[偶数环中 $(4)$ 是极大理想但 $R/(4)$ 不是域]
+我们看所有偶数作成的环 $R$。证明：$(4)$ 是 $R$ 的极大理想，但 $R/(4)$ 不是一个域。
 
-\textbf{解：} $(4)$ 刚好含有一切 $4n$（$n\in\mathbb{Z}$）。设 $\mathfrak{U}$ 是 $R$ 的一个理想，$(4)\subsetneq\mathfrak{U}$。那么 $\mathfrak{U}\ni a=4q+2\nmid4\mathbb{Z}$，由此 $\mathfrak{U}\ni a-4q=2$，而 $\mathfrak{U}\ni2m$ 对所有 $m\in\mathbb{Z}$。故 $\mathfrak{U}=(2)=R$，说明 $(4)$ 是极大理想。
+\textbf{解：} $(4)$ 刚好含有一切 $4n$（$n\in\mathbb{Z}$）。设 $\mathfrak{U}$ 是 $R$ 的一个理想，且 $(4)\subsetneq\mathfrak{U}$，$(4)\ne\mathfrak{U}$。那么存在 $a\in\mathfrak{U}$，$a=4q+2$（$2m\ne4n$ 形式的偶数）。由此 $\mathfrak{U}\ni a-4q=2$，而偶数环中 $(2)=R$（因为 $2$ 生成的理想包含所有偶数），故 $\mathfrak{U}=R$。这就是说，$(4)$ 是 $R$ 的一个极大理想。
 
-在 $R/(4)$ 中，$[2]\ne[0]$ 而 $[2][2]=[4]=[0]$。因此 $R/(4)$ 有零因子而不是域。
+在 $R/(4)$ 中，$[2]\ne[0]$ 而 $[2][2]=[4]=[0]$，故 $[2]$ 是零因子，因而 $R/(4)$ 不是一个域。
 \end{example}
 
 % ===================== 第三节 =====================
