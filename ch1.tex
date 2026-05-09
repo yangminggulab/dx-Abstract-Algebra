@@ -13,6 +13,11 @@
 由上述定义知，$A$ 中任一对元 $a,b$，都可以判定是否符合这个关系。
 \end{definition}
 
+\begin{note}[关系的定义 二元关系]
+二元关系 每一个映射都叫做A的一个关系 D中对错是固定的集合 D不一定要 \\
+R可以代表所有比较符号甚至定义的关系；R也可以是$A\times A$的一个子集；从定义上来将$aRb$的意思是$(a,b)$属于集合$R$
+\end{note}
+
 \begin{example}
 集合 $A=\{1,2,3\}$ 上的"$\le$"关系：
 
@@ -31,11 +36,22 @@ $R$ 明确地被定义为 $A\times A$ 的一个子集。我们通常写 $aRb$ �
 则称 $\sim$ 叫做 $A$ 上的等价关系。并且当 $a\sim b$ 时，习惯称 $a$ 与 $b$ 等价。
 \end{definition}
 
+\begin{note}[等价关系]
+$aRa$ / $aRb$则$bRa$ / $aRc$，$bRa$则$bRc$ \\
+显然这里是R代表更广义的=除了等于的意思还表示$(a,c)$属于集合$R$ \\
+比如大于号就不是等价关系
+\end{note}
+
 \begin{definition}[分类]
 若把一个集合 $A$ 分成若干个叫做类的子集，使得 $A$ 的每一个元素属于而且只属于一个类，那么这些类的全体叫做集合 $A$ 的一个分类。
 
 假定我们有一个集合的一个分类，那么，一个类里的任何一个元叫做这个类的一个\textbf{代表}。刚好由每一类的一个代表作成的集合叫做一个\textbf{全体代表团}。
 \end{definition}
+
+\begin{note}[分类]
+1.$A=\bigcup A_i$ \quad 2.$A_i$非空 \quad 3.任意$A_i$和$A_j$交集是空 \\
+分类是所有类的全体 / 类里面一个元素就是代表 / 一个子集叫一个类
+\end{note}
 
 \begin{theorem}[分类决定等价关系]
 集合 $A$ 的每个分类都决定了 $A$ 的一个等价关系。
@@ -48,6 +64,12 @@ $R$ 明确地被定义为 $A\times A$ 的一个子集。我们通常写 $aRb$ �
 
 （3）传递性：$\forall a,b,c\in A$，若 $a\sim b$，$b\sim c$，放在 $A_i$ 中，则 $a,b,c$ 都同在 $A_i$ 中，所以 $a\sim c$。
 \end{theorem}
+
+\begin{note}[每一个分类都决定了A的一个等价关系]
+产生一个分类就能产生一个等价关系 \\
+因为一个分类里面都是有同一种性质的元素 \\
+把这种性质作为等价的判定自然能够构造出一种等价关系
+\end{note}
 
 \begin{theorem}[等价关系决定分类]
 集合 $A$ 上的任一个等价关系都可确定 $A$ 的一个分类。
@@ -62,6 +84,11 @@ $R$ 明确地被定义为 $A\times A$ 的一个子集。我们通常写 $aRb$ �
 
 $\therefore\Omega=\{[a]\mid\forall a\in A\}$ 是 $A$ 的一个分类。
 \end{theorem}
+
+\begin{note}[集合A的任一个等价关系都可确定A的一个分类]
+条件给的是一个等价关系 要证明的是确定了一个分类 \\
+2不同类的子集相交时 如果a集合和b集合不等价那么a集合和b集合的交集是空集
+\end{note}
 
 % ===================== 第二节 =====================
 \section{映射}
@@ -83,6 +110,17 @@ $\therefore\Omega=\{[a]\mid\forall a\in A\}$ 是 $A$ 的一个分类。
 定义：一个 $A$ 到 $A$ 的映射叫做 $A$ 的一个变换。一个 $A$ 到 $A$ 的满射、单射或 $A$ 与 $A$ 间的一一映射叫做 $A$ 的一个满射变换、单射变换或一一变换。
 \end{definition}
 
+\begin{note}[单射满射]
+单射就是原像不同 像不同 \\
+映射 原像相等 像相等；像相等原像不一定相等 \\
+单射 原像不等 像一定不等；像相等原像一定相等 \\
+A到A的映射叫做A的一个变换
+\end{note}
+
+\begin{note}[逆映射]
+如果$X\times Y$的一个子集是$X$到$Y$的一一映射$\varphi$，那么$\varphi$中的每个$x\in X$都作为第一个成员出现在一个有序对中，每个$y\in Y$都作为第二个成员出现在一个有序对中。因此，如果我们交换$\varphi$中所有有序对$(x,y)$的第一个成员和第二个成员，得到一个有序对$(y,x)$的集合，我们得到一个$Y\times X$的子集，它给出一个$Y$到$X$的一一映射。这个函数被称为$\varphi$的逆函数，用$\varphi^{-1}$表示。总结一下，如果$\varphi$将$X$一对一地映射到$Y$，且$\varphi(x)=y$，那么$\varphi^{-1}$将$Y$一对一地映射到$X$，且$\varphi^{-1}(y)=x$。
+\end{note}
+
 % ===================== 第三节 =====================
 \section{同余关系与剩余类}
 
@@ -96,6 +134,10 @@ R:\forall a,b\in\mathbb{Z},\;aRb\Leftrightarrow n\mid a-b
 称由同余关系确定的分类中的类为模 $n$ 的剩余类。
 \end{definition}
 
+\begin{note}[同余关系 模n的剩余类]
+$a-b$能整除$n$说明$a/n$和$b/n$的余数相同
+\end{note}
+
 % ===================== 第四节 =====================
 \section{代数运算与单位元}
 
@@ -106,6 +148,10 @@ R:\forall a,b\in\mathbb{Z},\;aRb\Leftrightarrow n\mid a-b
 \]
 $\circ(a,b)$ 可写成 $a\circ b$，$\therefore\;\circ:(a,b)\to d=a\circ b$。
 \end{definition}
+
+\begin{note}[代数运算定义]
+两个集合的积到D的映射叫代数运算
+\end{note}
 
 \begin{example}
 $A=\{\text{所有整数}\}$，$B=\{\text{所有不等于零的整数}\}$，$D=\{\text{所有有理数}\}$
@@ -119,6 +165,12 @@ $\circ:(a,b)\to\dfrac{a}{b}=a\circ b$
 若集合 $S$ 上的二元运算 $*$ 满足：对任意 $a,b\in S$，都有 $a*b\in S$，则称 $S$ 对运算 $*$ 是封闭的。
 \end{definition}
 
+\begin{note}[封闭 二元运算]
+乘法与乘积 运算的所有元素都是A里面的元素 \\
+实数集$+$、$-$、$\times$是二元运算 \\
+二元运算也称为A上的代数运算
+\end{note}
+
 \begin{definition}[单位元]
 设 $S$ 是一个具有二元运算 $*$ 的集合。如果对集合 $S$ 中的所有 $a$，$a*e=e*a=a$，那么 $e$ 被称为是二元运算 $*$ 的单位元（幺元）。
 
@@ -129,6 +181,8 @@ $\circ:(a,b)\to\dfrac{a}{b}=a\circ b$
 单位元唯一性证明方法：把单位元拆解，然后用结合律引出新的东西，唯一性证明。
 
 若 $e_1,e_2$ 都是单位元，则 $e_1=e_1*e_2=e_2$。
+
+数学中唯一性证明通常设存在两个再证明这两个相等
 \end{note}
 
 \begin{definition}[逆元]
@@ -163,12 +217,25 @@ x_1\cdot x_2\cdots x_n=(x_1\cdot x_2\cdots x_{n-1})\cdot x_n
 令 $x\in S$，$n\in\mathbb{N}$。若 $n>0$，我们定义 $x^n=x\cdots x$，而 $x^0=e$。
 \end{definition}
 
+\begin{note}[定义1 3群中的幂]
+牢记幂只是把多个乘法换了一种写法表示了，乘法只是一种运算
+\end{note}
+
+\begin{note}[幺半群的定义 定义1 2 定义1 3]
+幺半群只要求有单位元，还有满足结合律 \\
+幺半群的单位元是唯一的
+\end{note}
+
 \begin{proposition}[广义结合律（命题 1.2）]
 令 $x_1,\cdots,x_n,y_1,\cdots,y_m\in S$，则
 \[
 x_1\cdot x_2\cdots x_n\cdot y_1\cdot y_2\cdots y_m=(x_1\cdot x_2\cdots x_n)\cdot(y_1\cdot y_2\cdots y_m)
 \]
 \end{proposition}
+
+\begin{note}[广义结合律与数学归纳法]
+数学归纳法先对1一个证明成立然后假设k成立证明k成立的时候可以借鉴证明特殊的做法再证明k+1成立
+\end{note}
 
 \begin{proposition}[命题 1.3]
 令 $x\in S$，$m,n\in\mathbb{N}$，则 $x^{m+n}=x^m\cdot x^n$。
@@ -189,12 +256,20 @@ e\in T,\qquad\forall x,y\in T,\;x*y\in T
 其中，$e$ 和 $e'$ 分别是 $(S,\cdot)$ 和 $(T,*)$ 的单位元。
 \end{definition}
 
+\begin{note}[定义1 5幺半群的同态]
+这里是把自然数中的x映射到了x的n次方这个元素是在另一个幺半群里面的
+\end{note}
+
 \begin{definition}[由子集生成的子幺半群（定义 1.6）]
 假设 $(S,\cdot)$ 是一个幺半群，而 $A\subset S$ 是一个子集。我们定义由 $A$ 生成的子幺半群，记作 $\langle A\rangle$，是指 $S$ 中所有包含了 $A$ 的子幺半群的交集。
 \[
 \langle A\rangle=\bigcap\{T\subset S:T\supset A,\,T\text{ 是子幺半群}\}
 \]
 \end{definition}
+
+\begin{note}[定义1 6由子集生成的子幺半群]
+是包含A的所有子幺半群，如果A本身就是幺半群它不需要添加项就可以生成子幺半群。但是如果A本身元素构成不了幺半群你们就要引入新的元素显然新的元素+A是包含A的，所有A生成的子幺半群里面都有全部的A。所有的交集也就A+最少构成子幺半群需要添加的元素，这个最少代价形成的幺半群就是A生成的子幺半群
+\end{note}
 
 \begin{definition}[幺半群同构（定义 1.7）]
 假设 $(S,\cdot)$，$(T,*)$ 是两个幺半群，且 $f:S\to T$ 是一个映射，我们称 $f$ 是一个幺半群同构，当 $f$ 是双射，且是一个同态。
@@ -203,9 +278,19 @@ f\text{ 是双射},\qquad\forall x,y\in S,\;f(x\cdot y)=f(x)*f(y),\qquad f(e)=e'
 \]
 \end{definition}
 
+\begin{note}[定义1 7幺半群的同构]
+同构概念可以类比全等 \\
+双射，原函数同态
+\end{note}
+
 \begin{proposition}[命题 1.6]
 若 $f:(S,\cdot)\to(T,*)$ 是一个幺半群同构，则 $f^{-1}:T\to S$ 是一个幺半群同构。
 \end{proposition}
+
+\begin{note}[命题1 5证明A生成的子幺半群是包含A的最小子幺半群]
+由一个子集A生成的子结构就是包含了A的所有子结构的交集 \\
+所有幺半群都有e自然在交集了吗，证明x，y有$x*y$就有因为每一个群x，y在交集里面所以每个半幺群里面都有
+\end{note}
 
 \begin{definition}[逆元（定义 1.8）]
 令 $(S,\cdot)$ 是一个幺半群，$x\in S$。我们称 $x$ 是可逆的，当且仅当
@@ -247,6 +332,10 @@ y=y\cdot e=y\cdot x\cdot y'=e\cdot y'=y'
 注意：对于群，我们常用字母 $G$，以及接着的 $H,K$ 等，因为群的英文是 group。另外，我们把 $x$ 的逆记作 $x^{-1}$。命题 1.8：$(x^{-1})^{-1}=x$。命题 1.9：$(x\cdot y)^{-1}=y^{-1}\cdot x^{-1}$。
 \end{definition}
 
+\begin{note}[定义1 9幺半群加逆元就是群]
+这里有着为什么加逆符号这个需要改变x，y的位置
+\end{note}
+
 \begin{note}
 群的另一种等价定义：设 $G$ 是一个具有叫做乘法代数运算的非空集合，并且满足：
 \begin{enumerate}
@@ -256,6 +345,12 @@ y=y\cdot e=y\cdot x\cdot y'=e\cdot y'=y'
   \item[IV.] 对 $G$ 中每一个元素 $a$，有左逆元 $a^{-1}\in G$，使得 $a^{-1}\circ a=e$。
 \end{enumerate}
 则称 $G$ 关于代数运算 $\circ$ 作成一个群。
+\end{note}
+
+\begin{note}[群的定义]
+乘法封闭 满足结合律 叫做乘法不一定是乘法是可以自定义的 \\
+有左单位元有左逆元 \\
+先证明是代数运算
 \end{note}
 
 \begin{note}[群的性质]
@@ -268,6 +363,9 @@ $a$ 逆是 $a$ 的左逆元，$a'$ 是 $a$ 逆的左逆元，再证明 $a'$ 和 
 $aa^{-1}=eaa^{-1}=(a'a^{-1})aa^{-1}=a'(a^{-1}a)a^{-1}=a'ea^{-1}=a'a^{-1}=e$
 
 左单位元也是右单位元；群的乘法适合消去律。
+
+定理1左逆元也是右逆元 / $a$逆是$a$的左逆元 $a'$是$a$逆的左逆元再证明$a'$和$a$一样 \\
+左单位元也是右单位元 / 群的乘法适合消去律
 \end{note}
 
 \begin{note}[群的等价判别]
@@ -288,6 +386,12 @@ $aa^{-1}=eaa^{-1}=(a'a^{-1})aa^{-1}=a'(a^{-1}a)a^{-1}=a'ea^{-1}=a'a^{-1}=e$
 封闭有限集，有限有限不需要找单位元和逆元。消去律是未来解方程，群可以用消去律。
 \end{theorem}
 
+\begin{note}[消去律成立与证明G是一个群 重点]
+封闭有限集 有限有限不需要找单位元和逆元 \\
+消去律是未来解方程 \\
+群可以用消去律
+\end{note}
+
 \begin{definition}[加群]
 一个交换群叫做一个加群，是指我们把这个群的代数运算叫做加法，并且用符号 $+$ 来表示。
 \end{definition}
@@ -303,9 +407,21 @@ $aa^{-1}=eaa^{-1}=(a'a^{-1})aa^{-1}=a'(a^{-1}a)a^{-1}=a'ea^{-1}=a'a^{-1}=e$
 令 $x\in G$，则 $x$（在 $G$ 中）的阶，记作 $|x|$，定义为那个最小的正整数 $n\in\mathbb{N}_1$，使得 $x^n=e$。若这样的 $n$ 不存在，则记 $|x|=\infty$。
 \end{definition}
 
+\begin{note}[定义1 20元素的阶]
+乘法不是真正的乘法 \\
+$a$的$n$次方$=a\circ a\circ a$就是$n$次运算，运算可以定义 \\
+阶是最小正整数 阶的符号和绝对值一样 \\
+有限群每个元素的阶均有限 $a$和阶和$a^{-1}$的阶一样 \\
+交换群可以拆括号
+\end{note}
+
 \begin{proposition}[命题 1.21]
 $(G,\cdot)$ 是有限群，且 $x\in G$，则 $|x|<\infty$。换言之，有限群的每一个元素都可以通过自乘有限多次，都可以得到单位元。
 \end{proposition}
+
+\begin{note}[有限群每一个元素都有元]
+不能不相等是因为如果都不相等就会出现无限了
+\end{note}
 
 \begin{proposition}[$a$ 和 $a^{-1}$ 阶数一样]
 \[
@@ -318,14 +434,28 @@ $(G,\cdot)$ 是有限群，且 $x\in G$，则 $|x|<\infty$。换言之，有限�
 且 $m\le n\Rightarrow m=n$，即 $|a|=|a^{-1}|$。
 \end{proposition}
 
+\begin{note}[a和a的逆阶数一样]
+设$a$的阶数是$m$，$a^{-1}$的$m$次方也是$e$，$m$大于等于$a^{-1}$的阶数 \\
+同理设$a^{-1}$的阶数是$n$，$a$的$n$次方也是$e$，$n$大于等于$a$的阶数 \\
+$m$大于等于$n$，$n$大于等于$m$
+\end{note}
+
 \begin{example}[阶的例题]
 1. 若群 $G$ 的每一个元都适合方程 $x^2=e$，那么 $G$ 是交换群。
 
 \textbf{解：} 令 $a$ 和 $b$ 是 $G$ 的任意两个元。由题设 $(ab)(ab)=(ab)^2=e$，另一方面 $(ab)(ba)=ab^2a=aea=a^2=e$，于是有 $(ab)(ab)=(ab)(ba)$。利用消去律，得 $ab=ba$，所以 $G$ 是交换群。
 \end{example}
 
+\begin{note}[命题1 2 6 带余除法和阶n的结合]
+主要要把n拿出来
+\end{note}
+
 \begin{note}[阶数与奇偶]
-只要不相连就可以快速求阶数而且有交换律。$ab=ba$，$(123)(45)$，$3\times2=6$。
+由$a$和$a$的逆出现偶数，有$a$的逆是群的定义规定的
+\end{note}
+
+\begin{note}[阶是素数的群一定是循环]
+也就是阶是素数的群每个不是单位元的都是生成元 先生成一个循环子群子群的阶是父群阶的因子 因为父群阶是素数所以子群阶就是父群的阶
 \end{note}
 
 % ===================== 第八节 =====================
@@ -358,6 +488,14 @@ $a\circ(b\circ c)=a\circ(b+c+4)=a+(b+c+4)+4=a+b+c+8$
 \]
 \end{definition}
 
+\begin{note}[1 10阿贝尔群]
+常见的群，加群最为普遍
+\end{note}
+
+\begin{note}[交换群 阿贝尔群]
+交换群就是证明$ab=ba$
+\end{note}
+
 % ===================== 第九节 =====================
 \section{子群}
 
@@ -366,6 +504,11 @@ $a\circ(b\circ c)=a\circ(b+c+4)=a+(b+c+4)+4=a+b+c+8$
 
 设 $G$ 是群，$H$ 是 $G$ 的一个非空子集。如果按 $G$ 中元素的二元运算也构成群，则称 $H$ 是 $G$ 的一个子群，记为 $H\le G$。
 \end{definition}
+
+\begin{note}[子群]
+继承运算 \\
+子群也得是群而且运算和父空间一样
+\end{note}
 
 \begin{note}[定义子群的目的（定义 1.13）]
 定义子群根本目的是证明它是一个群。
@@ -378,6 +521,11 @@ $a\circ(b\circ c)=a\circ(b+c+4)=a+(b+c+4)+4=a+b+c+8$
   \item $a\in H\Rightarrow a^{-1}\in H$。
 \end{enumerate}
 \end{theorem}
+
+\begin{note}[定理1子群充要条件]
+子群单位元是原群的单位元，子群的逆元也是原群的逆元 \\
+继承最重要的
+\end{note}
 
 \begin{theorem}[定理 2：子群充要条件]
 一个群 $G$ 的一个非空子集 $H$ 作成 $G$ 的一个子群的充要条件是：
@@ -409,6 +557,18 @@ e\in H,\qquad\forall x,y\in H,\;x\cdot y^{-1}\in H
 这条命题说的便是，这是子群的等价条件。
 \end{proposition}
 
+\begin{note}[命题1 11证明]
+第二个条件x可以是e，y则是H中任意元素证明了每一个都有逆元再证明x.y属于H即可
+\end{note}
+
+\begin{note}[子群里面的元素当陪集的x，则这个陪集还是原来子群xH=H]
+这里就把前面的g可以分为H里面的和G-H里面的，核心原因是子群对乘法封闭
+\end{note}
+
+\begin{note}[命题1 12特殊线性群是群]
+因为它的定义就是行列式是1，$1\times1$永远是1所以封闭性极好逆元也是自己啥都有了
+\end{note}
+
 % ===================== 第十节 =====================
 \section{陪集与拉格朗日定理}
 
@@ -433,6 +593,13 @@ H\le G,\;a\in G\text{ 则 }Ha=\{ha\mid h\in H\}
 \]
 \end{definition}
 
+\begin{note}[右陪集的定义]
+陪集是陪伴着出现的没有对象就不存在陪伴 \\
+$a$和$b$满足这个关系当且仅当$ab^{-1}$在$H$子群中 \\
+下面的三条是证明这个关系是等价关系 \\
+$Ha$就是$H$中每一个元素乘$a$；$aH$一般不是群但是可以与$H$构成双射
+\end{note}
+
 \begin{lemma}[引理 1.2]
 令 $G$ 是一个有限群，$H<G$ 是一个子群，$a\in G$。我们通过左乘 $a$ 来定义 $f:H\to aH$，$f(x)=ax$，则 $f$ 是一个双射。特别地，$|H|=|aH|$。
 \end{lemma}
@@ -440,6 +607,11 @@ H\le G,\;a\in G\text{ 则 }Ha=\{ha\mid h\in H\}
 \begin{proposition}[命题 1.33：陪集要不然相等要不然无交]
 令 $G$ 是一个有限群，$H<G$ 是一个子群，$a,b\in G$。则左陪集 $aH$ 和 $bH$ 要么相等，要么无交。也就是说，我们有 $aH=bH$，或 $aH\cap bH=\varnothing$。
 \end{proposition}
+
+\begin{note}[命题1 3 3子群陪集要不然相等要不然无交]
+$a_1=bh_2\cdot h_1^{-1}$ 两边都能加h \\
+比如说剩余类加群$\{0,1,2,3,4,5\}$子群，有1阶的就是$\{0\}$，2阶$\{0,3\}$生成元是3
+\end{note}
 
 \begin{example}
 例子：群 $\mathbb{Z}_4$ 与子群 $H=\{0,2\}$
@@ -468,6 +640,12 @@ $0+H=\{0+0,0+2\}=\{0,2\}$；$2+H=\{2+0,2+2\}=\{2,4\}\bmod 4=\{2,0\}=\{0,2\}$。
 其中 $HK=\{hk:h\in H,k\in K\}$。$<$ 是子群的意思。
 \end{proposition}
 
+\begin{note}[命题1 34 1 35嵌套子群的陪集]
+$<$是子群的意思 \\
+证明1 $|G|/|H|\cdot|H|/|E|$ \\
+证明2 I J表示的就是能让他们形成不相交陪集的代表元，需要证明两件事一件事是枚举了所有陪集也就能覆盖G，第二件事就是证明集合两两不交
+\end{note}
+
 \begin{definition}[商集与指数（定义 1.28）]
 一个群 $G$ 的一个子群 $H$ 的右陪集（或左陪集）的个数叫做 $H$ 在 $G$ 里的\textbf{指数}。
 
@@ -476,9 +654,18 @@ $0+H=\{0+0,0+2\}=\{0,2\}$；$2+H=\{2+0,2+2\}=\{2,4\}\bmod 4=\{2,0\}=\{0,2\}$。
 引理：一个子群 $H$ 与 $H$ 的每一个右陪集 $Ha$ 之间都存在一个一一映射。证明：$\varphi:h\to ha$ 是 $H$ 与 $Ha$ 间的一一映射。
 \end{definition}
 
+\begin{note}[定义1 28商集与指数]
+指数就是左陪集个数
+\end{note}
+
 \begin{theorem}[定理 1：左右陪集个数相等]
 一个子群 $H$ 的右陪集的个数和左陪集的个数相等：它们或者都是无限，或者都有限并且相等。
 \end{theorem}
+
+\begin{note}[定理1 左右陪集个数相等]
+先构造左陪集和右陪集的一个映射 \\
+i是证明a，b的选取不影响
+\end{note}
 
 \begin{theorem}[拉格朗日定理（定理 1.1）]
 令 $G$ 是一个有限群，$H<G$ 是一个子群，则
@@ -487,6 +674,12 @@ $0+H=\{0+0,0+2\}=\{0,2\}$；$2+H=\{2+0,2+2\}=\{2,4\}\bmod 4=\{2,0\}=\{0,2\}$。
 \]
 特别地，$|H|\,\big|\,|G|$。
 \end{theorem}
+
+\begin{note}[拉格朗日定理]
+$G$的阶等于商群的数量乘子群的阶 \\
+比如循环群$\{0,1,2,3,4,5\}$ 子群$\{0,3\}$ 他生成的商群$\{1,4\}$ $\{2,5\}$ $\{0,3\}$ $6=3\times2$ \\
+子群的阶一定是父群阶的因数
+\end{note}
 
 % ===================== 第十一节 =====================
 \section{正规子群与商群}
@@ -504,6 +697,10 @@ Na=aN.
 \begin{definition}[正规子群（定义 1.29）]
 $N\triangleleft G$。
 \end{definition}
+
+\begin{note}[定义1 29正规子群]
+得给商集 群结构，$a$和$a'$是不同代表元，正规子群才是三角，普通子群只是小于等于
+\end{note}
 
 \begin{theorem}[定理 1：不变子群的判定]
 一个群 $G$ 的一个子群 $N$ 是一个不变子群的充分而且必要条件是：
@@ -524,12 +721,19 @@ a\in G,\;n\in N\Rightarrow ana^{-1}\in N
 正规子群的意义就是为了让陪集成为群（商群）。$N\trianglelefteq G$ 使得陪集集合 $G/N$ 上的乘法良定义，从而构成商群。
 \end{lemma}
 
-\begin{note}[正规子群的意义]
-正规子群的意义就是为了让看看陪集是不是群。
+\begin{note}[正规子群定义]
+任何两个群的两个平凡子群都是不变子群 \\
+交换群的子群都是不变子群 \\
+素数阶的群都是循环群 \\
+代表选取不影响是重点
 \end{note}
 
-\begin{note}[指数是 2 的子群一定是不变的]
-指数是 2 的子群一定是不变的。
+\begin{note}[正规子群的意义就是为了让看看陪集是不是群]
+加群逆元就是相反数，乘群逆元就是倒数
+\end{note}
+
+\begin{note}[指数是2的子群一定是不变的]
+也就是要不然g就在eN里面左乘右乘没区别，要不然因为已经有一个eN了右陪集，左陪集只有一个一个座位所以他们只能是一个人
 \end{note}
 
 \begin{proposition}[命题 1.36：良定义]
@@ -539,6 +743,10 @@ a\in G,\;n\in N\Rightarrow ana^{-1}\in N
 \]
 是良定义的。
 \end{proposition}
+
+\begin{note}[命题1 36良定义]
+正规子群就是良定义，良定义在数学里面就是不同表达方式下的取值说一样的，和选取的代表元无关
+\end{note}
 
 \begin{proposition}[命题 1.37：商群]
 令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，则 $(G/N,\cdot)$ 构成一个群，称为（$G$ 在 $N$ 上的）商群，其中单位元是 $eN=N$，每个陪集 $aN$ 的逆元是 $a^{-1}N$。
@@ -611,9 +819,17 @@ $\phi$ 是 $A$ 与 $\bar{A}$ 间的一一映射，$\circ$ 和 $\bar{\circ}$ 分�
 \]
 \end{definition}
 
+\begin{note}[定义1 16群同态]
+左乘，同态最好的就是可以拆括号让x和$x^{-1}$相遇
+\end{note}
+
 \begin{proposition}[命题 1.13：群同态单位元对单位元，逆元对逆元]
 若 $f:(G,\cdot)\to(G',*)$ 是一个群同态，则 $f(e)=e'$，$f(x^{-1})=f(x)^{-1}$。
 \end{proposition}
+
+\begin{note}[命题1 13群同态单位元对单位元逆元对逆元]
+证明思路因为$e\cdot e=e$所以要添项减少项目的时候e就是很有用e也可以拆成两个互逆的元素相乘把我们想要的东西引入
+\end{note}
 
 \begin{proposition}[命题 1.14：$\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态]
 $\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态。
@@ -626,6 +842,11 @@ $\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态。
 \]
 \end{definition}
 
+\begin{note}[定义1 15群同态下定义 核是映射到e'的原像集 imf是像集]
+核是映射到对方单位元对应的原像集，像是G能映射到$G'$的所有$G'$的元素。但是因为同态不要求单满所以$\operatorname{im}(f)$至少G的子集 \\
+要证两件事1有单位元2.$x,y$在这里面那么$xy^{-1}$次方也在，用$\ker f$的定义也就是验证这个东西能不能映射到$e'$上。$e'$本身就是一个群，反正要把运算通过同态的性质转化到已知的群上
+\end{note}
+
 \begin{proposition}[命题 1.16]
 令 $f:(G,\cdot)\to(G',*)$ 是一个群同态，则 $f$ 是一个单同态当且仅当 $\ker(f)=\{e\}$。也就是说，一个群同态是单的当且仅当核是平凡的。
 \end{proposition}
@@ -633,6 +854,26 @@ $\det:GL(n,\mathbb{R})\to(\mathbb{R}^\times,\cdot)$ 是一个乘法群同态。
 \begin{proposition}[命题 1.17：同态就是拆括号的游戏]
 若 $f:(G,\cdot)\to(G,*)$ 是一个群同构，则 $f^{-1}$ 也是群同构。
 \end{proposition}
+
+\begin{note}[命题1 17同态就是拆括号的游戏]
+同态就是拆括号合括号的游戏
+\end{note}
+
+\begin{note}[同态的定义]
+同态映射 A这边对两个元素操作A得到的 和$A'$中对这两个元素在$A'$中的映射操作A 得到的还是映射 \\
+同态映射+满射才能说A与$A'$是同态 \\
+同态传递结合律分配律交换律
+\end{note}
+
+\begin{note}[同态同构的意义]
+同态保持运算，同构完全一致
+\end{note}
+
+\begin{note}[同构]
+同构=同态+限制必须一一对应既单又满 \\
+同构只看运算规律，把复杂集合的运算同构简化 \\
+自己到自己叫自同构
+\end{note}
 
 \begin{note}[构造同态同构的关键点]
 \textbf{同态（Homomorphism）：} 只需要映射保持运算结构：$\phi(a\cdot b)=\phi(a)*\phi(b)$。例如，$(\mathbb{R},+)$ 和 $(\mathbb{R}^+,\times)$ 的运算不同，但可以用指数映射 $\phi(x)=e^x$ 连接它们，使其成为同构。
@@ -664,6 +905,12 @@ G/\{e\}\simeq G\simeq\operatorname{im}(f)
 \]
 \end{theorem}
 
+\begin{note}[群同构第一定理1 2]
+$\ker(f)$是映射到e的原像集，G上由$\ker(f)$的陪集组成群和$\operatorname{im}(f)$也就是值域群上同构 \\
+如果f是满射，$\operatorname{im}(f)$就是$G'$，如果f是单同态$\ker(f)=\{e\}$ \\
+如果G有限则他的阶等于$\ker(f)$的阶乘$\operatorname{im}(f)$的乘积
+\end{note}
+
 \begin{theorem}[群同构第二定理（定理 1.3）]
 令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，$H<G$。则 $H\cap N\trianglelefteq H$，$N\trianglelefteq HN$，且
 \[
@@ -671,6 +918,19 @@ H/(H\cap N)\simeq HN/N
 \]
 这和之前两个子群乘积的阶的公式是类似的。
 \end{theorem}
+
+\begin{note}[群同构第二定理]
+N是正规子群，H是真子群 H和N的交集是H的正规子群 \\
+$H\cap N$构成的子群的陪集组成的商群和H中元素与N组合构成的陪集的商群是同构的
+\end{note}
+
+\begin{note}[证明]
+正规子群一共干的就是一件事从父群里面任意挑出a和对应的a的逆，再证明正规子群里面的元素可以达成$aNa^{-1}=N$，而证明的时候就要用增加a和$a^{-1}$把想要的形式凑出来
+\end{note}
+
+\begin{note}[证明]
+$\ker(f)$被拿出来就是因为它能映射到$e'$只要映射到$G'$这一项就会变成$e'$然后消失掉
+\end{note}
 
 \begin{theorem}[群同构第三定理（定理 1.4）]
 令 $(G,\cdot)$ 是一个群，且 $N\trianglelefteq G$，$M\trianglelefteq G$，$M<N$。则 $N/M\trianglelefteq G/M$，且
@@ -698,6 +958,12 @@ H/(H\cap N)\simeq HN/N
 变换得自己往自己身上映射；变换群里面的元素是变换。
 \end{definition}
 
+\begin{note}[变换群]
+变换得自己往自己身上映射 \\
+变换乘法 恒等变换 \\
+变换群里面的元素是变换
+\end{note}
+
 \begin{note}[变换群证明]
 （1）非空、代数运算、结合律都满足，有单位元 $\varepsilon$。那么"逆元"问题能解决吗？事实上，$\tau_1$ 就没有逆元。因为如果 $\tau_1$ 有逆元 $\tau$，那么必有 $\tau_1\tau=\varepsilon$ 且 $\tau\tau_1=\varepsilon$。但是
 \[
@@ -710,8 +976,8 @@ H/(H\cap N)\simeq HN/N
 导致矛盾，故 $\tau_1$ 没有逆元。因此 $T(M)$ 不能成为群。
 \end{note}
 
-\begin{note}[变换群的意义]
-在群论中，"代表元"是指从每个陪集中选取的一个元素，用来"代表"整个陪集。例如，如果 $G$ 是一个群，$H$ 是 $G$ 的一个子群，那么对于任一 $g\in G$，左陪集定义为 $gH=\{gh:h\in H\}$。在这个陪集中，我们可以任取一个元素（通常就是 $g$ 本身）作为该陪集的"代表元"。这个代表元并不是唯一的，但它能帮助我们在讨论商群 $G/H$ 时用符号 $gH$ 来表示整个陪集。简单来说，代表元就是每个陪集中用来标记该陪集的一个选定的元素。
+\begin{note}[变化群的意义]
+可以通过一个简单的例子来理解。设想你有一个正方形，你可以对这个正方形进行各种操作（旋转、翻转等），这些操作我们称为"变换"。变换的组合（封闭性）：如果你先对正方形进行一次变换，再进行另一次变换，整体效果依然是一个变换。比如先旋转90°再旋转90°，结果等于旋转180°。
 \end{note}
 
 \begin{definition}[置换与置换群]
@@ -719,6 +985,11 @@ H/(H\cap N)\simeq HN/N
 
 我们看一个有限集合 $A$，$A$ 有 $n$ 个元 $a_1,a_2,\cdots,a_n$。由 §5 定理 2，$A$ 的全体置换作成一个群 $G$。
 \end{definition}
+
+\begin{note}[置换与置换群]
+有限集+变换=置换 \\
+一一变换为置换
+\end{note}
 
 \begin{definition}[置换的书写方式]
 置换
@@ -734,6 +1005,17 @@ H/(H\cap N)\simeq HN/N
 \pi=\begin{pmatrix}1&2&3\\2&3&1\end{pmatrix}
 \]
 \end{definition}
+
+\begin{note}[循环置换]
+3循环 第k个接回第一个 \\
+不变的映射不写 \\
+两个循环不能有公共的东西加不相连的循环
+\end{note}
+
+\begin{note}[置换群]
+置换是一一对应的变化，不相连就是交集是空，写成循环置换就是为了省地方 \\
+n次对称群就是全体置换
+\end{note}
 
 \begin{note}[只要不相连就可以快速求阶数而且有交换律]
 $ab=ba$，$(123)(45)$，$3\times2=6$。
@@ -766,6 +1048,13 @@ g\longrightarrow gx=g^{\tau_x}
 是 $G$ 到 $\tilde{G}$ 间的满射，且消去律告诉我们：$x\ne y\Rightarrow gx\ne gy$ 告诉我们，$\tau_x\ne\tau_y$。所以 $\phi$ 是 $G$ 与 $\tilde{G}$ 间的一一映射。
 \end{theorem}
 
+\begin{note}[凯莱定理任何群都是同一个群的同构]
+第一步构造映射g到gx这个操作叫做$\tau_x$ \\
+每一个元都有一种变换 再构建变换和元素之间的映射 \\
+gx之间是由定义的运算连接的而不是乘法 \\
+这步证明的是$g(x\circ y)=g(x)\circ g(y)$
+\end{note}
+
 % ===================== 第十六节 =====================
 \section{循环群}
 
@@ -797,9 +1086,22 @@ $x$ 的幂是群同态，$f$ 是同态映射。
 \textbf{例2：} 模 $n$ 的剩余类加群 $Z_n=([1])$ 是 $n$ 阶循环群。
 \end{definition}
 
+\begin{note}[循环群 1]
+循环群的关键是找到固定元，由固定元可以生成所有的元素，m是加法做多少次也就是运算多少次 \\
+余k的可由余1的自+k次
+\end{note}
+
+\begin{note}[循环群 2]
+由一个元形成群所有元素 所有元素都可以写成生成元的次方
+\end{note}
+
 \begin{proposition}[命题 1.26：有限循环群的结构]
 令 $G=\langle x\rangle$ 是有限循环群，假设 $|x|=n$，则 $G=\{e,x,x^2,\cdots,x^{n-1}\}$，其中乘法法中的这些元素是两两不同的。
 \end{proposition}
+
+\begin{note}[循环子群]
+循环群的阶是父群阶的因数，阶也就是个数
+\end{note}
 
 \begin{proposition}[命题 1.30：循环群的生成元]
 令 $G=\langle x\rangle$ 是一个 $n$ 阶循环群。假设 $1\le m\le n$，则 $x^m$ 的阶为
@@ -809,9 +1111,22 @@ $x$ 的幂是群同态，$f$ 是同态映射。
 \textbf{命题 1.31：} 令 $G=\langle x\rangle$ 是一个 $n$ 阶循环群，则 $x^m$（$1\le m\le n$）是个生成元，当且仅当 $\gcd(m,n)=1$。根据欧拉 $\phi$ 函数的定义，这些生成元的个数正是 $\phi(n)$。所以循环群的生成元不止一个。
 \end{proposition}
 
+\begin{note}[命题1 30循环群的生成元的幂指数和循环群阶数互素]
+所以循环群的生成元不止一个
+\end{note}
+
 \begin{proposition}[$n$ 阶循环群互相同构，无限循环群彼此同构（命题 1.2.9）]
 令 $G=\langle x\rangle$ 是有限循环群，$|x|=n$，则 $G\cong\mathbb{Z}/n\mathbb{Z}$。无限循环群 $G=\langle x\rangle$（$|x|=\infty$）则 $G\cong\mathbb{Z}$。故所有 $n$ 阶循环群互相同构，所有无限循环群彼此同构。
 \end{proposition}
+
+\begin{note}[循环群的同构]
+把生成元做映射 \\
+同构证明是映射证明同态+单+满
+\end{note}
+
+\begin{note}[循环群的子群还是循环群]
+其实也就是要证明子群中最小的正幂次方$a^k$是生成元，设其他的元素不整除则$m=kq+r$群有逆元 所以$a^r$也在循环群内 因为r比k小，k又是最小的正幂r只能等于0所有元都是k的整数倍
+\end{note}
 
 % ===================== 第十七节 =====================
 \section{直积}
