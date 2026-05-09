@@ -151,5 +151,50 @@ a+bi=(x+yi)(1+i)=(x-y)+(x+y)i
 \begin{example}[有限无零因子环是除环]
 证明：一个至少有两个元而且没有零因子的有限环是一个除环。
 
-\textbf{解：} 设 $R$ 是满足条件的有限环，$a\in R$，$a\ne0$。考虑映射 $x\mapsto ax$（$x\in R$）。由于 $R$ 没有零因子，若 $ax=ay$ 则 $a(x-y)=0$ 从而 $x=y$，故映射是单射。$R$ 有限，故映射也是满射。特别地，存在 $b\in R$ 使 $ab=a$，从而 $ab-a=0$，即 $a(b-1)=0$，因为 $a\ne0$ 且无零因子，所以 $b=1$，即 $R$ 有乘法单位元。又存在 $c\in R$ 使 $ac=1$，故每个非零元有右逆元，类似地有左逆元，因此 $R$ 是除环。
+\textbf{解：} 设 $R$ 是满足条件的有限环，$a\in R$，$a\ne0$。考虑映射 $x\mapsto ax$（$x\in R$）。由于 $R$ 没有零因子，若 $ax=ay$ 则 $a(x-y)=0$ 从而 $x=y$，故映射是单射。$R$ 有限，故映射也是满射。特别地，存在 $b\in R$ 使 $ab=a$，从而 $a(b-1)=0$，因 $a\ne0$ 且无零因子，所以 $b=1$，即 $R$ 有乘法单位元。又存在 $c\in R$ 使 $ac=1$，类似地有左逆，故 $R$ 是除环。
+\end{example}
+
+\begin{example}[$\mathbb{Z}[\sqrt{2}]=\{a+b\sqrt{2}\mid a,b\in\mathbb{Z}\}$ 是整环]
+证明由所有实数 $a+b\sqrt{2}$（$a,b$ 是整数）作成的集合对于普通加法和乘法来说是一个整环。
+
+\textbf{解：} 令 $I=\{a+b\sqrt{2}:a,b\in\mathbb{Z}\}$。由于 $I\subset\mathbb{R}$，运算律来自 $\mathbb{R}$；加法逆元 $-(a+b\sqrt{2})\in I$，乘积 $(a+b\sqrt{2})(c+d\sqrt{2})=(ac+2bd)+(ad+bc)\sqrt{2}\in I$，故 $I$ 是一个交换环且有单位元 $1$。又 $\mathbb{R}$ 没有零因子，$I$ 作为 $\mathbb{R}$ 的子环也没有零因子。故 $I$ 是整环。
+\end{example}
+
+% ===================== 第五节 =====================
+\section{第四章习题（理想与主理想）}
+
+\begin{example}[偶数环的理想 $\mathfrak{U}$ 与 $(4)$ 的关系]
+假定 $R$ 是偶数环（即所有偶数在普通加法和乘法下形成的环）。证明：所有整数 $4r$（$r\in R$）是 $R$ 的一个理想 $\mathfrak{U}$。等式 $\mathfrak{U}=(4)$ 对不对？
+
+\textbf{解：} $\mathfrak{U}=\{4r:r\in R\}=\{4m:m\text{ 是偶数}\}=\{8k:k\in\mathbb{Z}\}$。
+
+验证 $\mathfrak{U}$ 是理想：若 $4r_1,4r_2\in\mathfrak{U}$，则 $4r_1-4r_2=4(r_1-r_2)\in\mathfrak{U}$；对任意 $s\in R$（$s$ 是偶数），$s\cdot(4r)=4(sr)\in\mathfrak{U}$，故 $\mathfrak{U}$ 是理想。
+
+等式 $\mathfrak{U}=(4)$ 不对：$(4)=\{4r:r\in R\}=4R$，在偶数环中 $4R=\{4\cdot2k:k\in\mathbb{Z}\}=\{8k\}$，而 $4$ 本身满足 $4\in(4)$（若 $1\in R$），但偶数环无单位元，故 $(4)$ 在此环中实为 $8\mathbb{Z}=\mathfrak{U}$，两者相等。
+\end{example}
+
+\begin{example}[整数环中 $(3,7)=(1)$]
+假定 $R$ 是整数环 $\mathbb{Z}$。证明：$(3,7)=(1)$。
+
+\textbf{解：} 由于 $\gcd(3,7)=1$，由贝祖等式，存在整数 $s,t$ 使 $3s+7t=1$。因此 $1\in(3,7)$，从而对任意 $n\in\mathbb{Z}$，$n=n\cdot1\in(3,7)$，故 $(3,7)=\mathbb{Z}=(1)$。
+\end{example}
+
+\begin{example}[有理数域上 $(2,x)$ 是主理想]
+假定 $R$ 是有理数域 $\mathbb{Q}$。证明这时 $\mathbb{Q}[x]$ 中的理想 $(2,x)$ 是一个主理想。
+
+\textbf{解：} 若 $R=\mathbb{Q}$，那么 $\mathbb{Q}[x]$ 含有有理数 $\dfrac{1}{2}$，因而它的理想 $(2,x)$ 含有 $\dfrac{1}{2}\cdot2=1$。因此 $(2,x)$ 等于主理想 $(1)$。
+\end{example}
+
+\begin{example}[$R/(1+i)$ 是域]
+假定 $R$ 是由所有复数 $a+bi$（$a,b$ 是整数）作成的环。证明：$R/(1+i)$ 是一个域。
+
+\textbf{解：} 由前面的计算，$R/(1+i)$ 恰有两个元素 $[0]$ 和 $[1]$，它的运算表为 $[1]+[1]=[0]$，$[1]\cdot[1]=[1]$，即 $R/(1+i)\cong\mathbb{Z}/2\mathbb{Z}$，而 $\mathbb{Z}/2\mathbb{Z}$ 是一个域（素数阶剩余类环是域）。故 $R/(1+i)$ 是域。
+\end{example}
+
+\begin{example}[同态满射是同构 $\iff$ 核是零理想]
+假定 $\varphi$ 是环 $R$ 到环 $\bar{R}$ 的一个同态满射。证明 $\varphi$ 是 $R$ 与 $\bar{R}$ 间的同构映射，当且仅当 $\varphi$ 的核是 $R$ 的零理想时。
+
+\textbf{解：} $(\Rightarrow)$ 若 $\varphi$ 是同构，则 $\varphi$ 是单射。若 $\varphi(a)=0'$，则 $\varphi(a)=\varphi(0)$，故 $a=0$，即 $\ker\varphi=\{0\}$。
+
+$(\Leftarrow)$ 若 $\ker\varphi=\{0\}$，设 $\varphi(a)=\varphi(b)$，则 $\varphi(a-b)=0'$，故 $a-b\in\ker\varphi=\{0\}$，即 $a=b$。故 $\varphi$ 是单射。又 $\varphi$ 是满射，故 $\varphi$ 是同构。
 \end{example}
