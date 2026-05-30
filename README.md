@@ -1,53 +1,36 @@
-# dx 的近世代数
+# dx's Abstract Algebra
 
-## 序
+## Preface
 
-这本书对我来说，不只是一本近世代数笔记。
+This book is not only a set of abstract algebra notes. It records the process of learning the course again and then explaining it in my own structure. Many students first meet abstract algebra as something distant: groups, rings, fields, ideals, quotient structures, and homomorphisms can look like a vocabulary list detached from intuition.
 
-它更像是一门课被我重新学会、又重新讲出来的过程。很多人第一次接触近世代数，会很自然地觉得它“抽象”。群、环、域、理想、商群、商环、同态，看上去都不像前面学过的数学那样抓得住，甚至会让人怀疑自己是不是只是在记一套越来越远离直觉的术语。可我自己越往后写，越觉得所谓抽象，很多时候并不是在故意远离具体，而是在逼我们学会忽略表面形式，去看真正不变的结构。
+The more I wrote, the more I felt that abstraction is not a way to escape concrete objects. It is a way to ignore surface form and see the structure that remains unchanged.
 
-所以如果要我用一句话说这本书在讲什么，我可能会说: 它在讲，什么叫“同一件事”。
+## Why This Book Is Written This Way
 
-## 为什么我想写这本书
+I did not want abstract algebra to become a neat but lifeless directory of definitions. The central thread of this book is the question of structure: what operations are preserved, what information is compressed, and when two objects should be regarded as the same.
 
-我不太想把近世代数写成一本只是把定义排整齐的书。因为这门课一旦只剩定义，读起来就会非常像在背一个新世界的语法；但如果你开始看见它内部的连接，它反而会变得非常通透。
+Homomorphisms, quotient groups, ring homomorphisms, ideals, quotient rings, and isomorphism theorems are not isolated topics here. They repeatedly answer the same question: when a structure is mapped into another structure, what survives?
 
-比如这本书里我一直很看重“映射”的位置。群同态、商群、环同态、理想、商环、同构定理，这些内容表面上分散在不同章节里，但它们其实在反复回答同一个问题: 当我们把一个对象送到另一个对象里，哪些运算会被保留，哪些结构会被完整带过去，哪些信息会被压缩掉，压缩掉以后留下来的又是什么。
+## What This Book Keeps
 
-只要这条线抓住了，近世代数就不会再只是“抽象对象大全”。它会慢慢变成一种很有力量的眼光: 你开始不再只盯着元素本身，而是去看元素之间的关系、运算之间的兼容、结构之间的对应。
+The book begins with relations, equivalence, classification, and mappings, then moves into groups, subgroups, cosets, normal subgroups, homomorphisms, and isomorphism theorems. It then develops rings, ideals, quotient rings, domains, fields, fields of fractions, divisibility, unique factorization, principal ideal domains, Euclidean domains, and polynomial rings.
 
-## 这本书还有另一层来路
+Exercises are used to test whether the structural viewpoint is actually working, not just whether definitions can be repeated.
 
-这本书还有一点让我很在意: 它不是凭空长出来的。
+## Intended Readers
 
-仓库里有一份 `近世代数整理心得.md`，里面非常具体地记录了这本书是怎么一点点整理出来的。它来自 Notion 里的原始笔记，来自大量截图、教材照片、零散注释，也来自很多次补漏、重写、校正和重新组织。某种意义上，这本书本身就在实践近世代数教给人的一件事: 表面材料可以很杂乱，但只要结构重新建立起来，它就能变成一套清楚而稳固的体系。
+This book is for readers who feel abstract algebra is difficult but suspect that it should also be beautiful. It is meant to slow the subject down enough for the reason behind each object to become visible.
 
-我很喜欢这一层意味。因为它让这本书不只是“关于近世代数的书”，它本身也带着一种把混乱重构成秩序的气质。读者如果愿意，不只是能看到结论，也能隐约看到结论是怎么被重新拼出来的。
+## Overall Roadmap
 
-## 这本书里想保住什么
+Following Thomas Judson's Abstract Algebra: Theory and Applications, abstract algebra is usually organized around groups, rings, and fields. This repository currently focuses on group theory, ring theory, factorization in integral domains, and polynomial rings.
 
-它当然有很完整的主线。
+```
 
-第一章从关系、等价关系、分类和映射开始，进入群、子群、陪集、正规子群、同态和同构定理。第二章进入环、子环、理想、商环、整环、域与商域。第三章再往前走到整除理论、唯一分解、主理想整环、欧式环和多项式环。后面的 `exercises.tex` 与 `作业.tex` 则把这些结构放回题目里检验。
+## Repository Notes
 
-但如果只把它看成一个目录，你还是会低估它最有价值的地方。因为这本书真正想保住的，不只是每一条定义和定理，而是“为什么要引入这个对象”。为什么要从等价关系走到分类，为什么要从陪集走到商群，为什么理想比一般子环更重要，为什么同态核与像会成为结构分析的中心。这些“为什么”，才是让近世代数从难背变成好懂的关键。
-
-## 我想把它写给谁
-
-我想把它写给那种一边觉得近世代数难，一边又隐约觉得它应该很美的人。
-
-如果你现在还在第一遍学习里，那我希望这本书能陪你慢一点。不要急着把所有结论背下来，先把定义之间的依赖关系理顺，很多地方会一下子顺很多。  
-
-如果你已经学到习题阶段，那我希望这本书还能帮你保住另一件事: 做题不是为了把定义机械代进去，而是为了反过来验证你是不是真的理解了结构。
-
-## 最后
-
-如果这本书最后能让你慢慢不再把近世代数看成一堆抽象名词，而开始把它看成一种识别结构、比较结构、压缩结构的语言；如果它能让你在看到同态、商结构、理想这些对象时，不再只觉得它们是“新增内容”，而会下意识地问“它保留了什么”；如果它能让你体会到，抽象并不是远离直觉，而是把直觉磨得更稳、更深，那么这本书就已经达到我最希望它达到的样子。
-
-## 仓库说明
-
-- 主文件是 `main.tex`。
-- 章节主线是 `ch1.tex`、`ch2.tex`、`ch3.tex` 与 `exercises.tex`。
-- 另有 `第一章.tex`、`第二章.tex`、`第三章.tex`、`作业.tex` 等整理版本，以及 `待审核转写` 中的转写稿。
-- `近世代数整理心得.md` 记录了这本书从笔记、图片到 LaTeX 的整理过程。
-- 若需要本地编译，通常运行 `xelatex main.tex` 两次即可。
+- The main entry is `main.tex`.
+- The chapter line covers group theory, ring theory, factorization in integral domains, and polynomial rings.
+- Exercise files and transferred draft materials are kept separately.
+- For local compilation, running `xelatex main.tex` twice is usually enough.
